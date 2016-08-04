@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  16_ADD                                                               08/01/2016 10:38:24 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\16_add.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 16_add.asm SET(SMALL) DEBUG PRINT(.\Listings\16_add.lst) OBJECT(.\Objec
+                      ts\16_add.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG  0000H
+0000 020110            2     LJMP MAIN
+0100                   3     ORG 0100H
+                       4     
+0100                   5     ADDER:
+0100 E561              6             MOV A, 61H
+0102 2571              7             ADD A, 71H
+0104 F8                8             MOV R0, A
+0105 E560              9             MOV A, 60H
+0107 3570             10             ADDC A, 70H
+0109 F9               11             MOV R1, A
+010A 22               12             RET
+010B                  13     CARRY:
+010B 756201           14             MOV 62H, #1H    
+010E 80FE             15             STOP: SJMP STOP
+0110                  16     MAIN:
+0110 C3               17             CLR C
+0111 756200           18             MOV 62H, #0H
+0114 7560FF           19             MOV 60H, #0FFH
+0117 7561FF           20             MOV 61H, #0FFH
+011A 7570FF           21             MOV 70H, #0FFH
+011D 7571FF           22             MOV 71H, #0FFH
+                      23     
+0120 3100             24             ACALL ADDER
+0122 8864             25             MOV 64H, R0
+0124 8963             26             MOV 63H, R1
+0126 40E3             27             JC CARRY
+0128 80E4             28             SJMP STOP       
+                      29     END
+A51 MACRO ASSEMBLER  16_ADD                                                               08/01/2016 10:38:24 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADDER. . . . . . .  C ADDR   0100H   A   
+CARRY. . . . . . .  C ADDR   010BH   A   
+MAIN . . . . . . .  C ADDR   0110H   A   
+STOP . . . . . . .  C ADDR   010EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

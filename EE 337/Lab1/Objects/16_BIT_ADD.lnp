@@ -1,0 +1,3 @@
+".\Objects\16_add.obj" 
+TO ".\Objects\16_BIT_ADD" 
+PRINT(".\Listings\16_BIT_ADD.m51") RAMSIZE(256) 

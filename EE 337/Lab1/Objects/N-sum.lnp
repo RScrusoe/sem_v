@@ -1,0 +1,3 @@
+".\Objects\n_sum.obj" 
+TO ".\Objects\N-sum" 
+PRINT(".\Listings\N-sum.m51") RAMSIZE(256) 

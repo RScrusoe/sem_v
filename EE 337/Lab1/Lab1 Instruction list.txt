@@ -1,0 +1,115 @@
+List of instructions which need to be revised for Lab1
+======================================================
+
+Note: This is a listing document which lists majority of the  instructions which will be useful for the lab.
+Do not treat this as a detailed reference document.  
+
+Data transfer instructions:
+	MOV A,#Data8bit		
+	MOV Rn,#Data8bit		
+	; load 8 bit immediate data in register
+
+	MOV Rn,A
+	; Move data from accumulator to specified Rn in current bank
+	MOV direct,A
+	; Move data from accumulator to data memory location specified 
+	; by the direct address
+	
+	
+	MOV @Ri,A
+	; Write data to the data memory location whose address is 
+	; available in Ri register (Ri  is either R0 or R1)
+	
+	MOV A,@Ri
+	; Read data from the data memory location whose address is 
+	; available in R0 register  (Ri  is either R0 or R1)
+
+Arithmetic instructions:
+
+	ADD : Add to accumulator the contents of
+	1. ADD A,Rn	; direct within bank   [A] <= [A] + [Rn]
+	2. ADD A,direct ; direct data memory address  [A] <=[A] + [direct]
+	3. ADD A,@Ri 	; Indirect using Ri [A] <= [A] + [Ri{M}]
+	4. ADD A,#data 	; immediate  	    [A] <= [A] + data
+	
+	ADDC :  Add to accumulator with carry the contents of second operand 
+	This instruction supports same second operands as the ADD and is useful for higher byte addition in multi-byte numbers.
+	
+	INC -  group of increment instructions
+	DEC -  group of decrement instructions
+
+	CJNE destination,source,relative address	
+	
+Accumulator and Carry flag related instructions:
+
+	Instructions in this group allow one to check the value of 
+	carry flag and decide a course of action using the conditional 
+	jump instruction.
+
+
+	CLR A 	; clear accumulator 	[A] <= 0
+	CPL A 	; invert accumulator 	[A] <= [/A] 
+	
+	CLR C	; clear Carryflag
+	
+	RL A	; Rotate Left one bit
+		; [An+1] <= [An], n = 0-6
+		;  [A0] <= [A7]
+						  
+	RLC A 	; Rotate Left through Carry
+		; [An+1] <= [An], n = 0-6
+		; [A0] <= CarryFlag
+		; CarryFlag <= [A7]
+						
+	RRA 	; Rotate right one bit 
+		; [An] <= [An+1], n = 0-6
+		; [A7] <= [A0]
+						
+	RRC A 	; [An] <= [An+1], n = 0-6
+		; [A7] <= CarryFlag
+		; CarryFlag <= [A0]	
+
+Control Transfer instructions:
+
+	lcall Routine1
+	; Call Routine1 after saving current PC on Stack
+	;	[PC] <= [PC] + 3
+	;	[SP] <= [SP] + 1
+	;	[SP]{M}] <= [PC7-0]
+	;	[SP] <= [SP] + 1
+	;	[SP{M}] <= [PC15-8]
+	;	[PC15-0] <= addr 16 (Routine1’s 16 bit addres)
+
+	Ret	
+	; return back to the caller by restoring C from stack
+	;	[PC15-8] <= [SP{M}]
+	;	[SP] <= [SP] - 1
+
+	LJMP addr16 
+	; Transfer control to the point in program defined by the label addr16
+	;	[PC] <= [PC] + 3
+	;	[PC] <= addr 16		
+		
+Conditional control transfer: 
+
+	JC Address1 	
+	; if CarryFlag is set adjust PC to hold the  Address1
+		else PC = PC +2
+
+	JNC Address1 	
+	; if CarryFlag is clear adjust PC to have the Address1
+		else PC = PC +2
+						
+	CJNE Compare and jump if not equal
+	e.g.
+		CJNE R0,#10,AGAIN 
+		; compare R0 with 10 and jump to label AGAIN if R0 is not 10
+	
+Other instructions:
+
+	MOV SP,#Data8bit	
+	; Load SP with a 8 bit value which is to be used as address 
+	; for the stack memory area by subsequent Call, Return, Push and 
+	; Pop instructions
+
+	

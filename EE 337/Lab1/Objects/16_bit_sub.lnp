@@ -1,0 +1,3 @@
+".\Objects\16-bit_sub.obj" 
+TO ".\Objects\16_bit_sub" 
+PRINT(".\Listings\16_bit_sub.m51") RAMSIZE(256) 

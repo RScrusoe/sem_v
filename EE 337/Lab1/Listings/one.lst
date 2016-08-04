@@ -1,0 +1,40 @@
+A51 MACRO ASSEMBLER  ONE                                                                  08/01/2016 09:21:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\one.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE one.asm SET(SMALL) DEBUG PRINT(.\Listings\one.lst) OBJECT(.\Objects\one
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG  0000H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 0100H
+0100                   4     MAIN:
+0100 7850              5             MOV R0, #050H   
+0102 7610              6             MOV @R0, #10H   ; moving 10H number in 50H location address
+0104 7960              7             MOV R1, #060H
+0106 7720              8             MOV @R1, #20H   ; moving 20H number in 50H location address
+0108 E6                9             MOV A, @R0              ; moving 10H number in Accumulator
+0109 27               10             ADD A, @R1              ; Adding 20H to 10H in the Accumulator
+010A 7870             11             MOV R0, #070H   
+010C F6               12             MOV @R0, A              ; Moving result in 70H location address
+010D 80FE             13             stop: SJMP stop
+                      14     END
+A51 MACRO ASSEMBLER  ONE                                                                  08/01/2016 09:21:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   010DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  N_SUM                                                                08/01/2016 09:43:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\n_sum.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE n_sum.asm SET(SMALL) DEBUG PRINT(.\Listings\n_sum.lst) OBJECT(.\Objects
+                      \n_sum.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 0100H
+0100                   4     MAIN:
+0100 7850              5             MOV R0, #50H
+0102 7605              6             MOV @R0, #5H    ; moving 5H number in 50H location address      
+0104 7951              7             MOV R1, #51H    
+0106 7701              8             MOV @R1, #1H            ; moving 1H number in 51H location address              
+0108 E7                9             MOV A, @R1
+0109 FA               10             MOV R2, A
+010A 16               11             DEC @R0                 ; Decrementing number stored in 50H location i.e. decrement
+                             ing N
+010B 754000           12             MOV 40H, #0H
+010E                  13             GOTO:    
+010E E540             14             MOV A, 40H
+0110 E7               15             MOV A, @R1              ; Copying last partial sum into B
+0111 09               16             INC R1                  ; Incrementing value in R1
+0112 0A               17             INC R2                  ; Incrementing value in R1
+0113 2A               18             ADD A, R2               ; Adding sum in B 
+0114 F7               19             MOV @R1, A
+0115 F540             20             MOV 40H, A
+0117 16               21             DEC @R0
+0118 E6               22             MOV A, @R0              ;Copying N in Accumulator
+0119 70F3             23             JNZ GOTO                ; if N is not 0 then goto GOTO, else END
+011B 80FE             24             stop: SJMP stop
+                      25     END
+A51 MACRO ASSEMBLER  N_SUM                                                                08/01/2016 09:43:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+GOTO . . . . . . .  C ADDR   010EH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   011BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
