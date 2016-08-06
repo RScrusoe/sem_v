@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Aug  5 05:31:54 2016
+# Generated: Sat Aug  6 04:56:31 2016
 ##################################################
 
 if __name__ == '__main__':
@@ -17,17 +17,16 @@ if __name__ == '__main__':
             print "Warning: failed to XInitThreads()"
 
 from gnuradio import analog
-from gnuradio import audio
+from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import filter
 from gnuradio import gr
+from gnuradio import wxgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
-from gnuradio.wxgui import forms
+from gnuradio.wxgui import scopesink2
 from grc_gnuradio import wxgui as grc_wxgui
 from optparse import OptionParser
-import osmosdr
-import time
 import wx
 
 
@@ -41,87 +40,50 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Variables
         ##################################################
-        self.variable_slider_0 = variable_slider_0 = 91e6
-        self.samp_rate = samp_rate = 960e3
+        self.samp_rate = samp_rate = 1e6
 
         ##################################################
         # Blocks
         ##################################################
-        _variable_slider_0_sizer = wx.BoxSizer(wx.VERTICAL)
-        self._variable_slider_0_text_box = forms.text_box(
-        	parent=self.GetWin(),
-        	sizer=_variable_slider_0_sizer,
-        	value=self.variable_slider_0,
-        	callback=self.set_variable_slider_0,
-        	label='variable_slider_0',
-        	converter=forms.float_converter(),
-        	proportion=0,
+        self.wxgui_scopesink2_0 = scopesink2.scope_sink_f(
+        	self.GetWin(),
+        	title="Scope Plot",
+        	sample_rate=samp_rate,
+        	v_scale=0,
+        	v_offset=0,
+        	t_scale=0,
+        	ac_couple=False,
+        	xy_mode=False,
+        	num_inputs=1,
+        	trig_mode=wxgui.TRIG_MODE_AUTO,
+        	y_axis_label="Counts",
         )
-        self._variable_slider_0_slider = forms.slider(
-        	parent=self.GetWin(),
-        	sizer=_variable_slider_0_sizer,
-        	value=self.variable_slider_0,
-        	callback=self.set_variable_slider_0,
-        	minimum=90e6,
-        	maximum=101e6,
-        	num_steps=1000,
-        	style=wx.SL_HORIZONTAL,
-        	cast=float,
-        	proportion=1,
-        )
-        self.Add(_variable_slider_0_sizer)
-        self.rtlsdr_source_0 = osmosdr.source( args="numchan=" + str(1) + " " + "" )
-        self.rtlsdr_source_0.set_sample_rate(samp_rate)
-        self.rtlsdr_source_0.set_center_freq(variable_slider_0, 0)
-        self.rtlsdr_source_0.set_freq_corr(0, 0)
-        self.rtlsdr_source_0.set_dc_offset_mode(0, 0)
-        self.rtlsdr_source_0.set_iq_balance_mode(0, 0)
-        self.rtlsdr_source_0.set_gain_mode(False, 0)
-        self.rtlsdr_source_0.set_gain(50, 0)
-        self.rtlsdr_source_0.set_if_gain(40, 0)
-        self.rtlsdr_source_0.set_bb_gain(40, 0)
-        self.rtlsdr_source_0.set_antenna("", 0)
-        self.rtlsdr_source_0.set_bandwidth(0, 0)
-          
-        self.rational_resampler_xxx_0 = filter.rational_resampler_fff(
-                interpolation=1,
-                decimation=20,
-                taps=None,
-                fractional_bw=None,
-        )
-        self.audio_sink_0 = audio.sink(48000, "", True)
-        self.analog_fm_demod_cf_0 = analog.fm_demod_cf(
-        	channel_rate=960e3,
-        	audio_decim=1,
-        	deviation=75000,
-        	audio_pass=20000,
-        	audio_stop=25000,
-        	gain=20,
-        	tau=75e-6,
-        )
+        self.Add(self.wxgui_scopesink2_0.win)
+        self.iir_filter_xxx_0 = filter.iir_filter_ffd((0.000005, ), ([1,1]), True)
+        self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
+        self.blocks_complex_to_real_0 = blocks.complex_to_real(1)
+        self.analog_sig_source_x_0_0 = analog.sig_source_f(samp_rate, analog.GR_COS_WAVE, 10000, 1, 0)
+        self.analog_sig_source_x_0 = analog.sig_source_c(samp_rate, analog.GR_COS_WAVE, 100000, 1, 0)
+        self.analog_phase_modulator_fc_0 = analog.phase_modulator_fc(100000)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_fm_demod_cf_0, 0), (self.rational_resampler_xxx_0, 0))    
-        self.connect((self.rational_resampler_xxx_0, 0), (self.audio_sink_0, 0))    
-        self.connect((self.rtlsdr_source_0, 0), (self.analog_fm_demod_cf_0, 0))    
-
-    def get_variable_slider_0(self):
-        return self.variable_slider_0
-
-    def set_variable_slider_0(self, variable_slider_0):
-        self.variable_slider_0 = variable_slider_0
-        self.rtlsdr_source_0.set_center_freq(self.variable_slider_0, 0)
-        self._variable_slider_0_slider.set_value(self.variable_slider_0)
-        self._variable_slider_0_text_box.set_value(self.variable_slider_0)
+        self.connect((self.analog_phase_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 1))    
+        self.connect((self.analog_sig_source_x_0, 0), (self.blocks_multiply_xx_0, 0))    
+        self.connect((self.analog_sig_source_x_0_0, 0), (self.iir_filter_xxx_0, 0))    
+        self.connect((self.blocks_complex_to_real_0, 0), (self.wxgui_scopesink2_0, 0))    
+        self.connect((self.blocks_multiply_xx_0, 0), (self.blocks_complex_to_real_0, 0))    
+        self.connect((self.iir_filter_xxx_0, 0), (self.analog_phase_modulator_fc_0, 0))    
 
     def get_samp_rate(self):
         return self.samp_rate
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.rtlsdr_source_0.set_sample_rate(self.samp_rate)
+        self.analog_sig_source_x_0.set_sampling_freq(self.samp_rate)
+        self.analog_sig_source_x_0_0.set_sampling_freq(self.samp_rate)
+        self.wxgui_scopesink2_0.set_sample_rate(self.samp_rate)
 
 
 def main(top_block_cls=top_block, options=None):
