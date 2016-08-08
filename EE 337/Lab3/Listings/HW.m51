@@ -1,0 +1,177 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/08/2016  16:25:30  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\HW_Q1.obj, .\Objects\zeroOUT.obj, .\Objects\HW_Q5.obj TO .\Objects\HW PRINT (.\Lis
+>> tings\HW.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\HW_Q1.obj (HW_Q1)
+  .\Objects\zeroOUT.obj (ZEROOUT)
+  .\Objects\HW_Q5.obj (HW_Q5)
+
+
+LINK MAP OF MODULE:  .\Objects\HW (HW_Q1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0071H     ABSOLUTE     
+* OVERLAP * CODE    0000H     0121H     ABSOLUTE     
+* OVERLAP * CODE    0000H     0265H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\HW (HW_Q1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        HW_Q1
+  C:0058H         SYMBOL        BACK
+  C:0056H         SYMBOL        BACK1
+  C:0054H         SYMBOL        BACK2
+  C:0052H         SYMBOL        BACK3
+  C:0065H         SYMBOL        BACK_1
+  C:0050H         SYMBOL        DELAY
+  B:0090H.7       SYMBOL        LED
+  C:0061H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  C:0000H         LINE#         4
+  C:0050H         LINE#         13
+  C:0052H         LINE#         15
+  C:0054H         LINE#         17
+  C:0056H         LINE#         19
+  C:0058H         LINE#         21
+  C:005AH         LINE#         22
+  C:005CH         LINE#         23
+  C:005EH         LINE#         24
+  C:0060H         LINE#         25
+  C:0061H         LINE#         28
+  C:0063H         LINE#         29
+  C:0065H         LINE#         33
+  C:0067H         LINE#         34
+  C:006AH         LINE#         35
+  C:006CH         LINE#         36
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2016  16:25:30  PAGE 2
+
+
+  C:006FH         LINE#         37
+  -------         ENDMOD        HW_Q1
+
+  -------         MODULE        ZEROOUT
+  C:0100H         SYMBOL        BACK
+  D:0080H         SYMBOL        LED
+  C:0106H         SYMBOL        MAIN
+  D:0080H         SYMBOL        P0
+  C:011FH         SYMBOL        STOP
+  C:0100H         SYMBOL        ZEROOUT
+  C:0000H         LINE#         4
+  C:0100H         LINE#         8
+  C:0102H         LINE#         9
+  C:0103H         LINE#         10
+  C:0105H         LINE#         11
+  C:0106H         LINE#         15
+  C:0109H         LINE#         16
+  C:010CH         LINE#         17
+  C:010FH         LINE#         18
+  C:0112H         LINE#         20
+  C:0115H         LINE#         21
+  C:0118H         LINE#         22
+  C:011AH         LINE#         23
+  C:011CH         LINE#         25
+  C:011FH         LINE#         27
+  -------         ENDMOD        ZEROOUT
+
+  -------         MODULE        HW_Q5
+  C:023BH         SYMBOL        BLOCK1H
+  C:0227H         SYMBOL        BLOCK1L
+  C:022EH         SYMBOL        COMPAREH
+  C:021AH         SYMBOL        COMPAREL
+  C:0200H         SYMBOL        CONVERT
+  C:0207H         SYMBOL        HIGHER
+  C:020FH         SYMBOL        LAST_STEP
+  C:0242H         SYMBOL        MAIN
+  C:0263H         SYMBOL        STOP
+  C:0000H         LINE#         2
+  C:0200H         LINE#         8
+  C:0201H         LINE#         9
+  C:0203H         LINE#         10
+  C:0204H         LINE#         11
+  C:0207H         LINE#         14
+  C:0208H         LINE#         15
+  C:0209H         LINE#         16
+  C:020BH         LINE#         17
+  C:020CH         LINE#         18
+  C:020FH         LINE#         20
+  C:0210H         LINE#         21
+  C:0211H         LINE#         22
+  C:0212H         LINE#         23
+  C:0213H         LINE#         24
+  C:0214H         LINE#         25
+  C:0215H         LINE#         26
+  C:0216H         LINE#         27
+  C:0219H         LINE#         28
+  C:021AH         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2016  16:25:30  PAGE 3
+
+
+  C:021CH         LINE#         32
+  C:021DH         LINE#         33
+  C:021EH         LINE#         35
+  C:0220H         LINE#         37
+  C:0221H         LINE#         38
+  C:0223H         LINE#         40
+  C:0224H         LINE#         41
+  C:0227H         LINE#         44
+  C:0228H         LINE#         45
+  C:022AH         LINE#         46
+  C:022BH         LINE#         47
+  C:022EH         LINE#         51
+  C:0230H         LINE#         52
+  C:0231H         LINE#         53
+  C:0232H         LINE#         55
+  C:0234H         LINE#         57
+  C:0235H         LINE#         58
+  C:0237H         LINE#         59
+  C:0238H         LINE#         60
+  C:023BH         LINE#         63
+  C:023CH         LINE#         64
+  C:023EH         LINE#         65
+  C:023FH         LINE#         66
+  C:0242H         LINE#         72
+  C:0245H         LINE#         73
+  C:0248H         LINE#         74
+  C:024AH         LINE#         75
+  C:024CH         LINE#         76
+  C:024EH         LINE#         77
+  C:0250H         LINE#         78
+  C:0252H         LINE#         79
+  C:0255H         LINE#         80
+  C:0258H         LINE#         81
+  C:025BH         LINE#         82
+  C:025EH         LINE#         83
+  C:0261H         LINE#         84
+  C:0263H         LINE#         85
+  -------         ENDMOD        HW_Q5
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0070H
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0120H
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00B0H BYTE ( 8%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=1015
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

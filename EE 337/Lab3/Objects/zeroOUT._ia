@@ -1,0 +1,1 @@
+"C:\Users\Rahul\Downloads\zeroOUT.asm" SET (SMALL) DEBUG PRINT(.\Listings\zeroOUT.lst) OBJECT(.\Objects\zeroOUT.obj) EP

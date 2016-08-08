@@ -1,0 +1,122 @@
+A51 MACRO ASSEMBLER  HW_Q5                                                                08/08/2016 16:25:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\HW_Q5.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE HW_Q5.asm SET(SMALL) DEBUG PRINT(.\Listings\HW_Q5.lst) OBJECT(.\Objects
+                      \HW_Q5.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020242            2     LJMP MAIN
+0200                   3     ORG 0200H
+                       4     
+                       5     
+0200                   6     CONVERT:
+                       7     
+0200 E6                8             MOV A, @R0
+0201 540F              9             ANL A, #0FH
+0203 FA               10             MOV R2, A
+0204 02021A           11             LJMP COMPAREL
+                      12             
+0207                  13             HIGHER:
+0207 E6               14                             MOV A, @R0
+0208 C4               15                             SWAP A
+0209 540F             16                             ANL A, #0FH
+020B FB               17                             MOV R3, A
+020C 02022E           18                             LJMP COMPAREH   
+020F                  19             LAST_STEP:
+020F EB               20             MOV A, R3
+0210 F7               21             MOV @R1,A
+0211 09               22             INC R1
+0212 EA               23             MOV A, R2
+0213 F7               24             MOV @R1,A
+0214 09               25             INC R1
+0215 08               26             INC R0
+0216 D550E7           27             DJNZ 50H, CONVERT
+0219 22               28             RET
+                      29             
+021A                  30     COMPAREL:
+021A 7409             31             MOV A, #09H
+021C C3               32             CLR C
+021D 9A               33             SUBB A,  R2
+                      34             
+021E 5007             35             JNC BLOCK1L
+                      36             
+0220 EA               37             MOV A, R2
+0221 2437             38             ADD A, #37H
+                      39              
+0223 FA               40             MOV R2, A
+0224 020207           41             LJMP HIGHER
+                      42             
+0227                  43     BLOCK1L:
+0227 EA               44             MOV A, R2
+0228 2430             45             ADD A, #30H
+022A FA               46             MOV R2, A
+022B 020207           47             LJMP HIGHER
+                      48             
+                      49     
+022E                  50     COMPAREH:
+022E 7409             51             MOV A, #09H
+0230 C3               52             CLR C
+0231 9B               53             SUBB A,  R3
+                      54             
+0232 5007             55             JNC BLOCK1H
+                      56             
+0234 EB               57             MOV A, R3
+A51 MACRO ASSEMBLER  HW_Q5                                                                08/08/2016 16:25:30 PAGE     2
+
+0235 2437             58             ADD A, #37H 
+0237 FB               59             MOV R3, A
+0238 02020F           60             LJMP LAST_STEP
+                      61             
+023B                  62     BLOCK1H:
+023B EB               63             MOV A, R3
+023C 2430             64             ADD A, #30H
+023E FB               65             MOV R3, A
+023F 02020F           66             LJMP LAST_STEP
+                      67     
+                      68     
+                      69             
+                      70     
+0242                  71     MAIN:
+0242 755005           72             MOV 50H, #5H
+0245 755153           73             MOV 51H, #53H
+0248 E550             74             MOV A, 50H
+024A 2551             75             ADD A, 51H
+024C F552             76             MOV 52H, A      
+024E A851             77             MOV R0, 51H
+0250 A952             78             MOV R1, 52H
+0252 7553AB           79             MOV 53H, #0ABH
+0255 7554CD           80             MOV 54H, #0CDH
+0258 7555E6           81             MOV 55H, #0E6H
+025B 75569F           82             MOV 56H, #09FH
+025E 75570D           83             MOV 57H, #00DH
+0261 5100             84             ACALL CONVERT
+0263 80FE             85             STOP: SJMP STOP
+                      86             
+                      87     END
+A51 MACRO ASSEMBLER  HW_Q5                                                                08/08/2016 16:25:30 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BLOCK1H. . . . . .  C ADDR   023BH   A   
+BLOCK1L. . . . . .  C ADDR   0227H   A   
+COMPAREH . . . . .  C ADDR   022EH   A   
+COMPAREL . . . . .  C ADDR   021AH   A   
+CONVERT. . . . . .  C ADDR   0200H   A   
+HIGHER . . . . . .  C ADDR   0207H   A   
+LAST_STEP. . . . .  C ADDR   020FH   A   
+MAIN . . . . . . .  C ADDR   0242H   A   
+STOP . . . . . . .  C ADDR   0263H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
