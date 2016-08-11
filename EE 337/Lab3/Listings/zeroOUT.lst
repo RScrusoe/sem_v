@@ -1,0 +1,61 @@
+A51 MACRO ASSEMBLER  ZEROOUT                                                              08/08/2016 15:13:31 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\zeroOUT.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE C:\Users\Rahul\Downloads\zeroOUT.asm SET(SMALL) DEBUG PRINT(.\Listings\
+                      zeroOUT.lst) OBJECT(.\Objects\zeroOUT.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0080                 1     LED EQU P0
+                       2     
+0000                   3     ORG 00H
+0000 020106            4     LJMP MAIN
+0100                   5     ORG 0100H
+0100                   6     ZEROOUT:
+0100                   7             BACK:
+0100 7700              8                     MOV @R1, #0H            ;write 0h in location address stored in R1
+0102 09                9                     INC R1                          ;increment location address stored in R1
+0103 D8FB             10                     DJNZ R0, BACK           ; check R0, if not 0, then
+0105 22               11             RET
+                      12     
+0106                  13     MAIN:
+                      14             
+0106 755201           15             MOV 52H, #1H                    ; randomly writing number in 52H location for check
+                             ing
+0109 755302           16             MOV 53H, #2H                    ;
+010C 755403           17             MOV 54H, #3H                    ;       
+010F 755504           18             MOV 55H, #4H                    ;       
+                      19             
+0112 75500A           20             MOV 50H, #10                    
+0115 755152           21             MOV 51H, #52H
+0118 A850             22             MOV R0, 50H
+011A A951             23             MOV R1, 51H
+                      24             
+011C 120100           25             LCALL ZEROOUT
+                      26     
+011F 80FE             27             STOP: SJMP STOP                 ; infinite loop
+                      28     
+                      29     
+                      30     END
+A51 MACRO ASSEMBLER  ZEROOUT                                                              08/08/2016 15:13:31 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0100H   A   
+LED. . . . . . . .  D ADDR   0080H   A   
+MAIN . . . . . . .  C ADDR   0106H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+STOP . . . . . . .  C ADDR   011FH   A   
+ZEROOUT. . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

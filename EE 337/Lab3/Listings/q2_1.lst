@@ -1,0 +1,66 @@
+A51 MACRO ASSEMBLER  Q2_1                                                                 08/08/2016 17:07:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q2_1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q2_1.asm SET(SMALL) DEBUG PRINT(.\Listings\q2_1.lst) OBJECT(.\Objects\q
+                      2_1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 020207            2     LJMP MAIN
+0200                   3     ORG 0200H
+                       4     
+0200                   5     MEMCPY:
+0200 E7                6             MOV A, @R1
+0201 F6                7             MOV @R0, A
+0202 09                8             INC R1
+0203 08                9             INC R0
+0204 DAFA             10             DJNZ R2, MEMCPY
+0206 22               11             RET
+                      12             
+                      13     
+                      14     
+0207                  15     MAIN:
+0207 755006           16             MOV 50H, #6H
+020A AA50             17             MOV R2, 50H
+020C 755160           18             MOV 51H, #60H
+020F 755263           19             MOV 52H, #63H
+0212 E552             20             MOV A, 52H
+0214 2550             21             ADD A, 50H
+0216 F8               22             MOV R0, A
+0217 A951             23             MOV R1, 51H
+                      24             
+0219 5100             25             ACALL MEMCPY
+                      26     
+021B E552             27             MOV A, 52H
+021D 2550             28             ADD A, 50H
+021F F9               29             MOV R1, A
+0220 A852             30             MOV R0, 52H
+0222 AA50             31             MOV R2, 50H
+                      32             
+0224 5100             33             ACALL MEMCPY
+                      34             
+                      35                     
+0226 80FE             36             STOP: SJMP STOP
+                      37             
+                      38     END
+                                     
+A51 MACRO ASSEMBLER  Q2_1                                                                 08/08/2016 17:07:33 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0207H   A   
+MEMCPY . . . . . .  C ADDR   0200H   A   
+STOP . . . . . . .  C ADDR   0226H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

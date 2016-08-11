@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  HW_Q1                                                                08/08/2016 02:48:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\HW_Q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE C:\Users\Rahul\Downloads\HW_Q1.asm SET(SMALL) DEBUG PRINT(.\Listings\HW
+                      _Q1.lst) OBJECT(.\Objects\HW_Q1.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+  0097                 2     LED EQU P1.7
+0000                   3     ORG 00H
+0000 020061            4     LJMP MAIN
+                       5     
+                       6     
+                       7     ;-----------------------------------------------------------------
+0050                   8     ORG 50H
+                       9     
+                      10             
+0050                  11     DELAY:                          ;subroutine causes a delay of 1000ms 
+                      12                                             ;create a delay of D*1000 ms
+0050 8604             13     MOV 4,@R0
+0052                  14     BACK3:
+0052 7B0A             15     MOV R3,#10
+0054                  16     BACK2:
+0054 7AC8             17     MOV R2,#200
+0056                  18     BACK1:
+0056 79FF             19     MOV R1,#0FFH
+0058                  20     BACK:
+0058 D9FE             21     DJNZ R1, BACK
+005A DAFA             22     DJNZ R2, BACK1
+005C DBF6             23     DJNZ R3, BACK2
+005E DCF2             24     DJNZ R4, BACK3
+0060 22               25     RET
+                      26     
+0061                  27     MAIN:
+0061 784F             28             MOV R0,#4FH
+0063 7604             29         MOV @R0,#4                  ;delays in seconds stored here, user should fill this 
+                      30                     
+                      31                                     
+0065                  32             BACK_1:
+0065 D297             33                 SETB LED            ;MAKE P1.7 OUTPUT PORT
+0067 120050           34                     LCALL DELAY
+006A C297             35                     CLR LED 
+006C 120050           36                     LCALL DELAY     
+006F 80F4             37                     SJMP BACK_1             ;INFINITE LOOP
+                      38     
+                      39     END
+                             ;-----------------------------
+A51 MACRO ASSEMBLER  HW_Q1                                                                08/08/2016 02:48:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0058H   A   
+BACK1. . . . . . .  C ADDR   0056H   A   
+BACK2. . . . . . .  C ADDR   0054H   A   
+BACK3. . . . . . .  C ADDR   0052H   A   
+BACK_1 . . . . . .  C ADDR   0065H   A   
+DELAY. . . . . . .  C ADDR   0050H   A   
+LED. . . . . . . .  B ADDR   0090H.7 A   
+MAIN . . . . . . .  C ADDR   0061H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

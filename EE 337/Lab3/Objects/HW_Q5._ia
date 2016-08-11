@@ -1,0 +1,1 @@
+"HW_Q5.asm" SET (SMALL) DEBUG PRINT(.\Listings\HW_Q5.lst) OBJECT(.\Objects\HW_Q5.obj) EP

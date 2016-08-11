@@ -1,0 +1,5 @@
+".\Objects\HW_Q1.obj",
+".\Objects\zeroOUT.obj",
+".\Objects\HW_Q5.obj" 
+TO ".\Objects\HW" 
+PRINT(".\Listings\HW.m51") RAMSIZE(256) 
