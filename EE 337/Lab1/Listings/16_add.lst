@@ -1,4 +1,4 @@
-A51 MACRO ASSEMBLER  16_ADD                                                               08/01/2016 10:38:24 PAGE     1
+A51 MACRO ASSEMBLER  16_ADD                                                               08/09/2016 18:53:07 PAGE     1
 
 
 MACRO ASSEMBLER A51 V8.02c
@@ -27,9 +27,9 @@ LOC  OBJ            LINE     SOURCE
 0110 C3               17             CLR C
 0111 756200           18             MOV 62H, #0H
 0114 7560FF           19             MOV 60H, #0FFH
-0117 7561FF           20             MOV 61H, #0FFH
-011A 7570FF           21             MOV 70H, #0FFH
-011D 7571FF           22             MOV 71H, #0FFH
+0117 756180           20             MOV 61H, #080H
+011A 757000           21             MOV 70H, #0H
+011D 75713F           22             MOV 71H, #03FH
                       23     
 0120 3100             24             ACALL ADDER
 0122 8864             25             MOV 64H, R0
@@ -37,7 +37,7 @@ LOC  OBJ            LINE     SOURCE
 0126 40E3             27             JC CARRY
 0128 80E4             28             SJMP STOP       
                       29     END
-A51 MACRO ASSEMBLER  16_ADD                                                               08/01/2016 10:38:24 PAGE     2
+A51 MACRO ASSEMBLER  16_ADD                                                               08/09/2016 18:53:07 PAGE     2
 
 SYMBOL TABLE LISTING
 ------ ----- -------
