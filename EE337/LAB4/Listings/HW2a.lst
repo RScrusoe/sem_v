@@ -1,0 +1,117 @@
+A51 MACRO ASSEMBLER  HW2A                                                                 08/22/2016 05:01:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\HW2a.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE HW2a.asm SET(SMALL) DEBUG PRINT(.\Listings\HW2a.lst) OBJECT(.\Objects\H
+                      W2a.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; This subroutine writes characters on the LCD
+                       2     
+  0090                 3     LED EQU P1
+0000                   4     ORG 000H
+                       5             
+                       6             
+                       7     ;LJMP MAIN:
+                       8     
+0000                   9     MAIN:
+0000 7590FF           10             MOV P1, #0FFH           ;turn on all 4 leds (routine is ready to accept input)
+                      11             
+0003 754F05           12             MOV 4FH, #5                     ;for 5 sec delay
+0006 120041           13             lcall delay                     ;wait for 5 sec during which user can give input 
+0009 53900F           14             ANL P1, #0FH            ;clear pins P1.4 to P1.7
+                      15             
+000C 12003B           16             lcall readnibble        ;read the input on P1.0-P1.3 (nibble)
+000F 7950             17             mov R1, #50H
+0011 E8               18             MOV A, R0
+0012 F7               19             MOV @R1, A
+0013 754F02           20             MOV 4FH, #2             ;for 2 sec delay
+0016 120041           21             lcall delay
+                      22             
+0019 7590FF           23             MOV P1, #0FFH           ;turn on all 4 leds (routine is ready to accept input)
+                      24             
+001C 754F05           25             MOV 4FH, #5                     ;for 5 sec delay
+001F 120041           26             lcall delay                     ;wait for 5 sec during which user can give input 
+0022 53900F           27             ANL P1, #0FH            ;clear pins P1.4 to P1.7
+                      28             
+0025 12003B           29             lcall readnibble        ;read the input on P1.0-P1.3 (nibble)
+0028 7960             30             mov R1, #60H
+002A E8               31             MOV A, R0
+002B F7               32             MOV @R1, A
+002C 754F02           33             MOV 4FH, #2             ;for 2 sec delay
+002F 120041           34             lcall delay
+                      35             
+                      36             
+0032 E550             37             MOV A, 50H
+0034 C4               38             SWAP A
+0035 2560             39             ADD A, 60H
+                      40             
+0037 F54F             41             MOV 4FH, A
+                      42             
+0039 80FE             43             STOP: SJMP STOP
+                      44             
+003B                  45     readnibble:
+003B E590             46             MOV A, P1                       ; read value on pins
+003D 540F             47             ANL A, #00FH            ;to extract lower nibble
+003F F8               48             MOV R0, A                       
+0040 22               49             RET
+                      50     
+                      51             
+0041                  52     delay:
+                      53              
+                      54                     USING 0         ;ASSEMBLER DIRECTIVE TO INDICATE REGISTER BANK0
+                      55                             
+0041 C001             56             PUSH 1          ; STORE R1 (BANK O) ON THE STACK
+0043 C002             57             PUSH 2
+A51 MACRO ASSEMBLER  HW2A                                                                 08/22/2016 05:01:00 PAGE     2
+
+0045 C003             58                     PUSH 3
+                      59                     
+0047 E54F             60                     MOV A, 4FH                              ;store delay to accumulator
+0049 75F014           61                     MOV B, #014H                    ;for 1/2 second delay BACK1 loop should run
+                              10 times  hence multiplying by 10 
+004C A4               62                     MUL AB
+004D F503             63                     MOV 3,A
+004F                  64                     BACK2:                                  ;loop for required delay
+004F 7AC8             65                             MOV R2,#200                     ;Loop for 50ms delay 
+0051                  66                             BACK1:
+0051 79FF             67                                     MOV R1,#0FFH
+0053                  68                                     BACK:
+0053 D9FE             69                                     DJNZ R1, BACK
+0055 DAFA             70                             DJNZ R2, BACK1
+0057 DBF6             71                     DJNZ R3, BACK2
+                      72                     
+0059 D003             73                     POP 3   ; STORE R1 (BANK O) ON THE STACK
+005B D002             74             POP 2
+005D D001             75                     POP 1
+                      76     
+005F 22               77             RET
+                      78     
+                      79     
+                      80     END
+A51 MACRO ASSEMBLER  HW2A                                                                 08/22/2016 05:01:00 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0053H   A   
+BACK1. . . . . . .  C ADDR   0051H   A   
+BACK2. . . . . . .  C ADDR   004FH   A   
+DELAY. . . . . . .  C ADDR   0041H   A   
+LED. . . . . . . .  D ADDR   0090H   A   
+MAIN . . . . . . .  C ADDR   0000H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+READNIBBLE . . . .  C ADDR   003BH   A   
+STOP . . . . . . .  C ADDR   0039H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
