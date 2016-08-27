@@ -1,0 +1,107 @@
+A51 MACRO ASSEMBLER  Q1                                                                   08/27/2016 23:32:43 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020200            2     LJMP MAIN
+0200                   3     ORG 0200H
+0200                   4     MAIN:
+0200 C3                5                     CLR C
+0201 757086            6                     MOV 70H, #086H
+0204 757129            7                     MOV 71H, #29H
+0207 757600            8                     MOV 76H, #0H
+020A 757700            9                     MOV 77H, #0H
+                      10                     
+020D 7480             11                     MOV A, #80H
+020F 9570             12                     SUBB A, 70H
+0211 401D             13                     JC ADJUST1
+0213                  14                     H1:
+0213 5037             15                     JNC JUST1
+0215                  16                     H2:
+                      17                     
+0215 C3               18                     CLR C
+0216 7480             19                     MOV A, #80H
+0218 9571             20                     SUBB A, 71H
+021A 4022             21                     JC ADJUST2
+021C                  22                     H3:
+021C 5033             23                     JNC JUST2
+021E                  24                     H4:     
+021E E574             25                     MOV A, 74H
+0220 8575F0           26                     MOV B, 75H
+0223 A4               27                     MUL AB
+                      28                     
+0224 F572             29                     MOV 72H, A
+0226 85F073           30                     MOV 73H, B
+0229 E577             31                     MOV A, 77H
+                      32                     
+022B B57628           33                     CJNE A, 76H, FINAL
+022E                  34                     H5:             
+                      35             
+                      36                                     
+022E 80FE             37                                     STOP: SJMP STOP
+                      38                     
+0230                  39                     ADJUST1:
+0230 E570             40                                     MOV A, 70H
+0232 9480             41                                     SUBB A, #80H
+0234 2401             42                                     ADD A, #1H
+0236 F574             43                                     MOV 74H, A
+0238 757680           44                                     MOV 76H, #80H
+023B B3               45                                     CPL C
+023C 80D5             46                                     SJMP H1
+023E                  47                     ADJUST2:
+023E E571             48                                     MOV A, 71H
+0240 9480             49                                     SUBB A, #80H
+0242 2401             50                                     ADD A, #1H
+0244 F575             51                                     MOV 75H, A
+0246 757780           52                                     MOV 77H, #80H
+0249 B3               53                                     CPL C
+024A 80D0             54                                     SJMP H3
+024C                  55                     JUST1:
+024C 857074           56                                     MOV 74H, 70H
+024F 80C4             57                                     SJMP H2
+A51 MACRO ASSEMBLER  Q1                                                                   08/27/2016 23:32:43 PAGE     2
+
+0251                  58                     JUST2:
+0251 857175           59                                     MOV 75H, 71H
+0254 80C8             60                                     SJMP H4
+                      61                                     
+0256                  62                     FINAL:
+0256 E5F0             63                                     MOV A, B
+0258 2480             64                                     ADD A, #80H
+025A F573             65                                     MOV 73H, A
+025C 80D0             66                                     SJMP H5
+                      67     
+                      68     END
+A51 MACRO ASSEMBLER  Q1                                                                   08/27/2016 23:32:43 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADJUST1. . . . . .  C ADDR   0230H   A   
+ADJUST2. . . . . .  C ADDR   023EH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+FINAL. . . . . . .  C ADDR   0256H   A   
+H1 . . . . . . . .  C ADDR   0213H   A   
+H2 . . . . . . . .  C ADDR   0215H   A   
+H3 . . . . . . . .  C ADDR   021CH   A   
+H4 . . . . . . . .  C ADDR   021EH   A   
+H5 . . . . . . . .  C ADDR   022EH   A   
+JUST1. . . . . . .  C ADDR   024CH   A   
+JUST2. . . . . . .  C ADDR   0251H   A   
+MAIN . . . . . . .  C ADDR   0200H   A   
+STOP . . . . . . .  C ADDR   022EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
