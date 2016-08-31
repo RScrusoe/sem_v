@@ -1,0 +1,71 @@
+A51 MACRO ASSEMBLER  Q2                                                                   08/29/2016 04:40:51 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q2.asm SET(SMALL) DEBUG PRINT(.\Listings\q2.lst) OBJECT(.\Objects\q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 02010C            2     LJMP MAIN
+                       3     
+  0090                 4     LED EQU P1
+000B                   5     org 000BH
+                       6     
+000B DF05              7     DJNZ R7, BACK
+000D C28C              8     CLR TR0
+000F 75900F            9     MOV LED, #0FH
+                      10     
+0012                  11     BACK:
+0012 758901           12             MOV TMOD,#01H;; Timer0 as 16 bit counter
+0015 758CB1           13             MOV TH0,#0B1H;
+0018 758ADF           14             MOV TL0,#0DFH;
+001B 32               15             RETI    
+0100                  16     ORG 0100H       
+0100                  17     INITIALIZATION:
+                      18     ; Timer0 initialization
+0100 758901           19     MOV TMOD,#01H;; Timer0 as 16 bit counter
+0103 758CB1           20     MOV TH0,#0B1H;
+0106 758ADF           21     MOV TL0,#0DFH;
+0109 7F64             22     MOV R7, #64H ; Count to keep track of number of overflows
+010B 22               23     RET
+                      24     
+010C                  25     MAIN:
+                      26     ;SETB IE.7
+                      27     ;SETB IE.1
+010C 3100             28     ACALL INITIALIZATION
+010E D28C             29     SETB TR0
+                      30     
+0110 7590FF           31     MOV LED, #0FFH
+                      32     
+                      33     
+0113 80FE             34     EXIT: SJMP EXIT
+                      35     
+                      36     END
+                             
+A51 MACRO ASSEMBLER  Q2                                                                   08/29/2016 04:40:51 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0012H   A   
+EXIT . . . . . . .  C ADDR   0113H   A   
+INITIALIZATION . .  C ADDR   0100H   A   
+LED. . . . . . . .  D ADDR   0090H   A   
+MAIN . . . . . . .  C ADDR   010CH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
