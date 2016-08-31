@@ -1,0 +1,92 @@
+A51 MACRO ASSEMBLER  Q2                                                                   08/28/2016 00:36:17 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q2.asm SET(SMALL) DEBUG PRINT(.\Listings\q2.lst) OBJECT(.\Objects\q2.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020200            2     LJMP MAIN
+0200                   3     ORG 0200H
+0200                   4     MAIN:
+                       5     
+0200 7550A1            6                     MOV 50H, #0A1H
+0203 755184            7                     MOV 51H, #84H
+0206 755292            8                     MOV 52H, #92H
+0209 7553C9            9                     MOV 53H, #0C9H
+020C 7554E6           10                     MOV 54H, #0E6H
+                      11                     
+020F 7850             12                     MOV R0, #50H
+0211 7951             13                     MOV R1, #51H
+0213 756254           14                     MOV 62H, #54H
+0216                  15                     SUBSTRACT:
+                      16                                     
+                      17                                     
+0216 E6               18                                     MOV A, @R0
+0217 97               19                                     SUBB A, @R1
+                      20                                     
+0218 400B             21                                     JC CARRY1
+                      22                                     
+021A                  23                     H1:
+021A 5015             24                     JNC CARRY0
+021C                  25                     H2:
+021C E9               26                     MOV A, R1
+021D 9454             27                     SUBB A, #54H
+021F 5002             28                     JNC STOP
+0221 40F3             29                     JC SUBSTRACT
+0223 80FE             30                     STOP: SJMP STOP
+                      31                                     
+                      32                                     
+0225                  33                                             CARRY1:
+0225 8860             34                                                     MOV 60H, R0
+0227 8961             35                                                     MOV 61H, R1
+0229 A861             36                                                     MOV R0, 61H
+022B A960             37                                                     MOV R1, 60H
+022D 09               38                                                     INC R1
+022E 09               39                                                     INC R1
+                      40                                                     
+022F 80E9             41                                                     SJMP H1
+                      42                                                     
+0231                  43                                             CARRY0:
+0231 8860             44                                                     MOV 60H, R0
+0233 8961             45                                                     MOV 61H, R1
+0235 A860             46                                                     MOV R0, 60H
+0237 A961             47                                                     MOV R1, 61H
+0239 09               48                                                     INC R1
+023A E8               49                                                     MOV A, R0
+023B 99               50                                                     SUBB A, R1
+023C D3               51                                                     SETB C
+023D B400DC           52                                                     CJNE A, #0H, H2
+0240 09               53                                                     INC R1
+                      54                                                                                                
+                                                  
+0241 80D9             55                                                     SJMP H2
+                      56                                                     
+A51 MACRO ASSEMBLER  Q2                                                                   08/28/2016 00:36:17 PAGE     2
+
+                      57                                                     
+                      58     END
+A51 MACRO ASSEMBLER  Q2                                                                   08/28/2016 00:36:17 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CARRY0 . . . . . .  C ADDR   0231H   A   
+CARRY1 . . . . . .  C ADDR   0225H   A   
+H1 . . . . . . . .  C ADDR   021AH   A   
+H2 . . . . . . . .  C ADDR   021CH   A   
+MAIN . . . . . . .  C ADDR   0200H   A   
+STOP . . . . . . .  C ADDR   0223H   A   
+SUBSTRACT. . . . .  C ADDR   0216H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

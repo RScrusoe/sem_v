@@ -1,0 +1,83 @@
+A51 MACRO ASSEMBLER  Q1                                                                   08/29/2016 04:40:51 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000 020121            2     LJMP MAIN
+                       3     
+  0090                 4     LED EQU P1
+0100                   5     ORG 0100H
+                       6     
+                       7             
+                       8     
+                       9     
+                      10     
+0100                  11     INITIALIZATION:
+                      12     ; Timer0 initialization
+0100 758901           13     MOV TMOD,#01H;; Timer0 as 16 bit counter
+0103 758CB1           14     MOV TH0,#0B1H;
+0106 758ADF           15     MOV TL0,#0DFH;
+0109 7F64             16     MOV R7, #64H ; Count to keep track of number of overflows
+010B 22               17     RET
+                      18     
+010C                  19     DELAY:
+                      20     
+010C 3100             21     ACALL INITIALIZATION
+010E D28C             22     SETB TR0
+                      23     ; Start the timer run
+0110                  24     BACK: ; Wait here till Timer does not overflow
+0110 308DFD           25     JNB TCON.5, BACK
+0113 C28D             26     CLR TCON.5; Clear timer flag
+0115 758901           27     MOV TMOD,#01H;; Timer0 as 16 bit counter
+0118 758CB1           28     MOV TH0,#0B1H;
+011B 758ADF           29     MOV TL0,#0DFH;
+011E DFF0             30     DJNZ R7, BACK;Reduce R7 by 1. If R7 is not zero go to back
+0120 22               31     RET
+                      32     
+                      33     ;--------------- MAIN STARTS HERE --------------------
+                      34     
+                      35     
+0121                  36     MAIN:
+0121 7590FF           37     MOV LED, #0FFH
+0124 310C             38     ACALL DELAY
+0126 75900F           39     MOV LED, #0FH
+0129 310C             40     ACALL DELAY
+012B 7590FF           41     MOV LED, #0FFH
+012E 310C             42     ACALL DELAY
+0130 75900F           43     MOV LED, #0FH
+0133 310C             44     ACALL DELAY
+                      45     ;--delay by poling ends--;
+0135 80FE             46     OVER: SJMP OVER
+                      47     END
+A51 MACRO ASSEMBLER  Q1                                                                   08/29/2016 04:40:51 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0110H   A   
+DELAY. . . . . . .  C ADDR   010CH   A   
+INITIALIZATION . .  C ADDR   0100H   A   
+LED. . . . . . . .  D ADDR   0090H   A   
+MAIN . . . . . . .  C ADDR   0121H   A   
+OVER . . . . . . .  C ADDR   0135H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

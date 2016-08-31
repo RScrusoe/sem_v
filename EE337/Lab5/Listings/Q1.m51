@@ -1,0 +1,114 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/29/2016  04:40:51  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\q1.obj, .\Objects\q2.obj TO .\Objects\Q1 PRINT (.\Listings\Q1.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\q1.obj (Q1)
+  .\Objects\q2.obj (Q2)
+
+
+LINK MAP OF MODULE:  .\Objects\Q1 (Q1)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0137H     ABSOLUTE     
+* OVERLAP * CODE    0000H     0115H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Q1 (Q1)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        Q1
+  C:0110H         SYMBOL        BACK
+  C:010CH         SYMBOL        DELAY
+  C:0100H         SYMBOL        INITIALIZATION
+  D:0090H         SYMBOL        LED
+  C:0121H         SYMBOL        MAIN
+  C:0135H         SYMBOL        OVER
+  D:0090H         SYMBOL        P1
+  D:0088H         SYMBOL        TCON
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:0100H         LINE#         13
+  C:0103H         LINE#         14
+  C:0106H         LINE#         15
+  C:0109H         LINE#         16
+  C:010BH         LINE#         17
+  C:010CH         LINE#         21
+  C:010EH         LINE#         22
+  C:0110H         LINE#         25
+  C:0113H         LINE#         26
+  C:0115H         LINE#         27
+  C:0118H         LINE#         28
+  C:011BH         LINE#         29
+  C:011EH         LINE#         30
+  C:0120H         LINE#         31
+  C:0121H         LINE#         37
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/29/2016  04:40:51  PAGE 2
+
+
+  C:0124H         LINE#         38
+  C:0126H         LINE#         39
+  C:0129H         LINE#         40
+  C:012BH         LINE#         41
+  C:012EH         LINE#         42
+  C:0130H         LINE#         43
+  C:0133H         LINE#         44
+  C:0135H         LINE#         46
+  -------         ENDMOD        Q1
+
+  -------         MODULE        Q2
+  C:0012H         SYMBOL        BACK
+  C:0113H         SYMBOL        EXIT
+  C:0100H         SYMBOL        INITIALIZATION
+  D:0090H         SYMBOL        LED
+  C:010CH         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:000BH         LINE#         7
+  C:000DH         LINE#         8
+  C:000FH         LINE#         9
+  C:0012H         LINE#         12
+  C:0015H         LINE#         13
+  C:0018H         LINE#         14
+  C:001BH         LINE#         15
+  C:0100H         LINE#         19
+  C:0103H         LINE#         20
+  C:0106H         LINE#         21
+  C:0109H         LINE#         22
+  C:010BH         LINE#         23
+  C:010CH         LINE#         28
+  C:010EH         LINE#         29
+  C:0110H         LINE#         31
+  C:0113H         LINE#         34
+  -------         ENDMOD        Q2
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0136H
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0063H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=588
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)
