@@ -1,0 +1,116 @@
+A51 MACRO ASSEMBLER  PULSEGEN                                                             09/20/2016 19:27:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\pulsegen.obj
+ASSEMBLER INVOKED BY: E:\KEIL\C51\BIN\A51.EXE pulsegen.asm SET(SMALL) DEBUG PRINT(.\Listings\pulsegen.lst) OBJECT(.\Obje
+                      cts\pulsegen.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; Defining timer 2 registers
+  00C8                 2     T2CON DATA 0C8H
+  00C9                 3     T2MOD DATA 0C9H
+  00CA                 4     RCAP2L DATA 0CAH
+  00CB                 5     RCAP2H DATA 0CBH
+  00CC                 6     TL2 DATA 0CCH
+  00CD                 7     TH2 DATA 0CDH
+                       8     
+                       9     ; Defining the interrupt enable (IE) bit
+  00AD                10     ET2 BIT 0ADH
+                      11     
+                      12     ;Defining interrupt priority (IP) bit
+  00BD                13     PT2 BIT 0BDH
+                      14     
+                      15     ;Defining P1
+  0091                16     T2EX BIT 91H
+  0090                17     T2 BIT 90H
+                      18             
+                      19     ;Defining timer control (T2CON) register bits
+  00CF                20     TF2 BIT 0CFH
+  00CE                21     EXF2 BIT 0CEH
+  00CD                22     RCLK BIT 0CDH
+  00CC                23     TCLK BIT 0CCH
+  00CB                24     EXEN2 BIT 0CBH
+  00CA                25     TR2 BIT 0CAH
+  00C9                26     C_T2 BIT 0C9H
+  00C8                27     CP_RL2 BIT 0C8H
+                      28             
+0000                  29     org 0000H       
+0000 020120           30             ljmp main
+                      31     
+                      32     
+0100                  33     org 100H
+                      34     ; Timer 2 intialisation
+0100                  35     T2_init:
+0100 75C903           36             MOV     T2MOD, #03H
+0103 C2CE             37             CLR EXF2
+                      38     ;       T2CON, #04H
+0105 C2CD             39             CLR RCLK
+0107 C2CC             40             CLR TCLK
+0109 C2CB             41             CLR EXEN2
+                      42             
+010B 75CDE8           43             MOV TH2, #0E8H
+010E 75CC90           44             MOV TL2, #90H
+                      45             
+0111 75CBE8           46             MOV RCAP2H, #0E8H
+0114 75CA90           47             MOV RCAP2L, #90H
+0117 D2CA             48             SETB TR2
+0119 C2C9             49             CLR C_T2
+011B C2C8             50             CLR CP_RL2
+011D D2AD             51             SETB ET2
+                      52             
+                      53             
+                      54             
+                      55             
+                      56             
+                      57             
+A51 MACRO ASSEMBLER  PULSEGEN                                                             09/20/2016 19:27:22 PAGE     2
+
+011F 22               58             RET
+                      59             
+0120                  60             main:
+                      61                     ; Port Initialization
+0120 D2AF             62                     SETB EA
+0122 C2CF             63                     CLR TF2
+0124 120100           64                     lcall T2_INIT
+                      65                     
+0127 80FE             66                     here: sjmp here
+                      67                     
+                      68     END
+A51 MACRO ASSEMBLER  PULSEGEN                                                             09/20/2016 19:27:22 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CP_RL2 . . . . . .  B ADDR   00C8H.0 A   
+C_T2 . . . . . . .  B ADDR   00C8H.1 A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET2. . . . . . . .  B ADDR   00A8H.5 A   
+EXEN2. . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . .  B ADDR   00C8H.6 A   
+HERE . . . . . . .  C ADDR   0127H   A   
+MAIN . . . . . . .  C ADDR   0120H   A   
+PT2. . . . . . . .  B ADDR   00B8H.5 A   
+RCAP2H . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . .  B ADDR   00C8H.5 A   
+T2 . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . .  B ADDR   0090H.1 A   
+T2MOD. . . . . . .  D ADDR   00C9H   A   
+T2_INIT. . . . . .  C ADDR   0100H   A   
+TCLK . . . . . . .  B ADDR   00C8H.4 A   
+TF2. . . . . . . .  B ADDR   00C8H.7 A   
+TH2. . . . . . . .  D ADDR   00CDH   A   
+TL2. . . . . . . .  D ADDR   00CCH   A   
+TR2. . . . . . . .  B ADDR   00C8H.2 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

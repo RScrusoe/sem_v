@@ -1,0 +1,3 @@
+".\Objects\pulsegen.obj" 
+TO ".\Objects\postlab5" 
+PRINT(".\Listings\postlab5.m51") RAMSIZE(256) 

@@ -1,0 +1,83 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/20/2016  19:27:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+E:\KEIL\C51\BIN\BL51.EXE .\Objects\pulsegen.obj TO .\Objects\postlab5 PRINT (.\Listings\postlab5.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\pulsegen.obj (PULSEGEN)
+
+
+LINK MAP OF MODULE:  .\Objects\postlab5 (PULSEGEN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0129H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\postlab5 (PULSEGEN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PULSEGEN
+  B:00C8H.0       SYMBOL        CP_RL2
+  B:00C8H.1       SYMBOL        C_T2
+  B:00A8H.7       SYMBOL        EA
+  B:00A8H.5       SYMBOL        ET2
+  B:00C8H.3       SYMBOL        EXEN2
+  B:00C8H.6       SYMBOL        EXF2
+  C:0127H         SYMBOL        HERE
+  C:0120H         SYMBOL        MAIN
+  B:00B8H.5       SYMBOL        PT2
+  D:00CBH         SYMBOL        RCAP2H
+  D:00CAH         SYMBOL        RCAP2L
+  B:00C8H.5       SYMBOL        RCLK
+  B:0090H.0       SYMBOL        T2
+  D:00C8H         SYMBOL        T2CON
+  B:0090H.1       SYMBOL        T2EX
+  D:00C9H         SYMBOL        T2MOD
+  C:0100H         SYMBOL        T2_INIT
+  B:00C8H.4       SYMBOL        TCLK
+  B:00C8H.7       SYMBOL        TF2
+  D:00CDH         SYMBOL        TH2
+  D:00CCH         SYMBOL        TL2
+  B:00C8H.2       SYMBOL        TR2
+  C:0000H         LINE#         30
+  C:0100H         LINE#         36
+  C:0103H         LINE#         37
+  C:0105H         LINE#         39
+  C:0107H         LINE#         40
+  C:0109H         LINE#         41
+  C:010BH         LINE#         43
+  C:010EH         LINE#         44
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/20/2016  19:27:22  PAGE 2
+
+
+  C:0111H         LINE#         46
+  C:0114H         LINE#         47
+  C:0117H         LINE#         48
+  C:0119H         LINE#         49
+  C:011BH         LINE#         50
+  C:011DH         LINE#         51
+  C:011FH         LINE#         58
+  C:0120H         LINE#         62
+  C:0122H         LINE#         63
+  C:0124H         LINE#         64
+  C:0127H         LINE#         66
+  -------         ENDMOD        PULSEGEN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002CH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=297
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
