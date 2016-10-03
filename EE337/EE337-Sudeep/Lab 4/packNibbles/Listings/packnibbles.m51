@@ -1,0 +1,74 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/22/2016  13:24:56  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\pack_nibbles.obj TO .\Objects\packnibbles PRINT (.\Listings\packnibbles.m51) RAMSI
+>> ZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\pack_nibbles.obj (PACK_NIBBLES)
+
+
+LINK MAP OF MODULE:  .\Objects\packnibbles (PACK_NIBBLES)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0128H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\packnibbles (PACK_NIBBLES)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PACK_NIBBLES
+  C:011BH         SYMBOL        DELAY5SEC
+  C:0110H         SYMBOL        HERE
+  C:011DH         SYMBOL        LOOP1
+  C:011FH         SYMBOL        LOOP2
+  C:0121H         SYMBOL        LOOP3
+  D:0090H         SYMBOL        P1
+  C:0100H         SYMBOL        PACK_NIBBLES
+  C:0112H         SYMBOL        READNIBBLE
+  C:0000H         LINE#         2
+  C:0100H         LINE#         7
+  C:0103H         LINE#         8
+  C:0104H         LINE#         9
+  C:0105H         LINE#         10
+  C:0108H         LINE#         11
+  C:010BH         LINE#         12
+  C:010CH         LINE#         13
+  C:010DH         LINE#         14
+  C:010EH         LINE#         15
+  C:0110H         LINE#         17
+  C:0112H         LINE#         21
+  C:0115H         LINE#         22
+  C:0117H         LINE#         23
+  C:0119H         LINE#         24
+  C:011AH         LINE#         25
+  C:011BH         LINE#         28
+  C:011DH         LINE#         30
+  C:011FH         LINE#         32
+  C:0121H         LINE#         34
+  C:0123H         LINE#         35
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  13:24:56  PAGE 2
+
+
+  C:0125H         LINE#         36
+  C:0127H         LINE#         37
+  -------         ENDMOD        PACK_NIBBLES
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002BH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=296
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

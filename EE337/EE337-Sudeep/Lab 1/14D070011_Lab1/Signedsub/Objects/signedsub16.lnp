@@ -1,0 +1,3 @@
+".\Objects\sub16sign.obj" 
+TO ".\Objects\signedsub16" 
+PRINT(".\Listings\signedsub16.m51") RAMSIZE(256) 

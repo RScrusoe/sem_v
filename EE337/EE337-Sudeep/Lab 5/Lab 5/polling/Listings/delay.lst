@@ -1,0 +1,67 @@
+A51 MACRO ASSEMBLER  DELAY                                                                08/29/2016 15:51:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE delay.asm SET(SMALL) DEBUG PRINT(.\Listings\delay.lst) OBJECT(.\Objects
+                      \delay.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020100            2             LJMP main
+                       3             
+                       4     
+                       5             
+0100                   6     org 100H
+0100                   7             main:
+0100 758901            8             MOV TMOD, #01H
+0103 C297              9             CLR P1.7
+0105                  10             loopMain:
+0105 758C00           11                     MOV TH0, #00H
+0108 758A00           12                     MOV TL0, #00H
+010B B297             13                     CPL P1.7
+010D 120114           14                     LCALL delay
+0110 B297             15                     CPL P1.7
+                      16                     ;LJMP loopMain  
+0112 80FE             17                     stop: sjmp stop
+                      18             
+                      19             
+0114                  20     delay:
+0114 7E1F             21             MOV R6, #31
+0116                  22             loopDelay:
+0116 D28C             23                     SETB    TR0     
+0118 308DFD           24                     here: JNB       TF0, here       
+011B C28C             25                     CLR     TR0     
+011D C28D             26                     CLR     TF0     
+011F DEF5             27                     DJNZ R6, loopDelay
+0121 22               28             RET
+                      29             
+                      30     END
+                                     
+A51 MACRO ASSEMBLER  DELAY                                                                08/29/2016 15:51:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0114H   A   
+HERE . . . . . . .  C ADDR   0118H   A   
+LOOPDELAY. . . . .  C ADDR   0116H   A   
+LOOPMAIN . . . . .  C ADDR   0105H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+STOP . . . . . . .  C ADDR   0112H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

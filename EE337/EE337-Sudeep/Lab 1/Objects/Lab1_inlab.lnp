@@ -1,0 +1,4 @@
+".\Objects\adder16.obj",
+".\Objects\sub16.obj" 
+TO ".\Objects\Lab1_inlab" 
+PRINT(".\Listings\Lab1_inlab.m51") RAMSIZE(256) 

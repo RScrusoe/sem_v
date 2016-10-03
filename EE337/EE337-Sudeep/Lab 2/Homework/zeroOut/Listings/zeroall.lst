@@ -1,0 +1,74 @@
+A51 MACRO ASSEMBLER  ZEROALL                                                              08/08/2016 14:38:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\zeroall.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE zeroall.asm SET(SMALL) DEBUG PRINT(.\Listings\zeroall.lst) OBJECT(.\Obj
+                      ects\zeroall.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+0100                   5                     main:
+                       6                     
+0100 75F006            7                     MOV B, #06H
+0103 755004            8                     MOV 50H, #04H
+0106 755152            9                     MOV 51H, #52H
+0109 755204           10                     MOV 52H, #04H
+010C 755367           11                     MOV 53H, #67H
+010F 755408           12                     MOV 54H, #08H
+0112 7555D7           13                     MOV 55H, #0D7H
+0115 75569F           14                     MOV 56H, #9FH
+0118 755707           15                     MOV 57H, #07H
+011B 755808           16                     MOV 58H, #08H
+                      17                     
+011E 120123           18                     lcall zeroOut
+0121                  19                     STOP:
+0121 80FE             20                             sjmp STOP
+                      21                             
+                      22                     
+0123                  23                     zeroOut:
+                      24                             USING 0
+0123 C0F0             25                             PUSH B
+0125 C001             26                             PUSH AR1
+                      27                             
+0127 8550F0           28                             MOV B, 50H
+012A A951             29                             MOV R1, 51H
+                      30                             
+012C                  31                             LOOP:
+012C 7700             32                                     MOV @R1, #00H
+012E 09               33                                     INC R1
+012F D5F0FA           34                                     DJNZ B, LOOP
+                      35                                     
+0132 D001             36                             POP AR1
+0134 D0F0             37                             POP B
+                      38                             
+0136 22               39                             RET
+                      40                             
+                      41                     END
+                                                     
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  ZEROALL                                                              08/08/2016 14:38:22 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR1. . . . . . . .  D ADDR   0001H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+LOOP . . . . . . .  C ADDR   012CH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   0121H   A   
+ZEROOUT. . . . . .  C ADDR   0123H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

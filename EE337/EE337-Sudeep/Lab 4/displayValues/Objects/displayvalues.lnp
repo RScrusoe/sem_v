@@ -1,0 +1,3 @@
+".\Objects\displayValues.obj" 
+TO ".\Objects\displayvalues" 
+PRINT(".\Listings\displayvalues.m51") RAMSIZE(256) 

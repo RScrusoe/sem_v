@@ -1,0 +1,95 @@
+A51 MACRO ASSEMBLER  READ_VALUES                                                          08/22/2016 13:29:26 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\read_values.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE read_values.asm SET(SMALL) DEBUG PRINT(.\Listings\read_values.lst) OBJE
+                      CT(.\Objects\read_values.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 02010B            2             ljmp read_values
+                       3     
+0100                   4     org 100H
+                       5     
+0100                   6     readInitialValues:
+0100 755049            7             MOV 50H, #49H
+0103 755165            8             MOV 51H, #65H
+0106 A950              9             MOV R1, 50H
+0108 A851             10             MOV R0, 51H
+010A 22               11             RET
+                      12     
+                      13     
+010B                  14     read_values:
+010B 120100           15             LCALL readInitialValues
+010E                  16             loop:
+010E 120119           17                     LCALL pack_nibbles
+0111 E54F             18                     MOV A, 4FH
+0113 F6               19                     MOV @R0, A
+0114 08               20                     INC R0
+0115 D9F7             21                     DJNZ R1, loop
+0117 80FE             22             here : SJMP here
+                      23     
+                      24     
+0119                  25     pack_nibbles:
+0119 12012A           26             LCALL readnibble
+011C EF               27             MOV A, R7
+011D FE               28             MOV R6, A
+011E 120133           29             LCALL delay5sec
+0121 12012A           30             LCALL readnibble
+0124 EE               31             MOV A, R6
+0125 C4               32             SWAP A
+0126 4F               33             ORL A, R7
+0127 F54F             34             MOV 4FH, A
+                      35     
+0129 22               36             RET
+                      37     
+                      38     
+012A                  39     readnibble:
+012A 75900F           40             MOV P1, #0FH
+012D E590             41             MOV A, P1
+012F 540F             42             ANL A, #0FH
+0131 FF               43             MOV R7, A
+0132 22               44             RET
+                      45     
+0133                  46     delay5sec:
+0133 7A64             47             MOV R2, #100
+0135                  48             loop1:
+0135 7BC8             49                     MOV R3, #200
+0137                  50             loop2:
+0137 7CFF             51                     MOV R4, #0FFh
+0139                  52             loop3: 
+0139 DCFE             53                     DJNZ R4, loop3
+013B DBFA             54                     DJNZ R3, loop2
+013D DAF6             55                     DJNZ R2, loop1
+013F 22               56             RET
+                      57             
+A51 MACRO ASSEMBLER  READ_VALUES                                                          08/22/2016 13:29:26 PAGE     2
+
+                      58             END
+A51 MACRO ASSEMBLER  READ_VALUES                                                          08/22/2016 13:29:26 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY5SEC. . . . .  C ADDR   0133H   A   
+HERE . . . . . . .  C ADDR   0117H   A   
+LOOP . . . . . . .  C ADDR   010EH   A   
+LOOP1. . . . . . .  C ADDR   0135H   A   
+LOOP2. . . . . . .  C ADDR   0137H   A   
+LOOP3. . . . . . .  C ADDR   0139H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PACK_NIBBLES . . .  C ADDR   0119H   A   
+READINITIALVALUES.  C ADDR   0100H   A   
+READNIBBLE . . . .  C ADDR   012AH   A   
+READ_VALUES. . . .  C ADDR   010BH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

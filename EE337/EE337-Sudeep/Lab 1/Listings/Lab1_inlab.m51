@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/31/2016  12:27:44  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\adder16.obj, .\Objects\sub16.obj TO .\Objects\Lab1_inlab PRINT (.\Listings\Lab1_in
+>> lab.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\adder16.obj (ADDER16)
+  .\Objects\sub16.obj (SUB16)
+
+
+LINK MAP OF MODULE:  .\Objects\Lab1_inlab (ADDER16)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0132H     ABSOLUTE     
+* OVERLAP * CODE    0000H     022FH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Lab1_inlab (ADDER16)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ADDER16
+  C:0122H         SYMBOL        ADD8
+  C:0111H         SYMBOL        ADDER16
+  C:0131H         SYMBOL        LABEL1
+  C:0100H         SYMBOL        MAIN
+  C:0000H         LINE#         2
+  C:0100H         LINE#         7
+  C:0102H         LINE#         8
+  C:0104H         LINE#         10
+  C:0106H         LINE#         11
+  C:0108H         LINE#         13
+  C:0109H         LINE#         14
+  C:010AH         LINE#         16
+  C:010CH         LINE#         17
+  C:010EH         LINE#         19
+  C:0111H         LINE#         22
+  C:0113H         LINE#         23
+  C:0115H         LINE#         27
+  C:0117H         LINE#         28
+  C:011AH         LINE#         30
+  C:011BH         LINE#         31
+  C:011CH         LINE#         32
+  C:011FH         LINE#         34
+  C:0120H         LINE#         35
+  C:0121H         LINE#         37
+  C:0122H         LINE#         45
+  C:0123H         LINE#         46
+  C:0124H         LINE#         47
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/31/2016  12:27:44  PAGE 2
+
+
+  C:0125H         LINE#         48
+  C:0126H         LINE#         49
+  C:0127H         LINE#         51
+  C:0128H         LINE#         52
+  C:0129H         LINE#         53
+  C:012AH         LINE#         54
+  C:012BH         LINE#         55
+  C:012DH         LINE#         56
+  C:012FH         LINE#         57
+  C:0131H         LINE#         60
+  -------         ENDMOD        ADDER16
+
+  -------         MODULE        SUB16
+  D:00F0H         SYMBOL        B
+  C:022CH         SYMBOL        LABEL1
+  C:0200H         SYMBOL        MAIN1
+  C:020EH         SYMBOL        SUB16
+  C:0000H         LINE#         2
+  C:0200H         LINE#         7
+  C:0202H         LINE#         8
+  C:0204H         LINE#         10
+  C:0206H         LINE#         11
+  C:0208H         LINE#         13
+  C:0209H         LINE#         14
+  C:020AH         LINE#         16
+  C:020CH         LINE#         17
+  C:020EH         LINE#         22
+  C:0210H         LINE#         23
+  C:0212H         LINE#         27
+  C:0213H         LINE#         28
+  C:0214H         LINE#         30
+  C:0215H         LINE#         31
+  C:0216H         LINE#         32
+  C:0217H         LINE#         34
+  C:0218H         LINE#         35
+  C:0219H         LINE#         36
+  C:021AH         LINE#         37
+  C:021BH         LINE#         39
+  C:021CH         LINE#         40
+  C:021DH         LINE#         42
+  C:021EH         LINE#         43
+  C:021FH         LINE#         45
+  C:0220H         LINE#         46
+  C:0221H         LINE#         47
+  C:0222H         LINE#         49
+  C:0223H         LINE#         52
+  C:0224H         LINE#         53
+  C:0227H         LINE#         54
+  C:0229H         LINE#         55
+  C:022CH         LINE#         58
+  C:022EH         LINE#         60
+  -------         ENDMOD        SUB16
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0131H
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/31/2016  12:27:44  PAGE 3
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0067H BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=865
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

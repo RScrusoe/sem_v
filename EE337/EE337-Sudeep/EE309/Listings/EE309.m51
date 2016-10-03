@@ -1,0 +1,48 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/06/2016  20:11:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\stackpointer.obj TO .\Objects\EE309 PRINT (.\Listings\EE309.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\stackpointer.obj (STACKPOINTER)
+
+
+LINK MAP OF MODULE:  .\Objects\EE309 (STACKPOINTER)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     000CH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\EE309 (STACKPOINTER)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        STACKPOINTER
+  D:00F0H         SYMBOL        B
+  C:000AH         SYMBOL        HERE
+  C:0003H         SYMBOL        MAIN
+  D:0081H         SYMBOL        SP
+  C:0000H         LINE#         2
+  C:0003H         LINE#         5
+  C:0005H         LINE#         6
+  C:0007H         LINE#         7
+  C:000AH         LINE#         9
+  -------         ENDMOD        STACKPOINTER
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 000CH BYTE ( 0%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=12
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

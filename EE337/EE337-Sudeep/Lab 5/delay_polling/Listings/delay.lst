@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  DELAY                                                                08/29/2016 14:33:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE delay.asm SET(SMALL) DEBUG PRINT(.\Listings\delay.lst) OBJECT(.\Objects
+                      \delay.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020100            2             LJMP main
+                       3             
+000B                   4     org 000BH
+000B                   5             LJMP interruptJumpsHere
+*** ______________________________________^
+*** ERROR #A45 IN 5 (delay.asm, LINE 5): UNDEFINED SYMBOL (PASS-2)
+                       6             
+0100                   7     org 100H
+0100                   8             main:
+0100 758901            9             MOV TMOD, #01H
+0103 C297             10             CLR P1.7
+0105                  11             loopMain:
+0105 758C00           12                     MOV TH0, #00H
+0108 758A00           13                     MOV TL0, #00H
+010B B297             14                     CPL P1.7
+010D 120113           15                     LCALL delay
+0110 020105           16                     LJMP loopMain   
+                      17             
+                      18             
+0113                  19     delay:
+0113 7E1F             20             MOV R6, #31
+0115                  21             loopDelay:
+0115 D28C             22                     SETB    TR0     
+0117 308DFD           23                     here: JNB       TF0, here       
+011A C28C             24                     CLR     TR0     
+011C C28D             25                     CLR     TF0     
+011E DEF5             26                     DJNZ R6, loopDelay
+0120 22               27             RET
+                      28             
+                      29     END
+                                     
+A51 MACRO ASSEMBLER  DELAY                                                                08/29/2016 14:33:11 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0113H   A   
+HERE . . . . . . .  C ADDR   0117H   A   
+INTERRUPTJUMPSHERE    ----   -----       
+LOOPDELAY. . . . .  C ADDR   0115H   A   
+LOOPMAIN . . . . .  C ADDR   0105H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 1 ERROR(S)

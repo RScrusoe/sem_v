@@ -1,0 +1,3 @@
+".\Objects\memcopy.obj" 
+TO ".\Objects\memCopyProj" 
+PRINT(".\Listings\memCopyProj.m51") RAMSIZE(256) 

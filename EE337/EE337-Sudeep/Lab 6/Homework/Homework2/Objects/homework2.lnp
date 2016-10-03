@@ -1,0 +1,3 @@
+".\Objects\spi_homework.obj" 
+TO ".\Objects\homework2" 
+PRINT(".\Listings\homework2.m51") RAMSIZE(256) 

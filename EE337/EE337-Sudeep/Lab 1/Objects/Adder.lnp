@@ -1,0 +1,4 @@
+".\Objects\adder_source.obj",
+".\Objects\cont_add.obj" 
+TO ".\Objects\Adder" 
+PRINT(".\Listings\Adder.m51") RAMSIZE(256) 

@@ -1,0 +1,48 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.14.2.1
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Sudeep Salgia, IIT Bombay, LIC=----
+ 
+Tool Versions:
+Toolchain:       PK51 Prof. Develpers Kit  Version: 9.55
+Toolchain Path:  C:\Keil_v5\C51\BIN
+C Compiler:      C51.exe V9.55
+Assembler:       A51.exe V8.02c
+Linker/Locator:  BL51.exe V6.22
+Library Manager: LIB51.exe V4.30.1.0
+Hex Converter:   OH51.exe V2.7.0.0
+CPU DLL:         S8051.DLL V3.101.0.0
+Dialog DLL:      DP51.DLL V2.62.0.1 
+<h2>Project:</h2>
+C:\Users\Sudeep\Desktop\Sudeep\Semester 5\EE 337\Lab 7\Labwork7\lab7_uart.uvproj
+Project File Date:  09/25/2016
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling uart_lab7.c...
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_LCD_CMDWRITE?UART_LAB7
+    CALLER1: ?PR?ISR_SERIAL?UART_LAB7
+    CALLER2: ?C_C51STARTUP
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_LCD_DATAWRITE?UART_LAB7
+    CALLER1: ?PR?ISR_SERIAL?UART_LAB7
+    CALLER2: ?C_C51STARTUP
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _FIND_PARITY
+    MODULE:  .\Objects\uart_lab7.obj (UART_LAB7)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _FIND_PARITY
+    MODULE:  .\Objects\uart_lab7.obj (UART_LAB7)
+    ADDRESS: 0A76H
+Program Size: data=20.1 xdata=0 code=670
+creating hex file from ".\Objects\lab7_uart"...
+".\Objects\lab7_uart" - 0 Error(s), 4 Warning(s).
+</pre>
+</body>
+</html>

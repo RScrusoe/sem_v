@@ -1,0 +1,118 @@
+A51 MACRO ASSEMBLER  EXCESS3                                                              08/16/2016 16:10:22 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\excess3.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE excess3.asm SET(SMALL) DEBUG PRINT(.\Listings\excess3.lst) OBJECT(.\Obj
+                      ects\excess3.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp bin_to_excess3
+                       3             
+0100                   4     org 100H
+0100                   5             bin_to_excess3:
+0100 120128            6                     lcall readnibble
+0103 E9                7                     MOV A, R1
+0104 C3                8                     CLR C
+0105 940A              9                     SUBB A, #0AH
+0107 4014             10                     JC down
+0109 7590F0           11                     MOV P1, #0F0H
+010C 120132           12                     lcall delay5sec
+010F 759000           13                     MOV P1, #00H
+0112 120132           14                     lcall delay5sec
+0115 7590F0           15                     MOV P1, #0F0H
+0118 120132           16                     lcall delay5sec
+011B 5008             17                     JNC further
+011D                  18                     down:
+011D E9               19                             MOV A,R1
+011E 2403             20                             ADD A, #03H
+0120 540F             21                             ANL A, #0FH
+0122 C4               22                             SWAP A
+0123 F590             23                             MOV P1,A
+0125                  24                     further:
+0125 020100           25                     ljmp bin_to_excess3
+                      26                     
+                      27                             
+                      28             
+                      29             
+                      30             
+                      31             
+0128                  32     readnibble:
+0128 75900F           33                     MOV P1, #0FH                    ; set pins 0-3 for configuring as input pin
+                             s
+012B E590             34                     MOV A, P1                       ; read value on pins
+012D 540F             35                     ANL A, #0FH
+012F F501             36                     MOV 1, A
+0131 22               37                     RET
+                      38                             
+0132                  39     delay5sec:
+                      40             USING 0
+0132 C0F0             41                     PUSH B
+0134 75F064           42                     MOV B, #64H
+0137                  43                     loop5:
+0137 12014E           44                             lcall delay0
+013A D5F0FA           45                             DJNZ B, loop5
+013D D0F0             46                     POP B
+013F 22               47             RET
+                      48             
+0140                  49     delay1sec:
+                      50             USING 0
+0140 C0F0             51                     PUSH B
+0142 75F014           52                     MOV B, #14H
+0145                  53                     loop1:
+0145 12014E           54                             lcall delay0
+0148 D5F0FA           55                             DJNZ B, loop1
+014B D0F0             56                     POP B
+A51 MACRO ASSEMBLER  EXCESS3                                                              08/16/2016 16:10:22 PAGE     2
+
+014D 22               57             RET
+                      58             
+014E                  59     delay0:
+                      60                     USING 0
+014E C002             61                     PUSH AR2
+0150 C001             62                     PUSH AR1
+                      63                     
+0152 7AC8             64                     MOV R2, #200
+0154                  65                     BACK1:
+0154 79FF             66                             MOV R1, #0FFH
+0156                  67                             BACK:
+0156 D9FE             68                                     DJNZ R1, BACK
+0158 DAFA             69                             DJNZ R2, BACK1
+                      70                             
+015A D001             71                     POP AR1
+015C D002             72                     POP AR2
+                      73                     
+015E 22               74                     RET
+                      75             
+                      76     END     
+A51 MACRO ASSEMBLER  EXCESS3                                                              08/16/2016 16:10:22 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0156H   A   
+BACK1. . . . . . .  C ADDR   0154H   A   
+BIN_TO_EXCESS3 . .  C ADDR   0100H   A   
+DELAY0 . . . . . .  C ADDR   014EH   A   
+DELAY1SEC. . . . .  C ADDR   0140H   A   
+DELAY5SEC. . . . .  C ADDR   0132H   A   
+DOWN . . . . . . .  C ADDR   011DH   A   
+FURTHER. . . . . .  C ADDR   0125H   A   
+LOOP1. . . . . . .  C ADDR   0145H   A   
+LOOP5. . . . . . .  C ADDR   0137H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+READNIBBLE . . . .  C ADDR   0128H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

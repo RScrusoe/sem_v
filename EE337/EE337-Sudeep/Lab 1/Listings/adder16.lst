@@ -1,0 +1,96 @@
+A51 MACRO ASSEMBLER  ADDER16                                                              07/31/2016 12:16:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\adder16.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE adder16.asm SET(SMALL) DEBUG PRINT(.\Listings\adder16.lst) OBJECT(.\Obj
+                      ects\adder16.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2     ljmp main
+                       3             
+0100                   4             org 100H
+                       5                     
+0100                   6                     main: 
+0100 7860              7                      MOV R0, #60H 
+0102 7970              8                      MOV R1, #70H
+                       9                      
+0104 7601             10                      MOV @R0, #01H
+0106 7702             11                      MOV @R1, #02H
+                      12                      
+0108 08               13                      INC R0
+0109 09               14                      INC R1
+                      15                      
+010A 76FF             16                      MOV @R0, #0FFH
+010C 7703             17                      MOV @R1, #03H
+                      18                      
+010E 120111           19                      lcall adder16
+                      20                     
+0111                  21                     adder16:
+0111 7861             22                             MOV R0, #61H 
+0113 7971             23                             MOV R1, #71H
+                      24                             
+                      25                             
+                      26                             
+0115 7400             27                             MOV A, #00H
+0117 120122           28                             lcall add8
+                      29                             
+011A 18               30                             DEC R0
+011B 19               31                             DEC R1
+011C 120122           32                             lcall add8
+                      33                             
+011F 18               34                             DEC R0
+0120 F6               35                             MOV @R0, A
+                      36                             
+0121 22               37                     ret
+                      38                             
+                      39                             
+                      40                             
+                      41                             
+                      42                             
+                      43                             
+0122                  44                             add8:
+0122 26               45                             ADD A, @R0
+0123 27               46                             ADD A, @R1
+0124 08               47                             INC R0
+0125 08               48                             INC R0
+0126 08               49                             INC R0
+                      50                             
+0127 F6               51                             MOV @R0, A
+0128 18               52                             DEC R0
+0129 18               53                             DEC R0
+012A 18               54                             DEC R0
+012B 7400             55                             MOV A, #00H
+012D 5002             56                             jnc label1
+012F 7401             57                                     MOV A, #01H
+A51 MACRO ASSEMBLER  ADDER16                                                              07/31/2016 12:16:41 PAGE     2
+
+                      58                                     
+0131                  59                                     label1:
+0131 22               60                                     ret
+                      61                                     
+                      62                                     
+                      63             END
+                                                             
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  ADDER16                                                              07/31/2016 12:16:41 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD8 . . . . . . .  C ADDR   0122H   A   
+ADDER16. . . . . .  C ADDR   0111H   A   
+LABEL1 . . . . . .  C ADDR   0131H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

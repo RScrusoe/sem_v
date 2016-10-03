@@ -1,0 +1,3 @@
+".\Objects\adder_source.obj" 
+TO ".\Objects\Adder8Bit" 
+PRINT(".\Listings\Adder8Bit.m51") RAMSIZE(256) 

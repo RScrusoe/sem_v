@@ -1,0 +1,3 @@
+".\Objects\memcopy.obj" 
+TO ".\Objects\nayaDaur" 
+PRINT(".\Listings\nayaDaur.m51") RAMSIZE(256) 

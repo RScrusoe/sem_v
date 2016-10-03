@@ -1,0 +1,70 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/08/2016  14:38:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\zeroall.obj TO .\Objects\zeroOut PRINT (.\Listings\zeroOut.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\zeroall.obj (ZEROALL)
+
+
+LINK MAP OF MODULE:  .\Objects\zeroOut (ZEROALL)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0137H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\zeroOut (ZEROALL)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ZEROALL
+  D:00F0H         SYMBOL        B
+  C:012CH         SYMBOL        LOOP
+  C:0100H         SYMBOL        MAIN
+  C:0121H         SYMBOL        STOP
+  C:0123H         SYMBOL        ZEROOUT
+  C:0000H         LINE#         2
+  C:0100H         LINE#         7
+  C:0103H         LINE#         8
+  C:0106H         LINE#         9
+  C:0109H         LINE#         10
+  C:010CH         LINE#         11
+  C:010FH         LINE#         12
+  C:0112H         LINE#         13
+  C:0115H         LINE#         14
+  C:0118H         LINE#         15
+  C:011BH         LINE#         16
+  C:011EH         LINE#         18
+  C:0121H         LINE#         20
+  C:0123H         LINE#         25
+  C:0125H         LINE#         26
+  C:0127H         LINE#         28
+  C:012AH         LINE#         29
+  C:012CH         LINE#         32
+  C:012EH         LINE#         33
+  C:012FH         LINE#         34
+  C:0132H         LINE#         36
+  C:0134H         LINE#         37
+  C:0136H         LINE#         39
+  -------         ENDMOD        ZEROALL
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/08/2016  14:38:22  PAGE 2
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003AH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=311
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

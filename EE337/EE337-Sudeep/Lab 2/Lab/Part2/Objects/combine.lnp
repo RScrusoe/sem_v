@@ -1,0 +1,3 @@
+".\Objects\perform.obj" 
+TO ".\Objects\combine" 
+PRINT(".\Listings\combine.m51") RAMSIZE(256) 

@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  MEMSHIFT                                                             08/06/2016 22:32:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\memshift.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE memshift.asm SET(SMALL) DEBUG PRINT(.\Listings\memshift.lst) OBJECT(.\O
+                      bjects\memshift.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5             
+0100                   6             main:
+                       7                     USING 0
+0100 8550F0            8                     MOV B, 50H
+0103 A851              9                     MOV R0, 51H
+0105 A952             10                     MOV R1, 52H
+0107 AAF0             11                     MOV R2, B
+0109 E5F0             12                     MOV A, B
+010B                  13                     LOOP1:
+010B 8604             14                             MOV 4, @R0
+010D C004             15                             PUSH AR4
+010F 08               16                             INC R0
+0110 D5F0F8           17                             DJNZ B, LOOP1
+                      18                     
+0113 14               19                     DEC A
+0114 29               20                     ADD A, R1
+0115 F9               21                     MOV R1, A
+                      22                     
+0116                  23                     LOOP2:
+0116 D004             24                             POP AR4
+0118 A704             25                             MOV @R1,4
+011A 19               26                             DEC R1
+011B DAF9             27                             DJNZ R2, LOOP2
+                      28                             
+011D 80FE             29                             STOP: sjmp STOP
+                      30     
+                      31                     END
+                                                     
+A51 MACRO ASSEMBLER  MEMSHIFT                                                             08/06/2016 22:32:00 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR4. . . . . . . .  D ADDR   0004H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+LOOP1. . . . . . .  C ADDR   010BH   A   
+LOOP2. . . . . . .  C ADDR   0116H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   011DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,45 @@
+A51 MACRO ASSEMBLER  ADDER_SOURCE                                                         08/01/2016 14:27:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\adder_source.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ..\adder_source.asm SET(SMALL) DEBUG PRINT(.\Listings\adder_source.lst)
+                       OBJECT(.\Objects\adder_source.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5             
+0100                   6             main:
+                       7              
+0100 00                8              nop
+                       9              
+0101 7550FF           10              MOV 50H, #0FFH
+0104 7560F0           11              MOV 60H, #0F0H
+                      12              
+0107 E550             13              MOV A, 50H ; Move the data at the location 50H to the accumulator
+0109 2560             14              ADD A, 60H ;  Add the contents of the accumulator to the contents in the memory lo
+                             cation 60H
+                      15              
+010B F570             16              MOV 70H, A ; Store the contents of the accumulator (the sum) at memory location 70
+                             H
+                      17              END
+                                              
+A51 MACRO ASSEMBLER  ADDER_SOURCE                                                         08/01/2016 14:27:37 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

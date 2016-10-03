@@ -1,0 +1,293 @@
+A51 MACRO ASSEMBLER  PERFORM                                                              08/10/2016 20:08:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\perform.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE perform.asm SET(SMALL) DEBUG PRINT(.\Listings\perform.lst) OBJECT(.\Obj
+                      ects\perform.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0090                 1     LED EQU P1
+                       2     
+0000                   3     ORG 0000H
+0000 020100            4             ljmp main
+                       5             
+0100                   6             ORG 100H
+0100                   7                     main:
+0100 7581CF            8                             MOV SP, #0CFH
+                       9                             
+0103 755005           10                             MOV 50H, #05H
+0106 755161           11                             MOV 51H, #61H
+0109 1201E6           12                             lcall zeroOut
+                      13                             
+010C 755005           14                             MOV 50H, #05H
+010F 755171           15                             MOV 51H, #71H
+0112 1201E6           16                             lcall zeroOut
+                      17                             
+0115 755005           18                             MOV 50H, #05H
+0118 755161           19                             MOV 51H, #61H
+011B 755271           20                             MOV 52H, #71H
+011E 756123           21                             MOV 61H, #23H
+0121 756234           22                             MOV 62H, #34H
+0124 756345           23                             MOV 63H, #45H
+0127 75647E           24                             MOV 64H, #7EH
+012A 7565AD           25                             MOV 65H, #0ADH
+012D 12014A           26                             lcall bin2ascii
+                      27                             
+0130 755005           28                             MOV 50H, #05H
+0133 755171           29                             MOV 51H, #71H
+0136 755271           30                             MOV 52H, #71H
+0139 1201FA           31                             lcall memcpy
+                      32                             
+013C 75500A           33                             MOV 50H, #0AH
+013F 755171           34                             MOV 51H, #71H
+0142 754F01           35                             MOV 4FH, #01H
+0145 120194           36                             lcall display
+                      37                             
+0148                  38                             here: 
+0148 80FE             39                                     sjmp here
+                      40                                     
+014A                  41                             bin2ascii:
+                      42                             
+                      43                                     USING 0
+014A C0F0             44                                     PUSH B
+014C C000             45                                     PUSH AR0
+014E C001             46                                     PUSH AR1
+0150 C002             47                                     PUSH AR2
+0152 C003             48                                     PUSH AR3
+0154 C004             49                                     PUSH AR4
+                      50                             
+0156 FC               51                                     MOV R4,A
+                      52                             
+0157 8550F0           53                                     MOV B, 50H
+015A A851             54                                     MOV R0, 51H
+015C A952             55                                     MOV R1, 52H
+                      56                             
+015E                  57                                     LOOPbinary:
+A51 MACRO ASSEMBLER  PERFORM                                                              08/10/2016 20:08:07 PAGE     2
+
+015E E6               58                                             MOV A, @R0
+015F 54F0             59                                             ANL A, #0F0H
+0161 03               60                                             RR A
+0162 03               61                                             RR A
+0163 03               62                                             RR A
+0164 03               63                                             RR A
+0165 FB               64                                             MOV R3,A
+0166 C3               65                                             CLR C
+0167 940A             66                                             SUBB A,#0AH
+0169 EB               67                                             MOV A, R3
+016A 4002             68                                             JC down
+016C 2407             69                                                     ADD A,#07H
+016E                  70                                             down:
+016E 2430             71                                                     ADD A, #30H
+0170 F7               72                                                     MOV @R1, A
+0171 09               73                                                     INC R1
+                      74                                             
+0172 E6               75                                             MOV A, @R0
+0173 540F             76                                             ANL A, #0FH
+0175 FB               77                                             MOV R3,A
+0176 C3               78                                             CLR C
+0177 940A             79                                             SUBB A,#0AH
+0179 EB               80                                             MOV A, R3
+017A 4002             81                                             JC down1
+017C 2407             82                                                     ADD A,#07H
+017E                  83                                             down1:
+017E 2430             84                                                     ADD A, #30H
+0180 F7               85                                                     MOV @R1, A
+0181 09               86                                                     INC R1
+                      87                                             
+0182 08               88                                             INC R0
+                      89                                     
+0183 D5F0D8           90                                             DJNZ B, LOOPbinary
+                      91                                     
+0186 FC               92                                     MOV R4, A
+                      93                             
+0187 D004             94                                     POP AR4
+0189 D003             95                                     POP AR3
+018B D002             96                                     POP AR2
+018D D001             97                                     POP AR1
+018F D000             98                                     POP AR0
+0191 D0F0             99                                     POP     B
+                     100                             
+0193 22              101                                     RET
+                     102                                     
+0194                 103                             display:
+                     104                                     USING 0
+0194 C003            105                                     PUSH AR3
+0196 C0F0            106                                     PUSH B
+0198 C001            107                                     PUSH AR1
+019A C002            108                                     PUSH AR2
+                     109                                     
+019C FB              110                                     MOV R3,A
+019D 8550F0          111                                     MOV B,50H
+01A0 A951            112                                     MOV R1, 51H
+                     113                             
+                     114                                                     
+01A2                 115                                     LOOPdisp:
+01A2 7A14            116                                             MOV R2, #20
+01A4 E7              117                                             MOV A, @R1
+01A5 09              118                                             INC R1
+01A6 540F            119                                             ANL A, #0FH
+01A8 F590            120                                             MOV LED, A
+01AA                 121                                             LoopInside:
+01AA 1201BC          122                                                     lcall delay0
+01AD DAFB            123                                                     DJNZ R2, LoopInside
+A51 MACRO ASSEMBLER  PERFORM                                                              08/10/2016 20:08:07 PAGE     3
+
+01AF D5F0F0          124                                             DJNZ B, LOOPdisp
+                     125                             
+01B2 EB              126                                     MOV A, R3
+                     127                             
+01B3 D002            128                                     POP AR2
+01B5 D001            129                                     POP AR1
+01B7 D0F0            130                                     POP B
+01B9 D003            131                                     POP AR3
+                     132                             
+01BB 22              133                             RET
+                     134                             
+01BC                 135                     delay0:
+                     136                             USING 0
+01BC C002            137                             PUSH AR2
+01BE C001            138                             PUSH AR1
+                     139                     
+01C0 7AC8            140                             MOV R2, #200
+01C2                 141                             BACK1:
+01C2 79FF            142                                     MOV R1, #0FFH
+01C4                 143                             BACK:
+01C4 D9FE            144                                     DJNZ R1, BACK
+01C6 DAFA            145                             DJNZ R2, BACK1
+                     146                             
+01C8 D001            147                             POP AR1
+01CA D002            148                             POP AR2
+                     149                     
+01CC 22              150                     RET 
+                     151                     
+01CD                 152                     delayDby2:
+                     153                             USING 0
+01CD C001            154                             PUSH AR1
+01CF C0F0            155                             PUSH B          
+                     156                             
+01D1 F9              157                             MOV R1, A
+01D2 E54F            158                             MOV A, 4FH
+01D4 75F00A          159                             MOV B, #0AH
+01D7 A4              160                             MUL AB
+                     161                             
+01D8 F5F0            162                             MOV B,A
+                     163                             
+01DA                 164                             loopdelay: 
+01DA 1201BC          165                                     lcall delay0
+01DD D5F0FA          166                                     DJNZ B, loopdelay
+                     167                             
+01E0 E9              168                             MOV A, R1
+01E1 D0F0            169                             POP B
+01E3 D001            170                             POP AR1
+                     171                             
+01E5 22              172                             RET
+                     173                     
+01E6                 174                     zeroOut:
+                     175                             USING 0
+01E6 C0F0            176                             PUSH B
+01E8 C001            177                             PUSH AR1
+                     178                             
+01EA 8550F0          179                             MOV B, 50H
+01ED A951            180                             MOV R1, 51H
+                     181                             
+01EF                 182                             LOOPzero:
+01EF 7700            183                                     MOV @R1, #00H
+01F1 09              184                                     INC R1
+01F2 D5F0FA          185                                     DJNZ B, LOOPzero
+                     186                                     
+01F5 D001            187                             POP AR1
+01F7 D0F0            188                             POP B
+                     189                             
+A51 MACRO ASSEMBLER  PERFORM                                                              08/10/2016 20:08:07 PAGE     4
+
+01F9 22              190                             RET
+                     191                     
+01FA                 192                     memcpy: 
+                     193                     USING 0
+01FA 8550F0          194                     MOV B, 50H
+01FD A851            195                     MOV R0, 51H
+01FF A952            196                     MOV R1, 52H
+0201 E8              197                     MOV A, R0
+0202 C3              198                     CLR C
+0203 99              199                     SUBB A, R1
+0204 4007            200                     jc downmemory
+0206                 201                     loopmemcopy:
+0206 E6              202                             MOV A, @R0
+0207 F7              203                             MOV @R1, A
+0208 08              204                             INC R0
+0209 09              205                             INC R1
+020A D5F0F9          206                             DJNZ B, loopmemcopy
+020D                 207                             downmemory: 
+020D 5013            208                             jnc further
+020F 15F0            209                             DEC B
+0211 E8              210                             MOV A, R0
+0212 25F0            211                             ADD A,B
+0214 F8              212                             MOV R0, A
+0215 E9              213                             MOV A, R1
+0216 25F0            214                             ADD A, B
+0218 F9              215                             MOV R1, A
+0219 05F0            216                             INC B
+021B                 217                             loopmem2:
+021B E6              218                             MOV A, @R0
+021C F7              219                             MOV @R1,A
+021D 18              220                             DEC R0
+021E 19              221                             DEC R1
+021F D5F0F9          222                             DJNZ B, loopmem2
+                     223                             
+0222                 224                             further:
+                     225                     
+                     226                     
+0222 22              227                     RET
+                     228     
+                     229                     END
+                                                     
+                                                     
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  PERFORM                                                              08/10/2016 20:08:07 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR0. . . . . . . .  D ADDR   0000H   A   
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+AR3. . . . . . . .  D ADDR   0003H   A   
+AR4. . . . . . . .  D ADDR   0004H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   01C4H   A   
+BACK1. . . . . . .  C ADDR   01C2H   A   
+BIN2ASCII. . . . .  C ADDR   014AH   A   
+DELAY0 . . . . . .  C ADDR   01BCH   A   
+DELAYDBY2. . . . .  C ADDR   01CDH   A   
+DISPLAY. . . . . .  C ADDR   0194H   A   
+DOWN . . . . . . .  C ADDR   016EH   A   
+DOWN1. . . . . . .  C ADDR   017EH   A   
+DOWNMEMORY . . . .  C ADDR   020DH   A   
+FURTHER. . . . . .  C ADDR   0222H   A   
+HERE . . . . . . .  C ADDR   0148H   A   
+LED. . . . . . . .  D ADDR   0090H   A   
+LOOPBINARY . . . .  C ADDR   015EH   A   
+LOOPDELAY. . . . .  C ADDR   01DAH   A   
+LOOPDISP . . . . .  C ADDR   01A2H   A   
+LOOPINSIDE . . . .  C ADDR   01AAH   A   
+LOOPMEM2 . . . . .  C ADDR   021BH   A   
+LOOPMEMCOPY. . . .  C ADDR   0206H   A   
+LOOPZERO . . . . .  C ADDR   01EFH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+MEMCPY . . . . . .  C ADDR   01FAH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+ZEROOUT. . . . . .  C ADDR   01E6H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

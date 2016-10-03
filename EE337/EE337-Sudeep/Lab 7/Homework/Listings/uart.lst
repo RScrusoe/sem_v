@@ -1,0 +1,93 @@
+C51 COMPILER V9.55   UART                                                                  09/26/2016 14:00:28 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Objects\uart.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE uart.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\uart
+                    -.lst) TABS(2) OBJECT(.\Objects\uart.obj)
+
+line level    source
+
+   1          /**
+   2           UART HOMEWORK , LABWORK (SAME PROGRAM)
+   3           */
+   4          
+   5          /* @section  I N C L U D E S */
+   6          #include "at89c5131.h"
+   7          #include "stdio.h"
+   8          #define LCD_data  P2                // LCD Data port
+   9          bit transmit_completed = 0;
+  10          sbit toggle_bit = P1^4;
+  11          bit Parity;
+  12          void find_parity(char str);
+  13          int count = 0, i = 0 ;
+  14          
+  15          void ISR_Serial(void) interrupt 4
+  16          {
+  17   1        //SCON &= 0xFD; 
+  18   1        //a = 'A' + 0;
+  19   1        TI =0;
+  20   1        transmit_completed = 1;
+  21   1        toggle_bit = 1;
+  22   1        find_parity('A');
+  23   1        TB8 = Parity;
+  24   1        //SBUF = 'A';
+  25   1        //~P1^4;
+  26   1      }
+  27          
+  28          void init_serial()
+  29          {
+  30   1        SCON |= 0xC0;
+  31   1        SCON &= 0xFC;
+  32   1        TMOD = 0x20;
+  33   1        TH1 = 0xCC;
+  34   1        EA = 1;
+  35   1        ET1 = 0;
+  36   1        ES = 1; 
+  37   1        TR1 = 1;
+  38   1      }
+  39          
+  40          void find_parity(char str)
+  41          {
+  42   1        Parity=1;
+  43   1        count=0;
+  44   1        for(i=0;i<8;i++)
+  45   1        {
+  46   2          Parity=str & 0x01;
+  47   2          if(Parity==1) count=count+1;
+  48   2          str=str>>1;
+  49   2        }
+  50   1        if(count%2==1){ Parity=1;}
+  51   1        else Parity=0;
+  52   1          
+  53   1        
+  54   1      }
+C51 COMPILER V9.55   UART                                                                  09/26/2016 14:00:28 PAGE 2   
+
+  55          
+  56          void main()
+  57          {
+  58   1        init_serial();
+  59   1        //P1^4 = 1;
+  60   1        //SCON |= 0x10;
+  61   1        while(1){
+  62   2        SBUF = 'A';
+  63   2          while(!transmit_completed);
+  64   2          transmit_completed = 0;
+  65   2          toggle_bit=0;
+  66   2        }
+  67   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    175    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

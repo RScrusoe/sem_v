@@ -1,0 +1,79 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/01/2016  00:52:36  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\adder_source.obj, .\Objects\cont_add.obj TO .\Objects\Adder PRINT (.\Listings\Adde
+>> r.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\adder_source.obj (ADDER_SOURCE)
+  .\Objects\cont_add.obj (CONT_ADD)
+
+
+LINK MAP OF MODULE:  .\Objects\Adder (ADDER_SOURCE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     010AH     ABSOLUTE     
+* OVERLAP * CODE    0000H     1016H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Adder (ADDER_SOURCE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ADDER_SOURCE
+  C:0100H         SYMBOL        MAIN
+  C:0000H         LINE#         2
+  C:0100H         LINE#         8
+  C:0101H         LINE#         10
+  C:0103H         LINE#         11
+  C:0105H         LINE#         16
+  C:0106H         LINE#         17
+  C:0107H         LINE#         19
+  C:0109H         LINE#         20
+  -------         ENDMOD        ADDER_SOURCE
+
+  -------         MODULE        CONT_ADD
+  D:00F0H         SYMBOL        B
+  C:100BH         SYMBOL        LABEL1
+  C:1000H         SYMBOL        MAIN1
+  C:0000H         LINE#         2
+  C:1000H         LINE#         8
+  C:1001H         LINE#         10
+  C:1003H         LINE#         12
+  C:1005H         LINE#         13
+  C:1007H         LINE#         15
+  C:1009H         LINE#         16
+  C:100BH         LINE#         24
+  C:100CH         LINE#         25
+  C:100DH         LINE#         26
+  C:100EH         LINE#         27
+  C:100FH         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/01/2016  00:52:36  PAGE 2
+
+
+  C:1010H         LINE#         29
+  C:1012H         LINE#         30
+  C:1014H         LINE#         31
+  -------         ENDMOD        CONT_ADD
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0109H
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0026H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=4384
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

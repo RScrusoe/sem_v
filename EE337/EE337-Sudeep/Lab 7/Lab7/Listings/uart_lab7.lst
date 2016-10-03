@@ -1,0 +1,287 @@
+C51 COMPILER V9.55   UART_LAB7                                                             09/26/2016 15:15:36 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE UART_LAB7
+OBJECT MODULE PLACED IN .\Objects\uart_lab7.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE uart_lab7.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\uart_lab7.lst) TABS(2) OBJECT(.\Objects\uart_lab7.obj)
+
+line level    source
+
+   1          /**
+   2           UART HOMEWORK , LABWORK (SAME PROGRAM)
+   3           */
+   4          
+   5          /* @section  I N C L U D E S */
+   6          #include "at89c5131.h"
+   7          #include "stdio.h"
+   8          #define LCD_data  P2  // LCD Data port
+   9          
+  10          void init_serial(void);
+  11          void LCD_Init();
+  12          void LCD_DataWrite(char dat);
+  13          void LCD_CmdWrite(char cmd);
+  14          void LCD_StringWrite(char * str, unsigned char len);
+  15          void LCD_Ready();
+  16          void sdelay(int delay);
+  17          void send_serial(char str);
+  18          void sendStringForTx(char* str, int l);
+  19          void delay_ms(int delay);
+  20          void findParity(char str);
+  21          int count =0, i= 0;
+  22          
+  23          sbit LCD_rs = P0^0;                 // LCD Register Select
+  24          sbit LCD_rw = P0^1;                 // LCD Read/Write
+  25          sbit LCD_en = P0^2;                 // LCD Enable
+  26          sbit LCD_busy = P2^7;               // LCD Busy Flag
+  27          //sbit ONULL = P1^0;
+  28          
+  29          bit par_bit;
+  30          sbit toggle_bit = P1^4;
+  31          
+  32          bit old_value = 0;
+  33          sbit switch_value = P1^0;
+  34          
+  35          
+  36          
+  37          char byteToWrite;
+  38          int rcount = 0;
+  39          
+  40          
+  41          void main()
+  42          {
+  43   1        init_serial();
+  44   1        LCD_Init();
+  45   1        while(1){
+  46   2          if(!(switch_value == old_value))
+  47   2          {
+  48   3            old_value = switch_value;
+  49   3            LCD_CmdWrite(0x80);
+  50   3            LCD_StringWrite("EE337", 5);
+  51   3            sendStringForTx("EE337", 5);
+  52   3          }
+  53   2          
+  54   2          else
+C51 COMPILER V9.55   UART_LAB7                                                             09/26/2016 15:15:36 PAGE 2   
+
+  55   2            LCD_Init();
+  56   2          //LCD_StringWrite(" BCD", 4);
+  57   2            
+  58   2          delay_ms(500);
+  59   2          
+  60   2        /*SBUF = 'A';
+  61   2          while(!transmit_completed);
+  62   2          transmit_completed = 0;
+  63   2          toggle_bit=0;*/
+  64   2          
+  65   2        }
+  66   1      }
+  67          
+  68          void ISR_Serial(void) interrupt 4
+  69          {
+  70   1      
+  71   1        
+  72   1        if(RI == 1)
+  73   1        {
+  74   2          RI = 0;
+  75   2          byteToWrite = SBUF;
+  76   2          if(rcount == 0)
+  77   2            LCD_CmdWrite(0xC0);
+  78   2          LCD_DataWrite(byteToWrite);
+  79   2          rcount ++;
+  80   2          if(rcount == 5)
+  81   2            rcount =0;
+  82   2        }
+  83   1        //SBUF = 'A';
+  84   1        //~P1^4;
+  85   1      }
+  86          
+  87          void init_serial()
+  88          {
+  89   1        SCON = 0xC0;
+  90   1        //SCON &= 0xFC;
+  91   1        TMOD = 0x20;
+  92   1        TH1 = 0xCC;
+  93   1        EA = 1;
+  94   1        ET1 = 0;
+  95   1        ES = 1; 
+  96   1        TR1 = 1;
+  97   1        TI = 0;
+  98   1        RI =0;
+  99   1        REN =1;
+ 100   1      }
+ 101          
+ 102            /**
+ 103           * FUNCTION_PURPOSE:LCD Initialization
+ 104           * FUNCTION_INPUTS: void
+ 105           * FUNCTION_OUTPUTS: none
+ 106           */
+ 107          void LCD_Init()
+ 108          {
+ 109   1        sdelay(100);
+ 110   1        LCD_CmdWrite(0x38);     // LCD 2lines, 5*7 matrix
+ 111   1        LCD_CmdWrite(0x0E);     // Display ON cursor ON  Blinking off
+ 112   1        LCD_CmdWrite(0x01);     // Clear the LCD
+ 113   1        LCD_CmdWrite(0x80);     // Cursor to First line First Position
+ 114   1      }
+ 115          
+ 116          /**
+C51 COMPILER V9.55   UART_LAB7                                                             09/26/2016 15:15:36 PAGE 3   
+
+ 117           * FUNCTION_PURPOSE: Write Command to LCD
+ 118           * FUNCTION_INPUTS: cmd- command to be written
+ 119           * FUNCTION_OUTPUTS: none
+ 120           */
+ 121          void LCD_CmdWrite(char cmd)
+ 122          {
+ 123   1        LCD_Ready();
+ 124   1        LCD_data=cmd;           // Send the command to LCD
+ 125   1        LCD_rs=0;               // Select the Command Register by pulling LCD_rs LOW
+ 126   1        LCD_rw=0;               // Select the Write Operation  by pulling RW LOW
+ 127   1        LCD_en=1;               // Send a High-to-Low Pusle at Enable Pin
+ 128   1        sdelay(5);
+ 129   1        LCD_en=0;
+ 130   1        sdelay(5);
+ 131   1      }
+ 132          
+ 133          /**
+ 134           * FUNCTION_PURPOSE: Write Command to LCD
+ 135           * FUNCTION_INPUTS: dat- data to be written
+ 136           * FUNCTION_OUTPUTS: none
+ 137           */
+ 138          void LCD_DataWrite( char dat)
+ 139          {
+ 140   1        LCD_Ready();
+ 141   1        LCD_data=dat;           // Send the data to LCD
+ 142   1        LCD_rs=1;               // Select the Data Register by pulling LCD_rs HIGH
+ 143   1        LCD_rw=0;               // Select the Write Operation by pulling RW LOW
+ 144   1        LCD_en=1;               // Send a High-to-Low Pusle at Enable Pin
+ 145   1        sdelay(5);
+ 146   1        LCD_en=0;
+ 147   1        sdelay(5);
+ 148   1      }
+ 149          /**
+ 150           * FUNCTION_PURPOSE: Write a string on the LCD Screen
+ 151           * FUNCTION_INPUTS: 1. str - pointer to the string to be written, 
+ 152                              2. length - length of the array
+ 153           * FUNCTION_OUTPUTS: none
+ 154           */
+ 155          void LCD_StringWrite( char * str, unsigned char length)
+ 156          {
+ 157   1          while(length>0)
+ 158   1          {
+ 159   2              LCD_DataWrite(*str);
+ 160   2              str++;
+ 161   2              length--;
+ 162   2          }
+ 163   1      }
+ 164          
+ 165          /**
+ 166           * FUNCTION_PURPOSE: To check if the LCD is ready to communicate
+ 167           * FUNCTION_INPUTS: void
+ 168           * FUNCTION_OUTPUTS: none
+ 169           */
+ 170          void LCD_Ready()
+ 171          {
+ 172   1        LCD_data = 0xFF;
+ 173   1        LCD_rs = 0;
+ 174   1        LCD_rw = 1;
+ 175   1        LCD_en = 0;
+ 176   1        sdelay(5);
+ 177   1        LCD_en = 1;
+ 178   1        while(LCD_busy == 1)
+C51 COMPILER V9.55   UART_LAB7                                                             09/26/2016 15:15:36 PAGE 4   
+
+ 179   1        {
+ 180   2          LCD_en = 0;
+ 181   2          LCD_en = 1;
+ 182   2        }
+ 183   1        LCD_en = 0;
+ 184   1      }
+ 185          
+ 186          /**
+ 187           * FUNCTION_PURPOSE: A delay of 15us for a 24 MHz crystal
+ 188           * FUNCTION_INPUTS: void
+ 189           * FUNCTION_OUTPUTS: none
+ 190           */
+ 191          void sdelay(int delay)
+ 192          {
+ 193   1        char d=0;
+ 194   1        while(delay>0)
+ 195   1        {
+ 196   2          for(d=0;d<5;d++);
+ 197   2          delay--;
+ 198   2        }
+ 199   1      }
+ 200          
+ 201          void send_serial(char str)
+ 202          {
+ 203   1      
+ 204   1          SBUF=str;
+ 205   1          findParity(str);
+ 206   1          TB8 = par_bit;
+ 207   1        //LCD_CmdWrite(0xC0);
+ 208   1          while(TI==0);
+ 209   1      //    ~toggle_bit;
+ 210   1          TI=0;
+ 211   1          
+ 212   1          //LCD_DataWrite(str);
+ 213   1        
+ 214   1      }
+ 215          
+ 216          void sendStringForTx(char* str, int l)
+ 217          {
+ 218   1        
+ 219   1          while(l>0)
+ 220   1          {
+ 221   2              send_serial(*str);
+ 222   2              str++;
+ 223   2              l--;
+ 224   2          }
+ 225   1      }
+ 226          
+ 227          void delay_ms(int delay)
+ 228          {
+ 229   1        int d=0;
+ 230   1        while(delay>0)
+ 231   1        {
+ 232   2          for(d=0;d<382;d++);
+ 233   2          delay--;
+ 234   2        }
+ 235   1      }
+ 236          
+ 237          void findParity(char dat)
+ 238          {
+ 239   1        par_bit=1;
+ 240   1        count = 0;
+C51 COMPILER V9.55   UART_LAB7                                                             09/26/2016 15:15:36 PAGE 5   
+
+ 241   1        for(i=1;i<=8;i++)
+ 242   1        {
+ 243   2          par_bit =dat & 0x01;
+ 244   2          if(par_bit ==1 ) 
+ 245   2            count++;
+ 246   2          dat = dat>>1;
+ 247   2        }
+ 248   1        if(count%2==1)
+ 249   1          par_bit = 1;
+ 250   1        else
+ 251   1          par_bit =0;
+ 252   1          
+ 253   1        
+ 254   1      }
+ 255            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    538    ----
+   CONSTANT SIZE    =      6    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7      11
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

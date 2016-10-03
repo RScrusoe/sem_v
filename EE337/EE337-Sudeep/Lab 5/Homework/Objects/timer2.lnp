@@ -1,0 +1,3 @@
+".\Objects\pwm.obj" 
+TO ".\Objects\timer2" 
+PRINT(".\Listings\timer2.m51") RAMSIZE(256) 

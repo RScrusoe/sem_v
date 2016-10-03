@@ -1,0 +1,100 @@
+A51 MACRO ASSEMBLER  DELAY                                                                08/08/2016 13:15:01 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE delay.asm SET(SMALL) DEBUG PRINT(.\Listings\delay.lst) OBJECT(.\Objects
+                      \delay.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0097                 1     LED EQU P1.7
+                       2     
+0000                   3     org 00H
+0000 020100            4             ljmp main
+                       5             
+0100                   6       org 100H
+0100                   7             main:
+0100 E54F              8                     MOV A, 4FH
+0102 75F00A            9                     MOV B, #0AH
+0105 A4               10                     MUL AB
+                      11                     
+0106 04               12                     INC A
+                      13                     
+                      14                     
+0107                  15                     repeat:
+0107 12010C           16                             lcall task1
+010A 80FB             17                             sjmp repeat
+                      18                     
+010C                  19                     Task1:
+010C F5F0             20                     MOV B,A
+010E D297             21                     SETB LED
+                      22                     
+0110                  23                     LOOP:
+0110 120121           24                             lcall delay0
+0113 D5F0FA           25                             DJNZ B, LOOP
+                      26                             
+0116 F5F0             27                     MOV B,A
+0118 C297             28                     CLR LED
+                      29                     
+011A                  30                     LOOP1:
+011A 120121           31                             lcall delay0
+011D D5F0FA           32                             DJNZ B, LOOP1
+                      33                             
+0120 22               34                     RET
+                      35                     
+                      36                     
+                      37                     
+                      38                     ;MOV R3, #0FFH
+                      39                     
+                      40             
+                      41             
+                      42             
+                      43             
+0121                  44             delay0:
+                      45                     USING 0
+0121 C002             46                     PUSH AR2
+0123 C001             47                     PUSH AR1
+                      48                     
+0125 7AC8             49                     MOV R2, #200
+0127                  50                     BACK1:
+0127 79FF             51                             MOV R1, #0FFH
+0129                  52                             BACK:
+0129 D9FE             53                                     DJNZ R1, BACK
+012B DAFA             54                             DJNZ R2, BACK1
+                      55                             
+012D D001             56                     POP AR1
+012F D002             57                     POP AR2
+A51 MACRO ASSEMBLER  DELAY                                                                08/08/2016 13:15:01 PAGE     2
+
+                      58                     
+0131 22               59                     RET 
+                      60                     
+                      61                     END
+A51 MACRO ASSEMBLER  DELAY                                                                08/08/2016 13:15:01 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0129H   A   
+BACK1. . . . . . .  C ADDR   0127H   A   
+DELAY0 . . . . . .  C ADDR   0121H   A   
+LED. . . . . . . .  B ADDR   0090H.7 A   
+LOOP . . . . . . .  C ADDR   0110H   A   
+LOOP1. . . . . . .  C ADDR   011AH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+REPEAT . . . . . .  C ADDR   0107H   A   
+TASK1. . . . . . .  C ADDR   010CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

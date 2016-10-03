@@ -1,0 +1,89 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/22/2016  13:29:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\read_values.obj TO .\Objects\readnibbles PRINT (.\Listings\readnibbles.m51) RAMSIZ
+>> E (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\read_values.obj (READ_VALUES)
+
+
+LINK MAP OF MODULE:  .\Objects\readnibbles (READ_VALUES)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0140H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\readnibbles (READ_VALUES)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        READ_VALUES
+  C:0133H         SYMBOL        DELAY5SEC
+  C:0117H         SYMBOL        HERE
+  C:010EH         SYMBOL        LOOP
+  C:0135H         SYMBOL        LOOP1
+  C:0137H         SYMBOL        LOOP2
+  C:0139H         SYMBOL        LOOP3
+  D:0090H         SYMBOL        P1
+  C:0119H         SYMBOL        PACK_NIBBLES
+  C:0100H         SYMBOL        READINITIALVALUES
+  C:012AH         SYMBOL        READNIBBLE
+  C:010BH         SYMBOL        READ_VALUES
+  C:0000H         LINE#         2
+  C:0100H         LINE#         7
+  C:0103H         LINE#         8
+  C:0106H         LINE#         9
+  C:0108H         LINE#         10
+  C:010AH         LINE#         11
+  C:010BH         LINE#         15
+  C:010EH         LINE#         17
+  C:0111H         LINE#         18
+  C:0113H         LINE#         19
+  C:0114H         LINE#         20
+  C:0115H         LINE#         21
+  C:0117H         LINE#         22
+  C:0119H         LINE#         26
+  C:011CH         LINE#         27
+  C:011DH         LINE#         28
+  C:011EH         LINE#         29
+  C:0121H         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  13:29:27  PAGE 2
+
+
+  C:0124H         LINE#         31
+  C:0125H         LINE#         32
+  C:0126H         LINE#         33
+  C:0127H         LINE#         34
+  C:0129H         LINE#         36
+  C:012AH         LINE#         40
+  C:012DH         LINE#         41
+  C:012FH         LINE#         42
+  C:0131H         LINE#         43
+  C:0132H         LINE#         44
+  C:0133H         LINE#         47
+  C:0135H         LINE#         49
+  C:0137H         LINE#         51
+  C:0139H         LINE#         53
+  C:013BH         LINE#         54
+  C:013DH         LINE#         55
+  C:013FH         LINE#         56
+  -------         ENDMOD        READ_VALUES
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0043H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=320
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

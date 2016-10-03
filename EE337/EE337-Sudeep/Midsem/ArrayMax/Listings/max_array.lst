@@ -1,0 +1,192 @@
+A51 MACRO ASSEMBLER  MAX_ARRAY                                                            08/28/2016 12:13:33 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\max_array.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE max_array.asm SET(SMALL) DEBUG PRINT(.\Listings\max_array.lst) OBJECT(.
+                      \Objects\max_array.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020003            2             LJMP main
+                       3             
+0003                   4     main:
+                       5             ;MOV 50H, #0A1H
+                       6             ;MOV 51H, #84H
+                       7             ;MOV 52H, #92H
+                       8             ;MOV 53H, #0C9H
+                       9             ;MOV 54H, #0E9H
+0003 120008           10             LCALL signed
+0006 80FE             11             stop: sjmp stop
+                      12             
+0008                  13     signed:
+                      14             USING 0
+0008 C0E0             15             PUSH 0E0H
+000A C000             16             PUSH 0
+000C C001             17             PUSH 1
+000E C002             18             PUSH 2
+0010 C003             19             PUSH 3
+0012 C004             20             PUSH 4
+                      21             
+0014 7904             22             MOV R1, #04H
+0016 7851             23             MOV R0, #51H    
+0018 E550             24             MOV A, 50H
+                      25             
+001A                  26             up1:
+001A FA               27             MOV R2, A
+                      28             
+                      29             
+001B 8660             30             MOV 60H, @R0
+001D 120062           31             LCALL check_if_negative2
+0020 E556             32             MOV A, 56H
+0022 14               33             DEC A
+0023 8A60             34             MOV 60H, R2
+0025 120062           35             LCALL check_if_negative2
+0028 AB56             36             MOV R3,56H
+002A 1B               37             DEC R3
+002B 6B               38             XRL A, R3
+002C FC               39             MOV R4, A
+002D EA               40             MOV A, R2
+002E BC001B           41             CJNE R4, #00H, diff
+                      42             
+0031 BB000C           43             CJNE R3, #00, neg
+0034 C3               44             CLR C
+0035 E6               45             MOV A, @R0
+0036 F4               46             CPL A
+0037 04               47             INC A
+0038 C3               48             CLR C
+0039 2A               49             ADD A, R2
+003A EA               50             MOV A, R2
+003B 4013             51             JC down1
+003D E6               52             MOV A, @R0
+003E 8010             53             JMP down1
+0040                  54             neg:
+0040 C3               55             CLR C
+0041 E6               56             MOV A, @R0
+0042 F4               57             CPL A
+A51 MACRO ASSEMBLER  MAX_ARRAY                                                            08/28/2016 12:13:33 PAGE     2
+
+0043 04               58             INC A
+0044 C3               59             CLR C
+0045 2A               60             ADD A, R2
+0046 EA               61             MOV A, R2
+0047 4007             62                     JC down1
+0049 E6               63                     MOV A, @R0
+004A 8004             64                     JMP down1
+                      65                     
+004C                  66             diff:
+004C BB0101           67                     CJNE R3, #01, down1
+004F E6               68                     MOV A, @R0
+                      69                     
+                      70                     
+0050                  71             down1:
+0050 08               72                     INC R0
+0051 D9C7             73                     DJNZ R1, up1
+                      74             
+0053 F557             75             MOV 57H, A
+                      76             
+0055 D004             77             POP 4
+0057 D003             78             POP 3
+0059 D002             79             POP 2
+005B D001             80             POP 1
+005D D000             81             POP 0
+005F D0E0             82             POP 0E0H
+0061 22               83             RET
+                      84             
+                      85     
+0062                  86     check_if_negative2:
+                      87             USING 0
+0062 C0E0             88             PUSH 0E0H
+                      89             
+0064 C3               90             CLR C
+0065 E560             91             MOV A, 60H
+0067 5480             92             ANL A, #80H
+0069 33               93             RLC A
+006A 33               94             RLC A
+006B 04               95             INC A
+006C F556             96             MOV 56H, A
+                      97             
+006E D0E0             98             POP 0E0H
+0070 22               99             RET
+                     100             
+0071                 101     check_if_negative:
+                     102             USING 0
+0071 C0E0            103             PUSH 0E0H
+                     104             
+0073 C3              105             CLR C
+0074 E550            106             MOV A, 50H
+0076 5480            107             ANL A, #80H
+0078 33              108             RLC A
+0079 33              109             RLC A
+007A 04              110             INC A
+007B F556            111             MOV 56H, A
+                     112             
+007D D0E0            113             POP 0E0H
+007F 22              114             RET
+                     115     
+                     116     
+                     117     
+0080                 118     unsigned:
+                     119             USING 0
+0080 C0E0            120             PUSH 0E0H
+0082 C000            121             PUSH 0
+0084 C001            122             PUSH 1
+0086 C002            123             PUSH 2
+A51 MACRO ASSEMBLER  MAX_ARRAY                                                            08/28/2016 12:13:33 PAGE     3
+
+                     124             
+0088 7904            125             MOV R1, #04H
+008A 7851            126             MOV R0, #51H
+008C E550            127             MOV A, 50H
+                     128             
+008E                 129             up:
+008E FA              130             MOV R2, A
+008F C3              131             CLR C
+0090 96              132             SUBB A, @R0
+0091 EA              133             MOV A, R2
+0092 5001            134             JNC down
+0094 E6              135                     MOV A, @R0
+0095                 136             down:
+0095 08              137                     INC R0
+0096 D9F6            138                     DJNZ R1, up
+                     139             
+0098 F560            140             MOV 60H, A
+                     141             
+009A D002            142             POP 2
+009C D001            143             POP 1
+009E D000            144             POP 0
+00A0 D0E0            145             POP 0E0H
+                     146             
+00A2 22              147             RET
+                     148             
+                     149     
+                     150     
+                     151     END
+                                     
+A51 MACRO ASSEMBLER  MAX_ARRAY                                                            08/28/2016 12:13:33 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CHECK_IF_NEGATIVE.  C ADDR   0071H   A   
+CHECK_IF_NEGATIVE2  C ADDR   0062H   A   
+DIFF . . . . . . .  C ADDR   004CH   A   
+DOWN . . . . . . .  C ADDR   0095H   A   
+DOWN1. . . . . . .  C ADDR   0050H   A   
+MAIN . . . . . . .  C ADDR   0003H   A   
+NEG. . . . . . . .  C ADDR   0040H   A   
+SIGNED . . . . . .  C ADDR   0008H   A   
+STOP . . . . . . .  C ADDR   0006H   A   
+UNSIGNED . . . . .  C ADDR   0080H   A   
+UP . . . . . . . .  C ADDR   008EH   A   
+UP1. . . . . . . .  C ADDR   001AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

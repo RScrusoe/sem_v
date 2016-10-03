@@ -1,0 +1,3 @@
+".\Objects\memshift.obj" 
+TO ".\Objects\memory" 
+PRINT(".\Listings\memory.m51") RAMSIZE(256) 

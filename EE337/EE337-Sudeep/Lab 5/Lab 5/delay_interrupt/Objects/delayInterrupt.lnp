@@ -1,0 +1,3 @@
+".\Objects\interrupt.obj" 
+TO ".\Objects\delayInterrupt" 
+PRINT(".\Listings\delayInterrupt.m51") RAMSIZE(256) 

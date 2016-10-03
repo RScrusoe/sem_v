@@ -1,0 +1,184 @@
+A51 MACRO ASSEMBLER  SOURCEFILE                                                           07/30/2016 21:53:15 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\sourcefile.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sourcefile.asm SET(SMALL) DEBUG PRINT(.\Listings\sourcefile.lst) OBJECT
+                      (.\Objects\sourcefile.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1      
+                       2     ; My first assembly Program
+                       3     
+  0097                 4     LED     EQU P1.7        
+                       5             
+0040                   6             org 40H
+                       7     
+                       8     ; Some data 
+0040 14                9     M: DB 20
+0041 1C               10     COUNT1: DB      28      ;Decimal Number 28
+0042 22               11     N1:     DB      34              ;Hexadecimal number
+0043 41424344         12     STRING1:        DB      "ABCD123"       ;ASCII CHARACTER
+0047 313233                  
+004A 53757279         13     Name1: DB 'Suryakant'  ; String 
+004E 616B616E                
+0052 74                      
+                      14             
+                      15              ;-------------------------------------------------
+                      16              ;              Main program
+                      17              ;-------------------------------------------------
+                      18              
+                      19              ; Setup the Instruction location counter (ILC) of the  assembler 
+                      20              ; to point to reset vector of our Microcontroller
+                      21      
+0000                  22      org 0H
+                      23     
+                      24              ; transfer control to main program segment as some code memory loccations 
+                      25              ; near zero ( reset vector)  are used for special purpose activity 
+                      26              ; handling like pointing to interrupts service routines
+                      27              ; Placing code here may give unpredictable results
+                      28      
+0000 020100           29      ljmp main
+                      30     
+                      31      
+                      32              ; The actual task for the main program is  Turn a LED on and OFF are regular inter
+                             val.
+                      33              ; In order to do it we call it after setting a port line high 
+                      34              ; which will drive a LED so that we will have a visual feed back
+                      35              ; note that the LED may be turning on and off very fast, so when 
+                      36              ; we change the delay count its apparent brightness will change.
+                      37              ; in general the LED will be brightest for lowest delay value.
+                      38              
+                      39      
+                      40       
+                      41             ; setup ILC to the locaiton of the Main program
+0100                  42             org 100H
+                      43     
+                      44     
+                      45     
+0100                  46     main:
+                      47     
+                      48     
+0100 00               49             nop
+                      50     
+0101 74FF             51             MOV A,#0FFH                             ; Set the dElay value to store
+0103 7814             52             MOV R0, #DELAY_COUNT    ; Setup address of DELAY_COUNT in R0 register
+0105 F6               53             MOV @R0,A       ; save it
+A51 MACRO ASSEMBLER  SOURCEFILE                                                           07/30/2016 21:53:15 PAGE     2
+
+                      54             
+                      55             
+                      56     
+                      57             ; now for visual presentation
+                      58             ; lets chose a LED say P1.7 ( MSB of port 1)
+                      59     
+0106                  60     Task1 :
+0106 D297             61             setb LED        ; turn on LED
+0108 120112           62             lcall MyDelay
+                      63     
+010B C297             64             clr LED ; turn off LED
+010D 120119           65             lcall MyDelay16
+                      66     
+0110 80F4             67             sjmp Task1
+                      68     
+                      69     
+                      70     ; Define a data at location 20
+                      71     
+  0014                72     DELAY_COUNT     DATA 20
+                      73      
+                      74             ;-------------------------------------------------
+                      75             ;               MyDelay routine Starts
+                      76             ;-------------------------------------------------
+                      77     
+                      78             ; delay count is at locations DELAY_COUNT 
+                      79             ; which is indirectly adressable using R0 or R1
+                      80     
+                      81     
+                      82             ; the routine is to use read the DELAY_COUNT Value
+                      83      
+0112                  84      MyDelay: 
+                      85     
+                      86             ; lets load the value from Memory  using R0 register as a pointer
+0112 7814             87              mov R0,#DELAY_COUNT    ; point to the Delay count value
+0114 E6               88              mov A,@R0      ; get a copy to use      
+0115 F9               89              MOV r1,A 
+                      90              
+0116                  91              TaskD:
+                      92                     ; decrement and if not zero go to TaskD to execute further
+0116 D9FE             93                     djnz R1,TaskD   
+                      94                     
+                      95              ; when r1 is zero control comes here for next instruction
+                      96              
+                      97              ; we go back to the calling program
+0118 22               98              ret
+                      99              
+                     100              ;-------------------------------------------------
+                     101              ;              routine ENDS
+                     102              ;-------------------------------------------------
+                     103     
+                     104     
+0119                 105      MyDelay16: 
+                     106     
+                     107             ; We use Local delay counter of 16 bit (LSB in R2)
+                     108             ; MSB in R1
+0119 7AFF            109              mov R2,#0FFH   ; Delay count LSB value in R0
+011B 7901            110              mov R1,#01H    ; Delay count MSB value in R1
+                     111              
+011D                 112              D_MSB:
+011D 8A00            113                     MOV 0,R2                ; make a copy of the LSB for work
+011F                 114              D_LSB:
+                     115                     ; decrement LSB and if its not zero go to decrement it furthe
+011F D8FE            116                     djnz R0,D_LSB
+                     117                     ; LSB reached zero so now decrement MSB
+                     118                     ; decrement MSB and if its not zero go to decrement it furthe
+                     119                     
+A51 MACRO ASSEMBLER  SOURCEFILE                                                           07/30/2016 21:53:15 PAGE     3
+
+0121 D9FA            120                     djnz R1,D_MSB
+                     121     
+                     122                     ; when both are zero control comes here for next instruction
+                     123              
+                     124                     ; we go back to the calling program
+0123 22              125              ret
+                     126              
+                     127              ;-------------------------------------------------
+                     128              ;              routine ENDS
+                     129              ;-------------------------------------------------
+                     130              
+                     131              
+                     132              ; Let the assembler knwo there are no more instructions to convert (end of file)
+                     133      END
+                              
+                              
+                             
+                             
+A51 MACRO ASSEMBLER  SOURCEFILE                                                           07/30/2016 21:53:15 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COUNT1 . . . . . .  C ADDR   0041H   A   
+DELAY_COUNT. . . .  D ADDR   0014H   A   
+D_LSB. . . . . . .  C ADDR   011FH   A   
+D_MSB. . . . . . .  C ADDR   011DH   A   
+LED. . . . . . . .  B ADDR   0090H.7 A   
+M. . . . . . . . .  C ADDR   0040H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+MYDELAY. . . . . .  C ADDR   0112H   A   
+MYDELAY16. . . . .  C ADDR   0119H   A   
+N1 . . . . . . . .  C ADDR   0042H   A   
+NAME1. . . . . . .  C ADDR   004AH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+STRING1. . . . . .  C ADDR   0043H   A   
+TASK1. . . . . . .  C ADDR   0106H   A   
+TASKD. . . . . . .  C ADDR   0116H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

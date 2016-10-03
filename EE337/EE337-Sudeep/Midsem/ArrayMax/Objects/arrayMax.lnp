@@ -1,0 +1,3 @@
+".\Objects\max_array.obj" 
+TO ".\Objects\arrayMax" 
+PRINT(".\Listings\arrayMax.m51") RAMSIZE(256) 

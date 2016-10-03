@@ -1,0 +1,54 @@
+A51 MACRO ASSEMBLER  Q1                                                                   10/02/2016 11:49:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q1.asm SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+  00B0                 2     OUT EQU P3.0
+                       3     
+0000                   4     ORG 00H
+0000 020100            5     LJMP MAIN
+                       6     
+                       7     
+                       8     ;----------------------------------------------------------------
+0100                   9     ORG 100H
+                      10     
+0100                  11     MAIN:
+0100 D2B0             12                     SETB OUT
+0102                  13     START:
+0102 120105           14                     LCALL DELAY
+                      15     
+0105                  16     DELAY:
+0105 792F             17             MOV R1, #2FH    
+0107                  18     DELAY1:
+0107 D9FE             19             DJNZ R1, DELAY1   
+0109 B2B0             20             CPL OUT
+010B 020102           21                     LJMP START
+                      22     
+                      23     
+                      24     END
+A51 MACRO ASSEMBLER  Q1                                                                   10/02/2016 11:49:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY. . . . . . .  C ADDR   0105H   A   
+DELAY1 . . . . . .  C ADDR   0107H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+OUT. . . . . . . .  B ADDR   00B0H.0 A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+START. . . . . . .  C ADDR   0102H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

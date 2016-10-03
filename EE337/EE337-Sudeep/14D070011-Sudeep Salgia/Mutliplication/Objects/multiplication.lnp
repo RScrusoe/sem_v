@@ -1,0 +1,3 @@
+".\Objects\multiply.obj" 
+TO ".\Objects\multiplication" 
+PRINT(".\Listings\multiplication.m51") RAMSIZE(256) 

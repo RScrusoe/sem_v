@@ -1,0 +1,86 @@
+A51 MACRO ASSEMBLER  MULTIPLY                                                             08/28/2016 10:05:29 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\multiply.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE multiply.asm SET(SMALL) DEBUG PRINT(.\Listings\multiply.lst) OBJECT(.\O
+                      bjects\multiply.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020003            2             LJMP main
+                       3             
+0003                   4             main:
+                       5                     ;MOV 70H, #81H
+                       6                     ;MOV 71H, #05H
+0003 7A00              7                     MOV R2, #00H
+0005 7B00              8                     MOV R3, #00H
+0007 7C00              9                     MOV R4, #00H
+                      10                     
+                      11                     
+0009 7870             12                     MOV R0, #70H
+000B 7971             13                     MOV R1, #71H
+000D C3               14                     CLR C
+000E E6               15                     MOV A, @R0
+000F 5480             16                     ANL A, #80H
+0011 33               17                     RLC A
+0012 33               18                     RLC A
+0013 F5F0             19                     MOV B, A
+0015 C3               20                     CLR C
+0016 E7               21                     MOV A, @R1
+0017 5480             22                     ANL A, #80H
+0019 33               23                     RLC A
+001A 33               24                     RLC A
+001B 65F0             25                     XRL A,B
+001D C3               26                     CLR C
+001E 13               27                     RRC A
+001F 13               28                     RRC A
+0020 F5F0             29                     MOV B, A
+                      30                     
+0022 E6               31                     MOV A, @R0
+0023 547F             32                     ANL A, #7FH
+0025 FA               33                     MOV R2, A
+0026 E7               34                     MOV A, @R1
+0027 547F             35                     ANL A, #7FH
+0029 FB               36                     MOV R3, A
+                      37                     
+002A C3               38                     CLR C
+002B 7400             39                     MOV A, #00H
+                      40                     
+002D                  41                     up:
+002D 2A               42                     ADD A, R2
+002E 5002             43                     JNC down
+0030 0C               44                             INC R4
+0031 C3               45                             CLR C
+0032                  46                     down:
+0032 DBF9             47                     DJNZ R3, up
+                      48                     
+0034 F572             49                     MOV 72H, A
+0036 EC               50                     MOV A, R4
+0037 45F0             51                     ORL A, B
+0039 F573             52                     MOV 73H, A
+                      53                     
+003B 80FE             54                     stop: sjmp stop
+                      55                     
+                      56     END
+                                             
+A51 MACRO ASSEMBLER  MULTIPLY                                                             08/28/2016 10:05:29 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DOWN . . . . . . .  C ADDR   0032H   A   
+MAIN . . . . . . .  C ADDR   0003H   A   
+STOP . . . . . . .  C ADDR   003BH   A   
+UP . . . . . . . .  C ADDR   002DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

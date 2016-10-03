@@ -1,0 +1,3 @@
+".\Objects\bin2ascii.obj" 
+TO ".\Objects\binary2ascii" 
+PRINT(".\Listings\binary2ascii.m51") RAMSIZE(256) 

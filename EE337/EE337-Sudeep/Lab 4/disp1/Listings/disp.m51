@@ -1,0 +1,166 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/22/2016  15:28:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\display_values.obj TO .\Objects\disp PRINT (.\Listings\disp.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\display_values.obj (DISPLAY_VALUES)
+
+
+LINK MAP OF MODULE:  .\Objects\disp (DISPLAY_VALUES)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     030CH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\disp (DISPLAY_VALUES)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DISPLAY_VALUES
+  C:01AAH         SYMBOL        DELAY
+  C:0151H         SYMBOL        DELAY2SEC
+  C:0100H         SYMBOL        DISPLAYINITIALVALUES
+  C:013EH         SYMBOL        DISPLAYNULL
+  C:0120H         SYMBOL        DISPLAY_VALUES
+  C:0196H         SYMBOL        EXIT
+  C:0177H         SYMBOL        LCDINITCOMMON
+  C:0184H         SYMBOL        LCD_COMMAND
+  D:00A0H         SYMBOL        LCD_DATA
+  B:0080H.2       SYMBOL        LCD_EN
+  C:0162H         SYMBOL        LCD_INIT
+  B:0080H.0       SYMBOL        LCD_RS
+  B:0080H.1       SYMBOL        LCD_RW
+  C:0199H         SYMBOL        LCD_SENDDATA
+  C:018BH         SYMBOL        LCD_SEND_LOOP
+  C:0189H         SYMBOL        LCD_SEND_STRING
+  C:0155H         SYMBOL        LOOP1
+  C:01B2H         SYMBOL        LOOP1DELAY
+  C:0157H         SYMBOL        LOOP2
+  C:01B0H         SYMBOL        LOOP2DELAY
+  C:0159H         SYMBOL        LOOP3
+  C:0123H         SYMBOL        LOOP_DISP
+  C:0300H         SYMBOL        MY_STRING1
+  C:0306H         SYMBOL        MY_STRING2
+  D:0080H         SYMBOL        P0
+  D:0090H         SYMBOL        P1
+  D:00A0H         SYMBOL        P2
+  C:0148H         SYMBOL        READNIBBLE
+  C:0000H         LINE#         7
+  C:0100H         LINE#         13
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  15:28:10  PAGE 2
+
+
+  C:0103H         LINE#         14
+  C:0106H         LINE#         15
+  C:0109H         LINE#         16
+  C:010CH         LINE#         17
+  C:010FH         LINE#         18
+  C:0112H         LINE#         19
+  C:0115H         LINE#         20
+  C:0118H         LINE#         21
+  C:011BH         LINE#         22
+  C:011DH         LINE#         23
+  C:011FH         LINE#         24
+  C:0120H         LINE#         28
+  C:0123H         LINE#         30
+  C:0126H         LINE#         31
+  C:0129H         LINE#         32
+  C:012CH         LINE#         33
+  C:012DH         LINE#         34
+  C:012EH         LINE#         35
+  C:0130H         LINE#         36
+  C:0131H         LINE#         37
+  C:0132H         LINE#         38
+  C:0133H         LINE#         40
+  C:0135H         LINE#         41
+  C:0138H         LINE#         42
+  C:0139H         LINE#         43
+  C:013CH         LINE#         45
+  C:013EH         LINE#         47
+  C:0141H         LINE#         48
+  C:0143H         LINE#         49
+  C:0146H         LINE#         50
+  C:0148H         LINE#         56
+  C:014BH         LINE#         57
+  C:014DH         LINE#         58
+  C:014FH         LINE#         59
+  C:0150H         LINE#         60
+  C:0151H         LINE#         63
+  C:0153H         LINE#         64
+  C:0155H         LINE#         66
+  C:0157H         LINE#         68
+  C:0159H         LINE#         70
+  C:015BH         LINE#         71
+  C:015DH         LINE#         72
+  C:015FH         LINE#         73
+  C:0161H         LINE#         74
+  C:0162H         LINE#         81
+  C:0165H         LINE#         82
+  C:0167H         LINE#         84
+  C:016AH         LINE#         85
+  C:016CH         LINE#         87
+  C:016FH         LINE#         88
+  C:0171H         LINE#         90
+  C:0174H         LINE#         91
+  C:0176H         LINE#         93
+  C:0177H         LINE#         96
+  C:0179H         LINE#         97
+  C:017BH         LINE#         98
+  C:017DH         LINE#         99
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2016  15:28:10  PAGE 3
+
+
+  C:017FH         LINE#         100
+  C:0181H         LINE#         101
+  C:0183H         LINE#         102
+  C:0184H         LINE#         105
+  C:0186H         LINE#         106
+  C:0188H         LINE#         107
+  C:0189H         LINE#         111
+  C:018BH         LINE#         113
+  C:018CH         LINE#         114
+  C:018DH         LINE#         115
+  C:018FH         LINE#         116
+  C:0191H         LINE#         117
+  C:0193H         LINE#         118
+  C:0194H         LINE#         119
+  C:0196H         LINE#         121
+  C:0198H         LINE#         122
+  C:0199H         LINE#         125
+  C:019BH         LINE#         126
+  C:019DH         LINE#         127
+  C:019FH         LINE#         128
+  C:01A1H         LINE#         129
+  C:01A3H         LINE#         130
+  C:01A5H         LINE#         131
+  C:01A7H         LINE#         132
+  C:01A9H         LINE#         133
+  C:01AAH         LINE#         137
+  C:01ACH         LINE#         138
+  C:01AEH         LINE#         139
+  C:01B0H         LINE#         140
+  C:01B2H         LINE#         141
+  C:01B4H         LINE#         142
+  C:01B6H         LINE#         143
+  C:01B8H         LINE#         144
+  C:01BAH         LINE#         145
+  -------         ENDMOD        DISPLAY_VALUES
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00CAH BYTE ( 9%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=780
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
