@@ -1,0 +1,161 @@
+A51 MACRO ASSEMBLER  HW4_Q2B                                                              08/22/2016 14:06:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\hw4_q2b.obj
+ASSEMBLER INVOKED BY: E:\KEIL\C51\BIN\A51.EXE hw4_q2b.asm SET(SMALL) DEBUG PRINT(.\Listings\hw4_q2b.lst) OBJECT(.\Object
+                      s\hw4_q2b.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; This subroutine writes characters on the LCD
+  00A0                 2     LCD_data equ P2    ;LCD Data port
+  0080                 3     LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 4     LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 5     LCD_en   equ P0.2  ;LCD Enable
+                       6     
+0000                   7     ORG 0000H
+0000 120249            8     Lcall ReadValues
+                       9     
+0200                  10     org 200h
+                      11     
+0200                  12     DELAY:
+                      13              
+                      14                     USING 0         ;ASSEMBLER DIRECTIVE TO INDICATE REGISTER BANK0
+                      15                     
+0200 C0E0             16                     push 0E0H               
+0202 C001             17             PUSH 1          ; STORE R1 (BANK O) ON THE STACK
+0204 C002             18             PUSH 2
+0206 C003             19                     PUSH 3
+                      20                     
+0208 E507             21                     MOV A, 7                                ;store delay to accumulator  R7 con
+                             tains delay in sec
+020A 75F014           22                     MOV B, #014H                    ;for 1/2 second delay BACK1 loop should run
+                              10 times  hence multiplying by 10 
+020D A4               23                     MUL AB
+020E F503             24                     MOV 3,A
+0210                  25                     BACK2:                                  ;loop for required delay
+0210 7AC8             26                             MOV R2,#200                     ;Loop for 50ms delay 
+0212                  27                             BACK1:
+0212 79FF             28                                     MOV R1,#0FFH
+0214                  29                                     BACK:
+0214 D9FE             30                                     DJNZ R1, BACK
+0216 DAFA             31                             DJNZ R2, BACK1
+0218 DBF6             32                     DJNZ R3, BACK2
+                      33                     
+021A D003             34                     POP 3   ; STORE R1 (BANK O) ON THE STACK
+021C D002             35             POP 2
+021E D001             36                     POP 1
+0220 D0E0             37                     POP 0E0H
+                      38     
+0222 22               39             RET
+                      40              
+0223                  41      readnibble:
+0223 C0E0             42                     push 0E0H
+0225 7590FF           43                     MOV P1, #0FFH           ; set pins 0-3 for configuring as input pins
+0228 E590             44                     MOV A, P1                       ; read value on pins
+022A 540F             45                     ANL A, #00FH            ;to extract lower nibble (and with 1111 gives the v
+                             alue otself )
+022C F500             46                     MOV 0, A                        
+022E D0E0             47                     POP 0E0H
+0230 22               48                     RET
+                      49                     
+                      50                     
+0231                  51     packNibbles:
+                      52     
+0231 C0E0             53                     push 0e0H
+0233 C000             54                     Push 0
+A51 MACRO ASSEMBLER  HW4_Q2B                                                              08/22/2016 14:06:32 PAGE     2
+
+0235 C007             55                     Push 7
+                      56                     ;------------read upper nibble-----------------------------
+                      57                     ;MOV P1, #0FFH          ;turn on all 4 leds (routine is ready to accept inp
+                             ut)
+                      58                     ;MOV 7, #5                      ;for 5 sec delay
+                      59                     ;lcall delay                    ;wait for 5 sec during which user can give 
+                             input 
+                      60                     ;MOV P1, #0FH           ;clear pins P1.4 to P1.7
+                      61                     
+0237 120223           62                     lcall readnibble        ;read higher nibble
+                      63                     ;MOV 7, #1                      ;for 1 sec delay
+023A E8               64                     mov A, r0
+023B C4               65                     swap A
+                      66                     ;lcall delay                    ;wait for one sec
+                      67                     
+                      68                     ;mov p1, A                      ;show upper nibble on led
+                      69                     ;mov 7, #5
+                      70                     ;lcall delay
+                      71                     
+                      72                     ;---------------------read lower nibble--------------------------------
+                      73                     ;MOV P1, #0FFH          ;turn on all 4 leds (routine is ready to accept inp
+                             ut)
+                      74                     ;MOV 7, #5                      ;for 5 sec delay
+                      75                     ;lcall delay                    ;wait for 5 sec during which user can give 
+                             input 
+                      76                     ;MOV P1, #0FH           ;clear pins P1.4 to P1.7
+                      77                     
+023C 120223           78                     lcall readnibble        ;read higher nibble
+                      79                     ;MOV 7, #1                      ;for 1 sec delay
+                      80                     ;lcall delay
+                      81                     
+023F 48               82                     ORL A, R0                       ;pack byte and store in 4FH
+0240 F54F             83                     MOV 4FH, A 
+                      84                     
+                      85                     ;SWAP A
+                      86                     ;ORL A, #0FH
+                      87                     ;MOV P1, A                      ; show lower nibble to led
+                      88                     ;MOV 7, #5                      ;for 1 sec delay
+                      89                     ;lcall delay
+                      90                     
+0242 D007             91                     Pop 7
+0244 D000             92                     POP 0
+0246 D0E0             93                     POP 0e0H
+0248 22               94                     ret
+                      95                     
+0249                  96     ReadValues:
+0249 C0E0             97                     Push 0E0H
+024B C000             98                     Push 0
+024D C007             99                     Push 7
+                     100                     
+024F 855007          101                     Mov 7, 50H                      ;R7 contains value K
+0252 A851            102                     Mov R0, 51H                     ; R0 contains destination location
+                     103     
+0254                 104             write_loop:
+0254 120231          105                             Lcall packNibbles
+0257 E54F            106                             MOV A, 4FH
+0259 F6              107                             MOV @R0, A
+025A 08              108                             INC R0
+025B DFF7            109                             DJNZ R7, write_loop
+025D 22              110                     RET
+                     111     
+                     112     End
+A51 MACRO ASSEMBLER  HW4_Q2B                                                              08/22/2016 14:06:32 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0214H   A   
+BACK1. . . . . . .  C ADDR   0212H   A   
+BACK2. . . . . . .  C ADDR   0210H   A   
+DELAY. . . . . . .  C ADDR   0200H   A   
+LCD_DATA . . . . .  D ADDR   00A0H   A   
+LCD_EN . . . . . .  B ADDR   0080H.2 A   
+LCD_RS . . . . . .  B ADDR   0080H.0 A   
+LCD_RW . . . . . .  B ADDR   0080H.1 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PACKNIBBLES. . . .  C ADDR   0231H   A   
+READNIBBLE . . . .  C ADDR   0223H   A   
+READVALUES . . . .  C ADDR   0249H   A   
+WRITE_LOOP . . . .  C ADDR   0254H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

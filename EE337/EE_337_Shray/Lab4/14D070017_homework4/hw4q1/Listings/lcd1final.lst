@@ -1,0 +1,278 @@
+A51 MACRO ASSEMBLER  LCD1FINAL                                                            08/22/2016 14:03:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\lcd1final.obj
+ASSEMBLER INVOKED BY: E:\KEIL\C51\BIN\A51.EXE lcd1final.asm SET(SMALL) DEBUG PRINT(.\Listings\lcd1final.lst) OBJECT(.\Ob
+                      jects\lcd1final.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; This subroutine writes characters on the LCD
+  00A0                 2     LCD_data equ P2    ;LCD Data port
+  0080                 3     LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 4     LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 5     LCD_en   equ P0.2  ;LCD Enable
+                       6     
+0000                   7     ORG 0000H
+0000 020200            8     ljmp start
+                       9     
+0200                  10     org 200h
+0200                  11     start:
+                      12     
+                      13     ;------------------------Value Storage-----------------------------------------------------
+                             ------------
+                      14     ;storing the values using indirect addressing here
+0200 7890             15     mov R0,#90H
+0202 7445             16     mov A,#45H ;E
+0204 F6               17     mov @R0,A
+                      18     
+0205 08               19     inc R0
+0206 7445             20     mov A,#45H ;E
+0208 F6               21     mov @R0,A
+                      22     
+0209 08               23     inc R0
+020A 7420             24     mov A,#20H ;space
+020C F6               25     mov @R0,A
+                      26     
+020D 08               27     inc R0
+020E 7433             28     mov A,#33H ;3
+0210 F6               29     mov @R0,A
+                      30     
+0211 08               31     inc R0
+0212 7433             32     mov A,#33H ;3
+0214 F6               33     mov @R0,A
+                      34     
+0215 08               35     inc R0
+0216 7437             36     mov A,#37H ;7
+0218 F6               37     mov @R0,A
+                      38     
+0219 08               39     inc R0
+021A 7420             40     mov A,#20H ;space
+021C F6               41     mov @R0,A
+                      42     
+021D 08               43     inc R0
+021E 742D             44     mov A,#2DH ;-
+0220 F6               45     mov @R0,A
+                      46     
+0221 08               47     inc R0
+0222 7420             48     mov A,#20H ;space
+0224 F6               49     mov @R0,A
+                      50     
+0225 08               51     inc R0
+0226 744C             52     mov A,#4CH ;L
+0228 F6               53     mov @R0,A
+                      54     
+0229 08               55     inc R0
+022A 7441             56     mov A,#41H ;A
+A51 MACRO ASSEMBLER  LCD1FINAL                                                            08/22/2016 14:03:58 PAGE     2
+
+022C F6               57     mov @R0,A
+                      58     
+022D 08               59     inc R0
+022E 7442             60     mov A,#42H ;B
+0230 F6               61     mov @R0,A
+                      62     
+0231 08               63     inc R0
+0232 7420             64     mov A,#20H ;space
+0234 F6               65     mov @R0,A
+                      66     
+0235 08               67     inc R0
+0236 7434             68     mov A,#34H ;4
+0238 F6               69     mov @R0,A
+                      70     
+0239 08               71     inc R0
+023A 7400             72     mov A,#00H
+023C F6               73     mov @R0,A
+                      74     
+                      75     
+023D 78A0             76     mov R0,#0A0H
+023F 7453             77     mov A,#53H ;S
+0241 F6               78     mov @R0,A
+                      79     
+0242 08               80     inc R0
+0243 7448             81     mov A,#48H ;H
+0245 F6               82     mov @R0,A
+                      83     
+0246 08               84     inc R0
+0247 7452             85     mov A,#52H ;R
+0249 F6               86     mov @R0,A
+                      87     
+024A 08               88     inc R0
+024B 7441             89     mov A,#41H ;A
+024D F6               90     mov @R0,A
+                      91     
+024E 08               92     inc R0
+024F 7459             93     mov A,#59H ;Y
+0251 F6               94     mov @R0,A
+                      95     
+                      96     
+                      97     
+                      98     ;------------------------------------------------------------------------------
+                      99     ;the rest of the code is the same as that gven in LCD
+0252 75A000          100           mov P2,#00h
+0255 759000          101           mov P1,#00h
+                     102     
+                     103               ;initial delay for lcd power up
+                     104     
+                     105             ;here1:setb p1.0
+0258 51E7            106               acall delay
+                     107             ;clr p1.0
+025A 51E7            108               acall delay
+                     109             ;sjmp here1
+                     110     
+                     111     
+025C 517C            112               acall lcd_init      ;initialise LCD
+                     113             
+025E 51E7            114               acall delay
+0260 51E7            115               acall delay
+0262 51E7            116               acall delay
+0264 7481            117               mov a,#81h             ;Put cursor on first row,5 column
+0266 51B9            118               acall lcd_command      ;send command to LCD
+0268 51E7            119               acall delay
+026A 7890            120               mov   R0,#90H            ;Load DPTR with sring1 Addr
+026C 51D9            121               acall lcd_sendstring     ;call text strings sending routine
+026E 51E7            122               acall delay
+A51 MACRO ASSEMBLER  LCD1FINAL                                                            08/22/2016 14:03:58 PAGE     3
+
+                     123     
+0270 74C1            124               mov a,#0C1h             ;Put cursor on second row,3 column
+0272 51B9            125               acall lcd_command
+0274 51E7            126               acall delay
+0276 78A0            127               mov   R0,#0A0H
+0278 51D9            128               acall lcd_sendstring
+                     129     
+027A 80FE            130     here: sjmp here                          
+                     131     
+                     132     
+                     133     
+                     134     ;------------------------LCD Initialisation routine----------------------------------------
+                             ------------
+027C                 135     lcd_init:
+027C 75A038          136              mov   LCD_data,#38H  ;Function set: 2 Line, 8-bit, 5x7 dots
+027F C280            137              clr   LCD_rs         ;Selected command register
+0281 C281            138              clr   LCD_rw         ;We are writing in instruction register
+0283 D282            139              setb  LCD_en         ;Enable H->L
+0285 51E7            140                      acall delay
+0287 C282            141              clr   LCD_en
+0289 51E7            142                  acall delay
+                     143     
+028B 75A00C          144              mov   LCD_data,#0CH  ;Display on, Curson off
+028E C280            145              clr   LCD_rs         ;Selected instruction register
+0290 C281            146              clr   LCD_rw         ;We are writing in instruction register
+0292 D282            147              setb  LCD_en         ;Enable H->L
+0294 51E7            148                      acall delay
+0296 C282            149              clr   LCD_en
+                     150              
+0298 51E7            151                      acall delay
+029A 75A001          152              mov   LCD_data,#01H  ;Clear LCD
+029D C280            153              clr   LCD_rs         ;Selected command register
+029F C281            154              clr   LCD_rw         ;We are writing in instruction register
+02A1 D282            155              setb  LCD_en         ;Enable H->L
+02A3 51E7            156                      acall delay
+02A5 C282            157              clr   LCD_en
+                     158              
+02A7 51E7            159                      acall delay
+                     160     
+02A9 75A006          161              mov   LCD_data,#06H  ;Entry mode, auto increment with no shift
+02AC C280            162              clr   LCD_rs         ;Selected command register
+02AE C281            163              clr   LCD_rw         ;We are writing in instruction register
+02B0 D282            164              setb  LCD_en         ;Enable H->L
+02B2 51E7            165                      acall delay
+02B4 C282            166              clr   LCD_en
+                     167     
+02B6 51E7            168                      acall delay
+                     169              
+02B8 22              170              ret                  ;Return from routine
+                     171     
+                     172     ;-----------------------command sending routine-------------------------------------
+02B9                 173      lcd_command:
+02B9 F5A0            174              mov   LCD_data,A     ;Move the command to LCD port
+02BB C280            175              clr   LCD_rs         ;Selected command register
+02BD C281            176              clr   LCD_rw         ;We are writing in instruction register
+02BF D282            177              setb  LCD_en         ;Enable H->L
+02C1 51E7            178                      acall delay
+02C3 C282            179              clr   LCD_en
+02C5 51E7            180                      acall delay
+                     181         
+02C7 22              182              ret  
+                     183     ;-----------------------data sending routine-------------------------------------          
+                                       
+02C8                 184      lcd_senddata:
+02C8 F5A0            185              mov   LCD_data,A     ;Move the command to LCD port
+02CA D280            186              setb  LCD_rs         ;Selected data register
+A51 MACRO ASSEMBLER  LCD1FINAL                                                            08/22/2016 14:03:58 PAGE     4
+
+02CC C281            187              clr   LCD_rw         ;We are writing
+02CE D282            188              setb  LCD_en         ;Enable H->L
+02D0 51E7            189                      acall delay
+02D2 C282            190              clr   LCD_en
+02D4 51E7            191              acall delay
+02D6 51E7            192                      acall delay
+02D8 22              193              ret                  ;Return from busy routine
+                     194     
+                     195     ;-----------------------text strings sending routine-------------------------------------
+02D9                 196     lcd_sendstring:
+02D9 C0E0            197             push 0e0h
+02DB                 198             lcd_sendstring_loop:
+02DB E4              199                      clr   a                 ;clear Accumulator for any previous data
+02DC E6              200                      mov  a,@R0         ;load the first character in accumulator
+02DD 6005            201                      jz    exit              ;go to exit if zero (if no more ascii )
+02DF 51C8            202                      acall lcd_senddata      ;send first char
+02E1 08              203                      inc   R0                    ;increment data pointer
+02E2 80F7            204                      sjmp  LCD_sendstring_loop    ;jump back to send the next character
+02E4 D0E0            205     exit:    pop 0e0h
+02E6 22              206              ret                     ;End of routine
+                     207     
+                     208     ;----------------------delay routine-----------------------------------------------------
+02E7 C000            209     delay:   push 0
+02E9 C001            210              push 1
+02EB 7801            211              mov r0,#1
+02ED 79FF            212     loop2:   mov r1,#255
+02EF D9FE            213              loop1:  djnz r1, loop1
+02F1 D8FA            214              djnz r0, loop2
+02F3 D001            215              pop 1
+02F5 D000            216              pop 0 
+02F7 22              217              ret
+                     218     
+                     219     ;------------- ROM text strings------------------------------------------------------------
+                             ---
+                     220     ;org 300h
+                     221     ;my_string1:
+                     222     ;         DB   "Pt-51", 00H
+                     223     ;my_string2:
+                     224     ;                DB   "IIT Bombay", 00H
+                     225     end
+                             
+A51 MACRO ASSEMBLER  LCD1FINAL                                                            08/22/2016 14:03:58 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E              T Y P E  V A L U E   ATTRIBUTES
+
+DELAY . . . . . . .  C ADDR   02E7H   A   
+EXIT. . . . . . . .  C ADDR   02E4H   A   
+HERE. . . . . . . .  C ADDR   027AH   A   
+LCD_COMMAND . . . .  C ADDR   02B9H   A   
+LCD_DATA. . . . . .  D ADDR   00A0H   A   
+LCD_EN. . . . . . .  B ADDR   0080H.2 A   
+LCD_INIT. . . . . .  C ADDR   027CH   A   
+LCD_RS. . . . . . .  B ADDR   0080H.0 A   
+LCD_RW. . . . . . .  B ADDR   0080H.1 A   
+LCD_SENDDATA. . . .  C ADDR   02C8H   A   
+LCD_SENDSTRING. . .  C ADDR   02D9H   A   
+LCD_SENDSTRING_LOOP  C ADDR   02DBH   A   
+LOOP1 . . . . . . .  C ADDR   02EFH   A   
+LOOP2 . . . . . . .  C ADDR   02EDH   A   
+P0. . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . .  D ADDR   00A0H   A   
+START . . . . . . .  C ADDR   0200H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

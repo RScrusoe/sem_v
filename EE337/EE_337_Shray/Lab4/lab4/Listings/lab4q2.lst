@@ -1,0 +1,700 @@
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: E:\KEIL\C51\BIN\A51.EXE lab4q2.asm SET(SMALL) DEBUG PRINT(.\Listings\lab4q2.lst) OBJECT(.\Objects\
+                      lab4q2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+  0090                 2     INOUT EQU P1
+                       3     
+                       4     ; This subroutine writes characters on the LCD
+  00A0                 5             LCD_data equ P2    ;LCD Data port
+  0080                 6             LCD_rs   equ P0.0  ;LCD Register Select
+  0081                 7             LCD_rw   equ P0.1  ;LCD Read/Write
+  0082                 8             LCD_en   equ P0.2  ;LCD Enable
+                       9     
+0000                  10     org 00h
+0000 020426           11             ljmp main
+0100                  12             org 0100h
+                      13     
+0100                  14     delay1s: ;1s dealy (previous subroutine)
+0100 C001             15             push 1
+0102 C002             16             push 2
+0104 C003             17             push 3
+0106 C004             18             push 4
+                      19             ;code from previous lab to give 5s delay
+0108 7B02             20             MOV R3,#02H
+010A                  21             DELAY2:
+                      22                     ;RUN 10 TIMES
+010A 7C0A             23                     MOV R4, #0AH
+010C                  24                     DELAY1: 
+                      25                             ;GIVEN PROGRAM FOR DELAY OF 50MS
+010C 7AC8             26                             MOV R2,#200
+010E                  27                             BACK_1:
+010E 79FF             28                                     MOV R1,#0FFH
+0110                  29                                     BACK_0:
+0110 D9FE             30                                             DJNZ R1, BACK_0
+0112                  31                                     DJNZ R2, BACK1_1
+*** __________________________________________________________________^
+*** ERROR #A45 IN 31 (lab4q2.asm, LINE 31): UNDEFINED SYMBOL (PASS-2)
+0114 DCF6             32                             DJNZ R4, DELAY1
+0116 DBF2             33                     DJNZ R3, DELAY2
+0118 D004             34             pop 4
+011A D003             35             pop 3
+011C D002             36             pop 2
+011E D001             37             pop 1 
+0120 22               38             RET
+                      39     
+                      40     
+                      41     
+                      42     
+0121                  43     DELAY:
+                      44              
+                      45                     USING 0         ;ASSEMBLER DIRECTIVE TO INDICATE REGISTER BANK0
+                      46                     
+0121 C0E0             47                     push 0E0H               
+0123 C001             48             PUSH 1          ; STORE R1 (BANK O) ON THE STACK
+0125 C002             49             PUSH 2
+0127 C003             50                     PUSH 3
+                      51                     
+0129 E507             52                     MOV A, 7                                ;store delay to accumulator  R7 contains delay in sec
+012B 75F014           53                     MOV B, #014H                    ;for 1/2 second delay BACK1 loop should run 10 times  hence multiplying by 10 
+012E A4               54                     MUL AB
+012F F503             55                     MOV 3,A
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     2
+
+0131                  56                     BACK2:                                  ;loop for required delay
+0131 7AC8             57                             MOV R2,#200                     ;Loop for 50ms delay 
+0133                  58                             BACK1:
+0133 79FF             59                                     MOV R1,#0FFH
+0135                  60                                     BACK:
+0135 D9FE             61                                     DJNZ R1, BACK
+0137 DAFA             62                             DJNZ R2, BACK1
+0139 DBF6             63                     DJNZ R3, BACK2
+                      64                     
+013B D003             65                     POP 3   ; STORE R1 (BANK O) ON THE STACK
+013D D002             66             POP 2
+013F D001             67                     POP 1
+0141 D0E0             68                     POP 0E0H
+                      69     
+0143 22               70             RET
+                      71     
+0144                  72     wait_for_input:
+0144 C007             73                     Push 7
+0146 7590FF           74                     MOV P1, #0FFH           ;turn on all 4 leds (routine is ready to accept input)
+0149 750705           75                     MOV 7, #5                       ;for 5 sec delay
+014C 120121           76                     lcall delay                     ;wait for 5 sec during which user can give input 
+014F 75900F           77                     MOV P1, #0FH            ;clear pins P1.4 to P1.7
+0152 D007             78                     Pop 7
+0154 22               79                     ret
+0155                  80      readnibble:
+0155 C0E0             81                     push 0E0H
+0157 7590FF           82                     MOV P1, #0FFH           ; set pins 0-3 for configuring as input pins
+015A E590             83                     MOV A, P1                       ; read value on pins
+015C 540F             84                     ANL A, #00FH            ;to extract lower nibble
+015E F500             85                     MOV 0, A
+0160 D0E0             86                     POP 0E0H
+0162 22               87                     RET
+                      88                     
+                      89                     
+0163                  90     packNibbles:
+                      91     
+0163 C0E0             92                     push 0e0H
+0165 C000             93                     Push 0
+0167 C007             94                     Push 7
+                      95                     ;------------read upper nibble-----------------------------
+                      96                     ;lcall wait_for_input
+                      97                     
+0169 120155           98                     lcall readnibble        ;read higher nibble
+                      99                     ;MOV 7, #1                      ;for 1 sec delay
+016C E8              100                     mov A, r0
+016D C4              101                     swap A
+                     102                     ;lcall delay                    ;wait for one sec
+                     103                     
+                     104                     ;mov p1, A                      ;show upper nibble on led
+                     105                     ;mov 7, #5
+                     106                     ;lcall delay
+                     107                     
+                     108                     ;---------------------read lower nibble--------------------------------
+                     109                     ;lcall wait_for_input
+                     110                     
+016E 120155          111                     lcall readnibble        ;read higher nibble
+                     112                     ;MOV 7, #1                      ;for 1 sec delay
+                     113                     ;lcall delay
+                     114                     
+0171 48              115                     ORL A, R0                       ;pack byte and store in 4FH
+0172 F54F            116                     MOV 4FH, A 
+                     117                     
+                     118                     ;SWAP A
+                     119                     ;ORL A, #0FH
+                     120                     ;MOV P1, A                      ; show lower nibble to led
+                     121                     ;MOV 7, #5                      ;for 1 sec delay
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     3
+
+                     122                     ;lcall delay
+                     123                     
+0174 D007            124                     Pop 7
+0176 D000            125                     POP 0
+0178 D0E0            126                     POP 0e0H
+017A 22              127                     ret
+                     128                     
+017B                 129     ReadValues:
+017B C0E0            130                     Push 0E0H
+017D C000            131                     Push 0
+017F C007            132                     Push 7
+                     133                     
+0181 855007          134                     Mov 7, 50H                      ;R7 contains value K
+0184 A851            135                     Mov R0, 51H                     ; R0 contains destination location
+                     136     
+0186                 137             write_loop:
+0186 120163          138                             Lcall packNibbles
+0189 E54F            139                             MOV A, 4FH
+018B F6              140                             MOV @R0, A
+018C 08              141                             INC R0
+018D DFF7            142                             DJNZ R7, write_loop
+018F 22              143                     RET
+                     144                     
+0190                 145     Displayvalues:
+0190 C0E0            146                     Push 0E0H
+0192 C000            147                     Push 0
+0194 C001            148                     Push 1
+0196 C006            149                     Push 6
+0198                 150             Display_Values_continue:
+0198 A851            151                     Mov R0, 51H                     ;add of source is stored in R0
+019A AE50            152                     Mov R6, 50H                     ;K is stored in R7
+                     153                     
+019C 120144          154                     lcall wait_for_input
+019F 75900F          155                     MOV P1, #00FH           ; set pins 0-3 for configuring as input pins
+01A2 E590            156                     MOV A, P1                       ; read value on pins
+01A4 540F            157                     ANL A, #00FH            ;to extract lower nibble
+                     158             
+                     159       
+01A6 B50600          160                     CJNE A, 6, Display_label1
+01A9                 161             Display_label1:
+01A9 501C            162                     JNC Display_label2
+                     163                     
+01AB 28              164                     Add A, R0
+01AC F501            165                     mov 1, A
+                     166                     
+01AE 7483            167                     mov a,#83h               ;Put cursor on first row,5 column
+01B0 5121            168                     acall lcd_command        ;send command to LCD
+01B2 12010C          169                     lcall delay1
+01B5 E7              170                     Mov A, @R1
+01B6 120210          171                     lcall lcd_senddata 
+01B9 12010C          172                     lcall delay1
+                     173     
+01BC 750702          174                     mov 7, #2
+01BF 120121          175                     lcall delay
+01C2 1201D3          176                     lcall lcd_init
+01C5 80D1            177                     sjmp Display_Values_continue
+                     178                     
+01C7                 179             Display_label2:
+01C7 75A001          180                     mov   LCD_data,#01H  ;Clear LCD
+                     181                     
+01CA D006            182                     Pop 6
+01CC D001            183                     Pop 1
+01CE D000            184                     Pop 0 
+01D0 D0E0            185                     Pop 0e0H
+01D2 22              186                     Ret
+                     187     
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     4
+
+                     188     
+01D3                 189     lcd_init:
+01D3 75A038          190                      mov   LCD_data,#38H  ;Function set: 2 Line, 8-bit, 5x7 dots
+01D6 C280            191                      clr   LCD_rs         ;Selected command register
+01D8 C281            192                      clr   LCD_rw         ;We are writing in instruction register
+01DA D282            193                      setb  LCD_en         ;Enable H->L
+01DC 310C            194                      acall delay1
+01DE C282            195                      clr   LCD_en
+01E0 310C            196                      acall delay1
+01E2 75A00C          197                      mov   LCD_data,#0CH  ;Display on, Curson off
+01E5 C280            198                      clr   LCD_rs         ;Selected instruction register
+01E7 C281            199                      clr   LCD_rw         ;We are writing in instruction register
+01E9 D282            200                      setb  LCD_en         ;Enable H->L
+01EB 310C            201                      acall delay1
+01ED C282            202                      clr   LCD_en
+01EF 310C            203                      acall delay1
+01F1 75A001          204                      mov   LCD_data,#01H  ;Clear LCD
+01F4 C280            205                      clr   LCD_rs         ;Selected command register
+01F6 C281            206                      clr   LCD_rw         ;We are writing in instruction register
+01F8 D282            207                      setb  LCD_en         ;Enable H->L
+01FA 310C            208                      acall delay1
+01FC C282            209                      clr   LCD_en
+01FE 310C            210                      acall delay1
+0200 75A006          211                      mov   LCD_data,#06H  ;Entry mode, auto increment with no shift
+0203 C280            212                      clr   LCD_rs         ;Selected command register
+0205 C281            213                      clr   LCD_rw         ;We are writing in instruction register
+0207 D282            214                      setb  LCD_en         ;Enable H->L
+0209 310C            215                      acall delay1
+020B C282            216                      clr   LCD_en
+020D 310C            217                      acall delay1
+                     218                              
+020F 22              219             ret                  ;Return from routine
+                     220                              ;-----------------------data sending routine-------------------------------------                   
+0210                 221             lcd_senddata:
+0210 F5A0            222                      mov   LCD_data,A     ;Move the command to LCD port
+0212 D280            223                      setb  LCD_rs         ;Selected data register
+0214 C281            224                      clr   LCD_rw         ;We are writing
+0216 D282            225                      setb  LCD_en         ;Enable H->L
+0218 310C            226                      acall delay1
+021A C282            227                      clr   LCD_en
+021C 310C            228                      acall delay1
+021E 310C            229                     acall delay1
+0220 22              230             ret                  ;Return from busy routine
+                     231     
+                     232             ;-----------------------command sending routine-------------------------------------
+0221                 233             lcd_command:
+0221 F5A0            234                              mov   LCD_data,A     ;Move the command to LCD port
+0223 C280            235                              clr   LCD_rs         ;Selected command register
+0225 C281            236                              clr   LCD_rw         ;We are writing in instruction register
+0227 D282            237                              setb  LCD_en         ;Enable H->L
+0229 310C            238                              acall delay1
+022B C282            239                              clr   LCD_en
+022D 310C            240                              acall delay1
+                     241                     
+022F 22              242             ret  
+                     243             
+                     244             
+                     245             ;----------------------delay1 routine-----------------------------------------------------
+0230 C000            246             delay1: push 0
+*** _________________________________^
+*** ERROR #A8 IN 246 (lab4q2.asm, LINE 246): ATTEMPT TO DEFINE AN ALREADY DEFINED LABEL
+0232 C001            247                             push 1
+0234 7801            248                             mov r0,#1
+0236 79FF            249             loop2:  mov r1,#255
+0238 D9FE            250                             loop1:  djnz r1, loop1
+023A D8FA            251                                     djnz r0, loop2
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     5
+
+023C D001            252                             pop 1
+023E D000            253                             pop 0 
+0240 22              254             ret
+                     255                      
+                     256                      
+0241                 257             send_nibble1:
+0241 C0E0            258                     push 0e0h
+                     259                           ;clear Accumulator for any previous data
+0243 EB              260                                      mov  a,R3         ;load the first character in accumulator
+0244 5110            261                                      acall lcd_senddata      ;send first char
+0246 D0E0            262                 pop 0e0h
+0248 22              263             ret                     ;End of routine
+                     264             
+0249                 265             send_nibble2:
+0249 C0E0            266                     push 0e0h
+                     267                           ;clear Accumulator for any previous data
+024B EC              268                                      mov  a,R4         ;load the first character in accumulator
+024C 5110            269                                      acall lcd_senddata      ;send first char
+024E D0E0            270                 pop 0e0h
+0250 22              271             ret                     ;End of routine
+0251                 272     shuffleBits:
+0251 C000            273             push 0
+0253 C001            274             push 1
+0255 C002            275             push 2
+0257 A851            276             mov r0, 51h ;a address
+0259 A952            277             mov r1, 52h ;b address
+025B AA50            278             mov r2, 50h ;counter
+025D 1A              279             dec r2
+025E                 280             loop_shuffle: 
+025E E6              281                     mov a, @r0
+025F FB              282                     mov r3, a
+0260 08              283                     inc r0
+0261 E6              284                     mov a, @r0
+0262 18              285                     dec r0
+0263 6B              286                     xrl a, r3
+0264 F7              287                     mov @r1, a
+0265 09              288                     inc r1
+0266 08              289                     inc r0
+0267 DAF5            290                     djnz r2, loop_shuffle
+0269                 291             final_byte:
+0269 E6              292                     mov a, @r0
+026A FB              293                     mov r3, a
+026B A851            294                     mov r0, 51h ;a address
+026D E6              295                     mov a, @r0
+026E 18              296                     dec r0
+026F 6B              297                     xrl a, r3
+0270 F7              298                     mov @r1, a
+0271 09              299                     inc r1
+0272 D002            300             pop 2
+0274 D001            301             pop 1
+0276 D000            302             pop 0
+0278 22              303             ret
+                     304     
+                     305     
+                     306     
+                     307     
+0279                 308     check_locations:
+0279 C000            309             push 0
+027B C001            310             push 1
+027D C002            311             push 2
+027F C003            312             push 3
+0281 A851            313             mov r0, 51h ;a address
+0283 AA50            314             mov r2, 50h ;counter
+0285                 315             loop_shuffle1: 
+0285 E6              316                     mov a, @r0
+0286 FB              317                     mov r3, a
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     6
+
+0287 08              318                     inc r0
+0288 E6              319                     mov a, @r0
+0289 6B              320                     xrl a, r3
+                     321                     
+028A 08              322                     inc r0
+028B DAF8            323                     djnz r2, loop_shuffle1
+028D D003            324             pop 3
+028F D002            325             pop 2
+0291 D001            326             pop 1
+0293 D000            327             pop 0
+0295 22              328             ret
+                     329             
+                     330     
+                     331     
+                     332     
+                     333     
+0296                 334     display_2:
+0296 C000            335     push 0 
+0298 C001            336     push 1
+029A C002            337     push 2
+029C C003            338     push 3
+029E C005            339     push 5
+                     340     
+02A0 7D81            341     mov r5, #81h
+02A2 A860            342     mov r0, 60h
+02A4 E6              343     mov a, @r0
+02A5 ED              344     mov a, r5
+02A6 5121            345     acall lcd_command
+02A8 310C            346     acall delay1;Put cursor on first row,5 column
+02AA 120241          347     LCALL send_nibble1
+02AD 310C            348     acall delay1
+02AF 0D              349     inc r5
+02B0 ED              350     mov a,r5        
+02B1 5121            351     acall lcd_command
+02B3 310C            352     acall delay1    ;Put cursor on first row,5 column
+02B5 120249          353     LCALL send_nibble2
+                     354     
+02B8 7D84            355     mov r5, #84h
+02BA 08              356     INC R0
+02BB E6              357     mov a, @r0
+02BC ED              358     mov a, r5
+02BD 5121            359     acall lcd_command
+02BF 310C            360     acall delay1;Put cursor on first row,5 column
+02C1 120241          361     LCALL send_nibble1
+02C4 310C            362     acall delay1
+02C6 0D              363     inc r5
+02C7 ED              364     mov a,r5        
+02C8 5121            365     acall lcd_command
+02CA 310C            366     acall delay1    ;Put cursor on first row,5 column
+02CC 120249          367     LCALL send_nibble2
+                     368     
+02CF 7D87            369     mov r5, #87h
+02D1 08              370     INC R0
+02D2 E6              371     mov a, @r0
+02D3 ED              372     mov a, r5
+02D4 5121            373     acall lcd_command
+02D6 310C            374     acall delay1;Put cursor on first row,5 column
+02D8 120241          375     LCALL send_nibble1
+02DB 310C            376     acall delay1
+02DD 0D              377     inc r5
+02DE ED              378     mov a,r5        
+02DF 5121            379     acall lcd_command
+02E1 310C            380     acall delay1    ;Put cursor on first row,5 column
+02E3 120249          381     LCALL send_nibble2
+                     382     
+02E6 7D8A            383     mov r5, #8ah
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     7
+
+02E8 08              384     INC R0
+02E9 E6              385     mov a, @r0
+02EA ED              386     mov a, r5
+02EB 5121            387     acall lcd_command
+02ED 310C            388     acall delay1;Put cursor on first row,5 column
+02EF 120241          389     LCALL send_nibble1
+02F2 310C            390     acall delay1
+02F4 0D              391     inc r5
+02F5 ED              392     mov a,r5        
+02F6 5121            393     acall lcd_command
+02F8 310C            394     acall delay1    ;Put cursor on first row,5 column
+02FA 120249          395     LCALL send_nibble2
+                     396     
+                     397     
+02FD 7DC1            398     mov r5, #0c1h
+02FF 08              399     INC R0
+0300 E6              400     mov a, @r0
+0301 ED              401     mov a, r5
+0302 5121            402     acall lcd_command
+0304 310C            403     acall delay1;Put cursor on first row,5 column
+0306 120241          404     LCALL send_nibble1
+0309 310C            405     acall delay1
+030B 0D              406     inc r5
+030C ED              407     mov a,r5        
+030D 5121            408     acall lcd_command
+030F 310C            409     acall delay1    ;Put cursor on first row,5 column
+0311 120249          410     LCALL send_nibble2
+                     411     
+0314 7DC4            412     mov r5, #0c4h
+0316 08              413     INC R0
+0317 E6              414     mov a, @r0
+0318 ED              415     mov a, r5
+0319 5121            416     acall lcd_command
+031B 310C            417     acall delay1;Put cursor on first row,5 column
+031D 120241          418     LCALL send_nibble1
+0320 310C            419     acall delay1
+0322 0D              420     inc r5
+0323 ED              421     mov a,r5        
+0324 5121            422     acall lcd_command
+0326 310C            423     acall delay1    ;Put cursor on first row,5 column
+0328 120249          424     LCALL send_nibble2
+                     425     
+032B 7DC7            426     mov r5, #0c7h
+032D 08              427     INC R0
+032E E6              428     mov a, @r0
+032F ED              429     mov a, r5
+0330 5121            430     acall lcd_command
+0332 310C            431     acall delay1;Put cursor on first row,5 column
+0334 120241          432     LCALL send_nibble1
+0337 310C            433     acall delay1
+0339 0D              434     inc r5
+033A ED              435     mov a,r5        
+033B 5121            436     acall lcd_command
+033D 310C            437     acall delay1    ;Put cursor on first row,5 column
+033F 120249          438     LCALL send_nibble2
+                     439     
+0342 7DCA            440     mov r5, #0cah
+0344 08              441     INC R0
+0345 E6              442     mov a, @r0
+0346 ED              443     mov a, r5
+0347 5121            444     acall lcd_command
+0349 310C            445     acall delay1;Put cursor on first row,5 column
+034B 120241          446     LCALL send_nibble1
+034E 310C            447     acall delay1
+0350 0D              448     inc r5
+0351 ED              449     mov a,r5        
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     8
+
+0352 5121            450     acall lcd_command
+0354 310C            451     acall delay1    ;Put cursor on first row,5 column
+0356 120249          452     LCALL send_nibble2
+                     453     
+0359 120100          454     lcall delay1s
+                     455     
+035C 120100          456     lcall delay1s
+                     457     
+035F 120100          458     lcall delay1s
+                     459     
+0362 120100          460     lcall delay1s
+                     461     
+0365 120100          462     lcall delay1s
+                     463     ;--------@@@@@@#######--------------
+                     464     
+0368 7D81            465     mov r5, #81h
+036A 08              466     INC R0
+036B E6              467     mov a, @r0
+036C ED              468     mov a, r5
+036D 5121            469     acall lcd_command
+036F 310C            470     acall delay1;Put cursor on first row,5 column
+0371 120241          471     LCALL send_nibble1
+0374 310C            472     acall delay1
+0376 0D              473     inc r5
+0377 ED              474     mov a,r5        
+0378 5121            475     acall lcd_command
+037A 310C            476     acall delay1    ;Put cursor on first row,5 column
+037C 120249          477     LCALL send_nibble2
+                     478     
+037F 7D84            479     mov r5, #84h
+0381 08              480     INC R0
+0382 E6              481     mov a, @r0
+0383 ED              482     mov a, r5
+0384 5121            483     acall lcd_command
+0386 310C            484     acall delay1;Put cursor on first row,5 column
+0388 120241          485     LCALL send_nibble1
+038B 310C            486     acall delay1
+038D 0D              487     inc r5
+038E ED              488     mov a,r5        
+038F 5121            489     acall lcd_command
+0391 310C            490     acall delay1    ;Put cursor on first row,5 column
+0393 120249          491     LCALL send_nibble2
+                     492     
+0396 7D87            493     mov r5, #87h
+0398 08              494     INC R0
+0399 E6              495     mov a, @r0
+039A ED              496     mov a, r5
+039B 5121            497     acall lcd_command
+039D 310C            498     acall delay1;Put cursor on first row,5 column
+039F 120241          499     LCALL send_nibble1
+03A2 310C            500     acall delay1
+03A4 0D              501     inc r5
+03A5 ED              502     mov a,r5        
+03A6 5121            503     acall lcd_command
+03A8 310C            504     acall delay1    ;Put cursor on first row,5 column
+03AA 120249          505     LCALL send_nibble2
+                     506     
+03AD 7D8A            507     mov r5, #8ah
+03AF 08              508     INC R0
+03B0 ED              509     mov a, r5
+03B1 5121            510     acall lcd_command
+03B3 310C            511     acall delay1;Put cursor on first row,5 column
+03B5 120241          512     LCALL send_nibble1
+03B8 310C            513     acall delay1
+03BA 0D              514     inc r5
+03BB ED              515     mov a,r5        
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE     9
+
+03BC 5121            516     acall lcd_command
+03BE 310C            517     acall delay1    ;Put cursor on first row,5 column
+03C0 120249          518     LCALL send_nibble2
+                     519     
+                     520     
+03C3 7DC1            521     mov r5, #0c1h
+03C5 08              522     INC R0
+03C6 ED              523     mov a, r5
+03C7 5121            524     acall lcd_command
+03C9 310C            525     acall delay1;Put cursor on first row,5 column
+03CB 120241          526     LCALL send_nibble1
+03CE 310C            527     acall delay1
+03D0 0D              528     inc r5
+03D1 ED              529     mov a,r5        
+03D2 5121            530     acall lcd_command
+03D4 310C            531     acall delay1    ;Put cursor on first row,5 column
+03D6 120249          532     LCALL send_nibble2
+                     533     
+03D9 7DC4            534     mov r5, #0c4h
+03DB 08              535     INC R0
+03DC ED              536     mov a, r5
+03DD 5121            537     acall lcd_command
+03DF 310C            538     acall delay1;Put cursor on first row,5 column
+03E1 120241          539     LCALL send_nibble1
+03E4 310C            540     acall delay1
+03E6 0D              541     inc r5
+03E7 ED              542     mov a,r5        
+03E8 5121            543     acall lcd_command
+03EA 310C            544     acall delay1    ;Put cursor on first row,5 column
+03EC 120249          545     LCALL send_nibble2
+                     546     
+03EF 7DC7            547     mov r5, #0c7h
+03F1 08              548     INC R0
+03F2 ED              549     mov a, r5
+03F3 5121            550     acall lcd_command
+03F5 310C            551     acall delay1;Put cursor on first row,5 column
+03F7 120241          552     LCALL send_nibble1
+03FA 310C            553     acall delay1
+03FC 0D              554     inc r5
+03FD ED              555     mov a,r5        
+03FE 5121            556     acall lcd_command
+0400 310C            557     acall delay1    ;Put cursor on first row,5 column
+0402 120249          558     LCALL send_nibble2
+                     559     
+0405 7DCA            560     mov r5, #0cah
+0407 08              561     INC R0
+0408 ED              562     mov a, r5
+0409 5121            563     acall lcd_command
+040B 310C            564     acall delay1;Put cursor on first row,5 column
+040D 120241          565     LCALL send_nibble1
+0410 310C            566     acall delay1
+0412 0D              567     inc r5
+0413 ED              568     mov a,r5        
+0414 5121            569     acall lcd_command
+0416 310C            570     acall delay1    ;Put cursor on first row,5 column
+0418 120249          571     LCALL send_nibble2
+                     572     ;---------$#$*&(-----------------------
+041B D005            573     pop 5
+041D D003            574     pop 3
+041F D002            575     pop 2
+0421 D001            576     pop 1
+0423 D000            577     pop 0
+0425 22              578     ret
+                     579     
+                     580     
+0426                 581     MAIN:
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE    10
+
+0426 1201D3          582             lcall lcd_init
+0429 120221          583             lcall lcd_command
+042C 7581CF          584             MOV SP,#0CFH;-----------------------Initialize STACK POINTER
+042F 755002          585             MOV 50H,#2;------------------------Set value of K
+0432 755160          586             MOV 51H,#60h;------------------------Array A start location
+0435 754F00          587             MOV 4FH,#00h;------------------------Clear location 4FH
+0438 12017B          588             LCALL readValues
+043B 755001          589             MOV 50H,#1;------------------------Value of K
+043E 755160          590             MOV 51H,#60h;------------------------Array A start location
+0441 120279          591             lcall check_locations
+0444 755010          592             MOV 50H,#16;------------------------Value of K
+0447 755160          593             MOV 51H,#60h;------------------------Array B start Location
+                     594             
+044A                 595             LCALL DUMMY_DATA;-------------------DUMMY DATA
+*** _______________________________________^
+*** ERROR #A45 IN 595 (lab4q2.asm, LINE 595): UNDEFINED SYMBOL (PASS-2)
+044D 120296          596             LCALL display_2;----------------Display the last four bits of elements on LEDs
+0450 120100          597             LCALL DELAY1S
+0453 120100          598             LCALL DELAY1S
+0456 120100          599             LCALL DELAY1S
+0459 120100          600             LCALL DELAY1S
+045C 120100          601             LCALL DELAY1S
+045F 1201D3          602             LCALL LCD_INIT
+0462 120221          603             LCALL LCD_COMMAND
+0465 020426          604             LJMP MAIN
+0468                 605             here1:
+0468 80FE            606             SJMP here1;---------------------WHILE loop(Infinite Loop)
+                     607     end
+A51 MACRO ASSEMBLER  LAB4Q2                                                               08/24/2016 23:58:11 PAGE    11
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                  T Y P E  V A L U E   ATTRIBUTES
+
+B . . . . . . . . . . .  D ADDR   00F0H   A   
+BACK. . . . . . . . . .  C ADDR   0135H   A   
+BACK1 . . . . . . . . .  C ADDR   0133H   A   
+BACK1_1 . . . . . . . .    ----   -----       
+BACK2 . . . . . . . . .  C ADDR   0131H   A   
+BACK_0. . . . . . . . .  C ADDR   0110H   A   
+BACK_1. . . . . . . . .  C ADDR   010EH   A   
+CHECK_LOCATIONS . . . .  C ADDR   0279H   A   
+DELAY . . . . . . . . .  C ADDR   0121H   A   
+DELAY1. . . . . . . . .  C ADDR   010CH   A   
+DELAY1S . . . . . . . .  C ADDR   0100H   A   
+DELAY2. . . . . . . . .  C ADDR   010AH   A   
+DISPLAYVALUES . . . . .  C ADDR   0190H   A   
+DISPLAY_2 . . . . . . .  C ADDR   0296H   A   
+DISPLAY_LABEL1. . . . .  C ADDR   01A9H   A   
+DISPLAY_LABEL2. . . . .  C ADDR   01C7H   A   
+DISPLAY_VALUES_CONTINUE  C ADDR   0198H   A   
+DUMMY_DATA. . . . . . .    ----   -----       
+FINAL_BYTE. . . . . . .  C ADDR   0269H   A   
+HERE1 . . . . . . . . .  C ADDR   0468H   A   
+INOUT . . . . . . . . .  D ADDR   0090H   A   
+LCD_COMMAND . . . . . .  C ADDR   0221H   A   
+LCD_DATA. . . . . . . .  D ADDR   00A0H   A   
+LCD_EN. . . . . . . . .  B ADDR   0080H.2 A   
+LCD_INIT. . . . . . . .  C ADDR   01D3H   A   
+LCD_RS. . . . . . . . .  B ADDR   0080H.0 A   
+LCD_RW. . . . . . . . .  B ADDR   0080H.1 A   
+LCD_SENDDATA. . . . . .  C ADDR   0210H   A   
+LOOP1 . . . . . . . . .  C ADDR   0238H   A   
+LOOP2 . . . . . . . . .  C ADDR   0236H   A   
+LOOP_SHUFFLE. . . . . .  C ADDR   025EH   A   
+LOOP_SHUFFLE1 . . . . .  C ADDR   0285H   A   
+MAIN. . . . . . . . . .  C ADDR   0426H   A   
+P0. . . . . . . . . . .  D ADDR   0080H   A   
+P1. . . . . . . . . . .  D ADDR   0090H   A   
+P2. . . . . . . . . . .  D ADDR   00A0H   A   
+PACKNIBBLES . . . . . .  C ADDR   0163H   A   
+READNIBBLE. . . . . . .  C ADDR   0155H   A   
+READVALUES. . . . . . .  C ADDR   017BH   A   
+SEND_NIBBLE1. . . . . .  C ADDR   0241H   A   
+SEND_NIBBLE2. . . . . .  C ADDR   0249H   A   
+SHUFFLEBITS . . . . . .  C ADDR   0251H   A   
+SP. . . . . . . . . . .  D ADDR   0081H   A   
+WAIT_FOR_INPUT. . . . .  C ADDR   0144H   A   
+WRITE_LOOP. . . . . . .  C ADDR   0186H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 3 ERROR(S)

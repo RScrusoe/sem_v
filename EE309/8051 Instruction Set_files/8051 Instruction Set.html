@@ -1,0 +1,2058 @@
+
+<!-- saved from url=(0050)https://www.win.tue.nl/~aeb/comp/8051/set8051.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>8051 Instruction Set</title>
+</head><body>
+
+<h1>8051 Instruction Set</h1>
+
+<br>
+<b>Instructions by opcode</b>
+
+<table border="1">
+<tbody><tr><th> </th><th>0x00</th><th>0x01</th><th>0x02</th><th>0x03</th>
+<th>0x04</th><th>0x05</th><th>0x06</th><th>0x07</th>
+<th>0x08</th><th>0x09</th><th>0x0a</th><th>0x0b</th>
+<th>0x0c</th><th>0x0d</th><th>0x0e</th><th>0x0f</th></tr>
+<tr><th>0x00</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51nop"><small>NOP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ljmp"><small>LJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr"><small>RR</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+</tr>
+<tr><th>0x10</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jbc"><small>JBC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51lcall"><small>LCALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc"><small>RRC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec"><small>DEC</small></a></td>
+</tr>
+<tr><th>0x20</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jb"><small>JB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ret"><small>RET</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl"><small>RL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add"><small>ADD</small></a></td>
+</tr>
+<tr><th>0x30</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnb"><small>JNB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51reti"><small>RETI</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc"><small>RLC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51addc"><small>ADDC</small></a></td>
+</tr>
+<tr><th>0x40</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jc"><small>JC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+</tr>
+<tr><th>0x50</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnc"><small>JNC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+</tr>
+<tr><th>0x60</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jz"><small>JZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl"><small>XRL</small></a></td>
+</tr>
+<tr><th>0x70</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnz"><small>JNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jmp"><small>JMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+</tr>
+<tr><th>0x80</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51sjmp"><small>SJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movc"><small>MOVC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51div"><small>DIV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+</tr>
+<tr><th>0x90</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movc"><small>MOVC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb"><small>SUBB</small></a></td>
+</tr>
+<tr><th>0xa0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl"><small>ORL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc"><small>INC</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mul"><small>MUL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51undef"><small>?</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+</tr>
+<tr><th>0xb0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl"><small>ANL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cpl"><small>CPL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cpl"><small>CPL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne"><small>CJNE</small></a></td>
+</tr>
+<tr><th>0xc0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51push"><small>PUSH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr"><small>CLR</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr"><small>CLR</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51swap"><small>SWAP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch"><small>XCH</small></a></td>
+</tr>
+<tr><th>0xd0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51pop"><small>POP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51setb"><small>SETB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51setb"><small>SETB</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51da"><small>DA</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xchd"><small>XCHD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xchd"><small>XCHD</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz"><small>DJNZ</small></a></td>
+</tr>
+<tr><th>0xe0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp"><small>AJMP</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr"><small>CLR</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+</tr>
+<tr><th>0xf0</th>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall"><small>ACALL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx"><small>MOVX</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cpl"><small>CPL</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+<td><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov"><small>MOV</small></a></td>
+</tr></tbody></table>
+
+<p>
+<b>Alphabetical List of Instructions</b>
+</p><ul>
+<li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall">ACALL</a></b> - Absolute Call<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADD, ADDC</a></b> - Add Accumulator (With Carry)<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp">AJMP</a></b> - Absolute Jump<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl">ANL</a></b> - Bitwise AND<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cjne">CJNE</a></b> - Compare and Jump if Not Equal<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr">CLR</a></b> - Clear Register<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51cpl">CPL</a></b> - Complement Register<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51da">DA</a></b> - Decimal Adjust<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec">DEC</a></b> - Decrement Register<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51div">DIV</a></b> - Divide Accumulator by B<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz">DJNZ</a></b> - Decrement Register and Jump if Not Zero<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc">INC</a></b> - Increment Register<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jb">JB</a></b> - Jump if Bit Set<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jbc">JBC</a></b> - Jump if Bit Set and Clear Bit<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jc">JC</a></b> - Jump if Carry Set<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jmp">JMP</a></b> - Jump to Address<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnb">JNB</a></b> - Jump if Bit Not Set<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnc">JNC</a></b> - Jump if Carry Not Set<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnz">JNZ</a></b> - Jump if Accumulator Not Zero<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jz">JZ</a></b> - Jump if Accumulator Zero<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51lcall">LCALL</a></b> - Long Call<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ljmp">LJMP</a></b> - Long Jump<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov">MOV</a></b> - Move Memory<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movc">MOVC</a></b> - Move Code Memory<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx">MOVX</a></b> - Move Extended Memory<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mul">MUL</a></b> - Multiply Accumulator by B<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51nop">NOP</a></b> - No Operation<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl">ORL</a></b> - Bitwise OR<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51pop">POP</a></b> - Pop Value From Stack<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51push">PUSH</a></b> - Push Value Onto Stack<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ret">RET</a></b> - Return From Subroutine<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51reti">RETI</a></b> - Return From Interrupt<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl">RL</a></b> - Rotate Accumulator Left<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc">RLC</a></b> - Rotate Accumulator Left Through Carry<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr">RR</a></b> - Rotate Accumulator Right<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc">RRC</a></b> - Rotate Accumulator Right Through Carry<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51setb">SETB</a></b> - Set Bit<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51sjmp">SJMP</a></b> - Short Jump<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb">SUBB</a></b> - Subtract From Accumulator With Borrow<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51swap">SWAP</a></b> - Swap Accumulator Nibbles<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch">XCH</a></b> - Exchange Bytes<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xchd">XCHD</a></b> - Exchange Digits<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl">XRL</a></b> - Bitwise Exclusive OR<br>
+</li><li><b><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51und">Undefined</a></b> - Undefined Instruction<br>
+</li></ul>
+
+
+<hr>
+<h2>8051 Instruction Set: ACALL</h2>
+<a name="51acall">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>ACALL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Absolute Call Within 2K Block</td></tr>
+<tr><td><b>Syntax:</b></td><td>ACALL <i>code address</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page0</i></td><td>0x11</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page1</i></td><td>0x31</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page2</i></td><td>0x51</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page3</i></td><td>0x71</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page4</i></td><td>0x91</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page5</i></td><td>0xB1</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page6</i></td><td>0xD1</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ACALL <i>page7</i></td><td>0xF1</td><td>2</td><td>None</td></tr>
+</tbody></table>
+
+</p><p>
+
+<b>Description:</b> ACALL unconditionally calls a subroutine at the indicated
+ <i>code address</i>.  ACALL pushes the address of the instruction that follows ACALL
+ onto the stack, least-significant-byte first, most-significant-byte second.
+ The Program Counter is then updated so that program execution continues at
+ the indicated address.</p><p>
+
+ The new value for the Program Counter is calculated by replacing the
+ least-significant-byte of the Program Counter with the second byte of the
+ ACALL instruction, and replacing bits 0-2 of the most-significant-byte of
+ the Program Counter with 3 bits that indicate the page.  Bits 3-7 of the
+ most-significant-byte of the Program Counter remain unchaged.</p><p>
+
+ Since only 11 bits of the Program Counter are affected by ACALL, calls may only
+ be made to routines located within the same 2k block as the first byte that
+ follows ACALL.</p></a><p><a name="51acall">
+
+<b>See Also</b>: </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51lcall">LCALL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ret">RET</a>
+
+
+
+</p><hr>
+<h2>8051 Instruction Set: ADD</h2>
+<a name="51add">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>ADD, ADDC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Add Accumulator, Add Accumulator With Carry</td></tr>
+<tr><td><b>Syntax:</b></td><td>ADD A,<i>operand</i></td></tr>
+<tr><td></td><td>ADDC A,<i>operand</i></td></tr>
+</tbody></table>
+
+<p>
+<table>
+<tbody><tr><td>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,#<i>data</i></td><td>0x24</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,<i>iram addr</i></td><td>0x25</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,@R0</td><td>0x26</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,@R1</td><td>0x27</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R0</td><td>0x28</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R1</td><td>0x29</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R2</td><td>0x2A</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R3</td><td>0x2B</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R4</td><td>0x2C</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R5</td><td>0x2D</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R6</td><td>0x2E</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADD A,R7</td><td>0x2F</td><td>1</td><td>C, AC, OV</td></tr>
+</tbody></table>
+</td>
+<td>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,#<i>data</i></td><td>0x34</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,<i>iram addr</i></td><td>0x35</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,@R0</td><td>0x36</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,@R1</td><td>0x37</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R0</td><td>0x38</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R1</td><td>0x39</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R2</td><td>0x3A</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R3</td><td>0x3B</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R4</td><td>0x3C</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R5</td><td>0x3D</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R6</td><td>0x3E</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td align="LEFT">ADDC A,R7</td><td>0x3F</td><td>1</td><td>C, AC, OV</td></tr>
+</tbody></table>
+</td></tr></tbody></table>
+
+</p><p>
+
+<b>Description:</b> Description: ADD and ADDC both add the value <i>operand</i> to
+ the value of the Accumulator, leaving the resulting value in the Accumulator.
+ The value <i>operand</i> is not affected.  ADD and ADDC function identically except
+ that ADDC adds the value of operand as well as the value of the Carry flag
+ whereas ADD does not add the Carry flag to the result.</p><p>
+
+ The <b>Carry bit (C)</b> is set if there is a carry-out of bit 7.  In other words, if
+ the unsigned summed value of the Accumulator, <i>operand</i> and (in the case of
+ ADDC) the Carry flag exceeds 255 Carry is set.  Otherwise, the Carry bit is
+ cleared.</p><p>
+
+ The <b>Auxillary Carry (AC)</b> bit is set if there is a carry-out of bit 3.  In
+ other words, if the unsigned summed value of the low nibble of the Accumulator,
+ <i>operand</i> and (in the case of ADDC) the Carry flag exceeds 15 the Auxillary Carry
+ flag is set.  Otherwise, the Auxillary Carry flag is cleared.</p><p>
+
+ The <b>Overflow (OV)</b> bit is set if there is a carry-out of bit 6 or out of bit 7,
+ but not both.  In other words, if the addition of the Accumulator, <i>operand</i> and
+ (in the case of ADDC) the Carry flag treated as signed values results in a value
+ that is out of the range of a signed byte (-128 through +127) the Overflow flag
+ is set.  Otherwise, the Overflow flag is cleared.</p></a><p><a name="51add">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb">SUBB</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51da">DA</a>,
+<a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc">INC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec">DEC</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: AJMP</h2>
+<a name="51ajmp">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>AJMP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Absolute Jump Within 2K Block</td></tr>
+<tr><td><b>Syntax:</b></td><td>AJMP <i>code address</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page0</i></td><td>0x01</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page1</i></td><td>0x21</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page2</i></td><td>0x41</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page3</i></td><td>0x61</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page4</i></td><td>0x81</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page5</i></td><td>0xA1</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page6</i></td><td>0xC1</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">AJMP <i>page7</i></td><td>0xE1</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> AJMP unconditionally jumps to the indicated <i>code address</i>.  The
+ new value for the Program Counter is calculated by replacing the
+ least-significant-byte of the Program Counter with the second byte of the
+ AJMP instruction, and replacing bits 0-2 of the most-significant-byte of the
+ Program Counter with 3 bits that indicate the page <i>of the byte following the AJMP instruction</i>.  
+ Bits 3-7 of the  most-significant-byte of the Program Counter remain unchaged.</p><p>
+
+ Since only 11 bits of the Program Counter are affected by AJMP, jumps may only be
+ made to code located within the same 2k block as the first byte that follows AJMP.</p></a><p><a name="51ajmp">
+
+<b>See Also</b>: </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ljmp">LJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51sjmp">SJMP</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: ANL</h2>
+<a name="51anl">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>ANL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Bitwise AND</td></tr>
+<tr><td><b>Syntax:</b></td><td>ANL <i>operand1</i>, <i>operand2</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">ANL <i>iram addr</i>,A</td><td>0x52</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL <i>iram addr</i>,#<i>data</i></td><td>0x53</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,#<i>data</i></td><td>0x54</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,<i>iram addr</i></td><td>0x55</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,@R0</td><td>0x56</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,@R1</td><td>0x57</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R0</td><td>0x58</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R1</td><td>0x59</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R2</td><td>0x5A</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R3</td><td>0x5B</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R4</td><td>0x5C</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R5</td><td>0x5D</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R6</td><td>0x5E</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL A,R7</td><td>0x5F</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL C,<i>bit addr</i></td><td>0x82</td><td>2</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">ANL C,/<i>bit addr</i></td><td>0xB0</td><td>2</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> ANL does a bitwise "AND" operation between <i>operand1</i> and <i>operand2</i>,
+ leaving the resulting value in <i>operand1</i>.  The value of operand2 is not affected.  A logical
+ "AND" compares the bits of each operand and sets the corresponding bit in the resulting byte only
+ if the bit was set in both of the original operands, otherwise the resulting bit is cleared.</p></a><p><a name="51anl">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl">ORL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl">XRL</a>
+
+</p><hr>
+<h2>8051 Instruction Set: CJNE</h2>
+<a name="51cjne">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>CJNE</b></td></tr>
+<tr><td><b>Function:</b></td><td>Compare and Jump If Not Equal</td></tr>
+<tr><td><b>Syntax:</b></td><td>CJNE <i>operand1</i>,<i>operand2</i>,<i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE A,#<i>data</i>,<i>reladdr</i></td><td>0xB4</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE A,<i>iram addr</i>,<i>reladdr</i></td><td>0xB5</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE @R0,#<i>data</i>,<i>reladdr</i></td><td>0xB6</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE @R1,#<i>data</i>,<i>reladdr</i></td><td>0xB7</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R0,#<i>data</i>,<i>reladdr</i></td><td>0xB8</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R1,#<i>data</i>,<i>reladdr</i></td><td>0xB9</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R2,#<i>data</i>,<i>reladdr</i></td><td>0xBA</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R3,#<i>data</i>,<i>reladdr</i></td><td>0xBB</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R4,#<i>data</i>,<i>reladdr</i></td><td>0xBC</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R5,#<i>data</i>,<i>reladdr</i></td><td>0xBD</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R6,#<i>data</i>,<i>reladdr</i></td><td>0xBE</td><td>3</td><td>C</td></tr>
+<tr align="CENTER"><td align="LEFT">CJNE R7,#<i>data</i>,<i>reladdr</i></td><td>0xBF</td><td>3</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> CJNE compares the value of <i>operand1</i> and <i>operand2</i> and branches to
+ the indicated relative address if <i>operand1</i> and <i>operand2</i> are not equal.  If the two
+ operands are equal program flow continues with the instruction following the CJNE instruction.</p><p>
+
+The <b>Carry bit (C)</b> is set if <i>operand1</i> is less than <i>operand2</i>, otherwise it is cleared.</p></a><p><a name="51cjne">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51djnz">DJNZ</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: CLR</h2>
+<a name="51clr">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>CLR</b></td></tr>
+<tr><td><b>Function:</b></td><td>Clear Register</td></tr>
+<tr><td><b>Syntax:</b></td><td>CLR <i>register</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>CLR <i>bit addr</i></td><td>0xC2</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>CLR C</td><td>0xC3</td><td>1</td><td>C</td></tr>
+<tr align="CENTER"><td>CLR A</td><td>0xE4</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> CLR clears (sets to 0) all the bit(s) of the indicated register.  If the register
+ is a bit (including the carry bit), only the specified bit is affected.  Clearing the Accumulator sets
+ the Accumulator's value to 0.</p></a><p><a name="51clr">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51setb">SETB</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: CPL</h2>
+<a name="51cpl">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>CPL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Complement Register</td></tr>
+<tr><td><b>Syntax:</b></td><td>CPL <i>operand</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>CPL A</td><td>0xF4</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>CPL C</td><td>0xB3</td><td>1</td><td>C</td></tr>
+<tr align="CENTER"><td>CPL <i>bit addr</i></td><td>0xB2</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> CPL complements <i>operand</i>, leaving the result in <i>operand</i>.  If <i>operand</i> is
+ a single bit then the state of the bit will be reversed.  If <i>operand</i> is the Accumulator
+ then all the bits in the Accumulator will be reversed.  This can be thought of as "Accumulator
+ Logical Exclusive OR 255" or as "255-Accumulator."  If the <i>operand</i> refers to a bit of an output
+ Port, the value that will be complemented is based on the last value written to that bit, not the last
+ value read from it.</p></a><p><a name="51cpl">
+
+<b>See Also</b>: </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr">CLR</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51setb">SETB</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: DA</h2>
+<a name="51da">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>DA</b></td></tr>
+<tr><td><b>Function:</b></td><td>Decimal Adjust Accumulator</td></tr>
+<tr><td><b>Syntax:</b></td><td>DA A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>DA</td><td>0xD4</td><td>1</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> DA adjusts the contents of the Accumulator to correspond to
+ a BCD (Binary Coded Decimal) number after two BCD numbers have been added by the
+ ADD or ADDC instruction.  If the carry bit is set or if the value of bits 0-3
+ exceed 9, 0x06 is added to the accumulator.  If the carry bit was set when the
+ instruction began, or if 0x06 was added to the accumulator in the first step,
+ 0x60 is added to the accumulator.</p><p>
+
+The <b>Carry bit (C)</b> is set if the resulting value is greater than 0x99, otherwise it is cleared.</p></a><p><a name="51da">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADD</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADDC</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: DEC</h2>
+<a name="51dec">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>DEC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Decrement Register</td></tr>
+<tr><td><b>Syntax:</b></td><td>DEC <i>register</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>DEC A</td><td>0x14</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC <i>iram addr</i></td><td>0x15</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC @R0</td><td>0x16</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC @R1</td><td>0x17</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R0</td><td>0x18</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R1</td><td>0x19</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R2</td><td>0x1A</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R3</td><td>0x1B</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R4</td><td>0x1C</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R5</td><td>0x1D</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R6</td><td>0x1E</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>DEC R7</td><td>0x1F</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> DEC decrements the value of <i>register</i> by 1.  If the initial value of
+ <i>register</i> is 0, decrementing the value will cause it to reset to 255 (0xFF Hex).  Note:
+ The Carry Flag is NOT set when the value "rolls over" from 0 to 255.</p></a><p><a name="51dec">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51inc">INC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51subb">SUBB</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: DIV</h2>
+<a name="51div">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>DIV</b></td></tr>
+<tr><td><b>Function:</b></td><td>Divide Accumulator by B</td></tr>
+<tr><td><b>Syntax:</b></td><td>DIV AB</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>DIV AB</td><td>0x84</td><td>1</td><td>C, OV</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Divides the unsigned value of the Accumulator by the unsigned value of
+ the "B" register.  The resulting quotient is placed in the Accumulator and the remainder
+ is placed in the "B" register.</p><p>
+
+The <b>Carry flag (C)</b> is always cleared.</p><p>
+
+The <b>Overflow flag (OV)</b> is set if division by 0 was attempted, otherwise it is cleared.</p></a><p><a name="51div">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mul">MUL AB</a>
+</p><p>
+
+
+</p><hr>
+<h2>8051 Instruction Set: DJNZ</h2>
+<a name="51djnz">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>DJNZ</b></td></tr>
+<tr><td><b>Function:</b></td><td>Decrement and Jump if Not Zero</td></tr>
+<tr><td><b>Syntax:</b></td><td>DJNZ <i>register</i>,<i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>DJNZ <i>iram addr</i>,<i>reladdr</i></td><td>0xD5</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R0,<i>reladdr</i></td><td>0xD8</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R1,<i>reladdr</i></td><td>0xD9</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R2,<i>reladdr</i></td><td>0xDA</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R3,<i>reladdr</i></td><td>0xDB</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R4,<i>reladdr</i></td><td>0xDC</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R5,<i>reladdr</i></td><td>0xDD</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R6,<i>reladdr</i></td><td>0xDE</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>DJNZ R7,<i>reladdr</i></td><td>0xDF</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> DJNZ decrements the value of <i>register</i> by 1.  If the initial value of <i>register</i>
+ is 0, decrementing the value will cause it to reset to 255 (0xFF Hex).  If the new value of
+ <i>register</i> is not 0 the program will branch to the address indicated by <i>relative addr</i>. If the new
+ value of <i>register</i> is 0 program flow continues with the instruction following the DJNZ instruction.</p></a><p><a name="51djnz">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec">DEC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jz">JZ</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnz">JNZ</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: INC</h2>
+<a name="51inc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>INC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Increment Register</td></tr>
+<tr><td><b>Syntax:</b></td><td>INC <i>register</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>INC A</td><td>0x04</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC <i>iram addr</i></td><td>0x05</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>INC @R0</td><td>0x06</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC @R1</td><td>0x07</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R0</td><td>0x08</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R1</td><td>0x09</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R2</td><td>0x0A</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R3</td><td>0x0B</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R4</td><td>0x0C</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R5</td><td>0x0D</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R6</td><td>0x0E</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC R7</td><td>0x0F</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>INC DPTR</td><td>0xA3</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> INC increments the value of <i>register</i> by 1.  If the initial value of <i>register</i>
+ is 255 (0xFF Hex), incrementing the value will cause it to reset to 0.  Note: The Carry Flag is
+ NOT set when the value "rolls over" from 255 to 0.</p><p>
+
+In the case of "INC DPTR", the value two-byte unsigned integer value of DPTR is incremented.  If the initial
+value of DPTR is 65535 (0xFFFF Hex), incrementing the value will cause it to reset to 0.  Again, the Carry Flag
+ is NOT set when the value of DPTR "rolls over" from 65535 to 0.</p></a><p><a name="51inc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADD</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADDC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec">DEC</a>
+</p><p>
+
+
+</p><hr>
+<h2>8051 Instruction Set: JB</h2>
+<a name="51jb">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JB</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Bit Set</td></tr>
+<tr><td><b>Syntax:</b></td><td>JB <i>bit addr</i>, <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JB <i>bit addr</i>,<i>reladdr</i></td><td>0x20</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JB branches to the address indicated by <i>reladdr</i> if the bit indicated
+ by <i>bit addr</i> is set.  If the bit is not set program execution continues with the instruction following
+ the JB instruction.</p></a><p><a name="51jb">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jbc">JBC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnb">JNB</a>
+</p><p>
+
+
+</p><hr>
+<h2>8051 Instruction Set: JBC</h2>
+<a name="51jbc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JBC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Bit Set and Clear Bit</td></tr>
+<tr><td><b>Syntax:</b></td><td>JB <i>bit addr</i>, <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JBC <i>bit addr</i>,<i>reladdr</i></td><td>0x10</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JBC will branch to the address indicated by <i>reladdr</i>
+ if the bit indicated by <i>bit addr</i> is set.  Before branching to <i>reladdr</i> the
+ instruction will clear the indicated bit. If the bit is not set program execution
+ continues with the instruction following the JBC instruction. </p></a><p><a name="51jbc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jb">JB</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnb">JNB</a>
+ 
+
+</p><hr>
+<h2>8051 Instruction Set: JC</h2>
+<a name="51jc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Carry Set</td></tr>
+<tr><td><b>Syntax:</b></td><td>JC <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JC <i>reladdr</i></td><td>0x40</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JC will branch to the address indicated by <i>reladdr</i> if the
+ Carry Bit is set.  If the Carry Bit is not set program execution continues with the
+ instruction following the JC instruction.</p></a><p><a name="51jc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnc">JNC</a>
+
+</p><hr>
+<h2>8051 Instruction Set: JMP</h2>
+<a name="51jmp">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JMP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump to Data Pointer + Accumulator</td></tr>
+<tr><td><b>Syntax:</b></td><td>JMP @A+DPTR</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JMP @A+DPTR</td><td>0x73</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JMP jumps unconditionally to the address represented by the sum of the
+ value of DPTR and the value of the Accumulator.</p></a><p><a name="51jmp">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ljmp">LJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp">AJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51sjmp">SJMP</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: JNB</h2>
+<a name="51jnb">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JNB</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Bit Not Set</td></tr>
+<tr><td><b>Syntax:</b></td><td>JNB <i>bit addr</i>,<i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JNB <i>bit addr</i>,<i>reladdr</i></td><td>0x30</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JNB will branch to the address indicated by <i>reladdress</i> if
+ the indicated bit is not set.  If the bit is set program execution continues with
+ the instruction following the JNB instruction. </p></a><p><a name="51jnb">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jb">JB</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jbc">JBC</a>
+</p><p>
+
+</p><hr>
+<h2>8051 Instruction Set: JNC</h2>
+<a name="51jnc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JNC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Carry Not Set</td></tr>
+<tr><td><b>Syntax:</b></td><td>JNC <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JNC <i>reladdr</i></td><td>0x50</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JNC branches to the address indicated by <i>reladdr</i> if
+ the carry bit is not set.  If the carry bit is set program execution continues with
+ the instruction following the JNB instruction.</p></a><p><a name="51jnc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jc">JC</a>
+</p><p>
+
+</p><hr>
+<h2>8051 Instruction Set: JNZ</h2>
+<a name="51jnz">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JNZ</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Accumulator Not Zero</td></tr>
+<tr><td><b>Syntax:</b></td><td>JNZ <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JNZ <i>reladdr</i></td><td>0x70</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JNZ will branch to the address indicated by <i>reladdr</i> if the
+ Accumulator contains any value except 0. If the value of the Accumulator is zero program
+ execution continues with the instruction following the JNZ instruction.</p></a><p><a name="51jnz">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jz">JZ</a>
+
+</p><hr>
+<h2>8051 Instruction Set: JZ</h2>
+<a name="51jz">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>JZ</b></td></tr>
+<tr><td><b>Function:</b></td><td>Jump if Accumulator Zero</td></tr>
+<tr><td><b>Syntax:</b></td><td>JNZ <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>JZ <i>reladdr</i></td><td>0x60</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> JZ branches to the address indicated by <i>reladdr</i> if the
+ Accumulator contains the value 0.  If the value of the Accumulator is non-zero program
+ execution continues with the instruction following the JNZ instruction.</p></a><p><a name="51jz">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jnz">JNZ</a>
+
+</p><hr>
+<h2>8051 Instruction Set: LCALL</h2>
+<a name="51lcall">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>LCALL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Long Call</td></tr>
+<tr><td><b>Syntax:</b></td><td>LCALL <i>code addr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>LCALL <i>code addr</i></td><td>0x12</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> LCALL calls a program subroutine.  LCALL increments the program counter
+ by 3 (to point to the instruction following LCALL) and pushes that value onto the stack
+ (low byte first, high byte second).  The Program Counter is then set to the 16-bit value
+ which follows the LCALL opcode, causing program execution to continue at that address.</p></a><p><a name="51lcall">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall">ACALL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ret">RET</a>
+
+</p><hr>
+<h2>8051 Instruction Set: LJMP</h2>
+<a name="51ljmp">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>LJMP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Long Jump</td></tr>
+<tr><td><b>Syntax:</b></td><td>LJMP <i>code addr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>LJMP <i>code addr</i></td><td>0x02</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> LJMP jumps unconditionally to the specified <i>code addr</i>.</p></a><p><a name="51ljmp">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp">AJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51sjmp">SJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51jmp">JMP</a>
+ 
+
+</p><hr>
+<h2>8051 Instruction Set: MOV</h2>
+<a name="51mov">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>MOV</b></td></tr>
+<tr><td><b>Function:</b></td><td>Move Memory</td></tr>
+<tr><td><b>Syntax:</b></td><td>MOV <i>operand1</i>,<i>operand2</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>MOV @R0,#<i>data</i></td><td>0x76</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV @R1,#<i>data</i></td><td>0x77</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV @R0,A</td><td>0xF6</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV @R1,A</td><td>0xF7</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV @R0,<i>iram addr</i></td><td>0xA6</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV @R1,<i>iram addr</i></td><td>0xA7</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,#<i>data</i></td><td>0x74</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,@R0</td><td>0xE6</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,@R1</td><td>0xE7</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R0</td><td>0xE8</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R1</td><td>0xE9</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R2</td><td>0xEA</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R3</td><td>0xEB</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R4</td><td>0xEC</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R5</td><td>0xED</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R6</td><td>0xEE</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,R7</td><td>0xEF</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV A,<i>iram addr</i></td><td>0xE5</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV C,<i>bit addr</i></td><td>0xA2</td><td>2</td><td>C</td></tr>
+<tr align="CENTER"><td>MOV DPTR,#<i>data16</i></td><td>0x90</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R0,#<i>data</i></td><td>0x78</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R1,#<i>data</i></td><td>0x79</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R2,#<i>data</i></td><td>0x7A</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R3,#<i>data</i></td><td>0x7B</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R4,#<i>data</i></td><td>0x7C</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R5,#<i>data</i></td><td>0x7D</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R6,#<i>data</i></td><td>0x7E</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R7,#<i>data</i></td><td>0x7F</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R0,A</td><td>0xF8</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R1,A</td><td>0xF9</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R2,A</td><td>0xFA</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R3,A</td><td>0xFB</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R4,A</td><td>0xFC</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R5,A</td><td>0xFD</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R6,A</td><td>0xFE</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R7,A</td><td>0xFF</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R0,<i>iram addr</i></td><td>0xA8</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R1,<i>iram addr</i></td><td>0xA9</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R2,<i>iram addr</i></td><td>0xAA</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R3,<i>iram addr</i></td><td>0xAB</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R4,<i>iram addr</i></td><td>0xAC</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R5,<i>iram addr</i></td><td>0xAD</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R6,<i>iram addr</i></td><td>0xAE</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV R7,<i>iram addr</i></td><td>0xAF</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>bit addr</i>,C</td><td>0x92</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,#<i>data</i></td><td>0x75</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,@R0</td><td>0x86</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,@R1</td><td>0x87</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R0</td><td>0x88</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R1</td><td>0x89</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R2</td><td>0x8A</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R3</td><td>0x8B</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R4</td><td>0x8C</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R5</td><td>0x8D</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R6</td><td>0x8E</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,R7</td><td>0x8F</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,A</td><td>0xF5</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>MOV <i>iram addr</i>,<i>iram addr</i></td><td>0x85</td><td>3</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> MOV copies the value of <i>operand2</i> into <i>operand1</i>.  The value of
+ <i>operand2</i> is not affected.  Both <i>operand1</i> and <i>operand2</i> must be in Internal
+ RAM.  No flags are affected unless the instruction is moving the value of a bit into the carry bit
+ in which case the carry bit is affected or unless the instruction is moving a value into
+ the PSW register (which contains all the program flags).</p><p>
+
+** Note: In the case of  "MOV iram addr,iram addr", the operand bytes of the instruction are
+ stored in reverse order.  That is, the instruction consisting of the bytes 0x85, 0x20, 0x50
+ means "Move the contents of Internal RAM location 0x20 to Internal RAM location 0x50" whereas
+ the opposite would be generally presumed.</p></a><p><a name="51mov">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movc">MOVC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx">MOVX</a>,
+<a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xch">XCH</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xchd">XCHD</a>,
+<a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51push">PUSH</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51pop">POP</a>
+
+</p><hr>
+<h2>8051 Instruction Set: MOVC</h2>
+<a name="51movc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>MOVC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Move Code Byte to Accumulator</td></tr>
+<tr><td><b>Syntax:</b></td><td>MOVC A,@A+<i>register</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>MOVC A,@A+DPTR</td><td>0x93</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVC A,@A+PC</td><td>0x83</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> MOVC moves a byte from Code Memory into the Accumulator.  The Code
+ Memory address from which the byte will be moved is calculated by summing the value of
+ the Accumulator with either DPTR or the Program Counter (PC).  In the case of the Program
+ Counter, PC is first incremented by 1 before being summed with the Accumulator. </p></a><p><a name="51movc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov">MOV</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movx">MOVX</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: MOVX</h2>
+<a name="51movx">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>MOVX</b></td></tr>
+<tr><td><b>Function:</b></td><td>Move Data To/From External Memory (XRAM)</td></tr>
+<tr><td><b>Syntax:</b></td><td>MOVX <i>operand1</i>,<i>operand2</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>MOVX @DPTR,A</td><td>0xF0</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVX @R0,A</td><td>0xF2</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVX @R1,A</td><td>0xF3</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVX A,@DPTR</td><td>0xE0</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVX A,@R0</td><td>0xE2</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>MOVX A,@R1</td><td>0xE3</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> MOVX moves a byte to or from External Memory into or from the Accumulator.</p><p>
+
+If <i>operand1</i> is @DPTR, the Accumulator is moved to the 16-bit External Memory address indicated
+ by DPTR.  This instruction uses both P0 (port 0) and P2 (port 2) to output the 16-bit address and
+ data.  If <i>operand2</i> is DPTR then the byte is moved from External Memory into the Accumulator.</p><p>
+
+If <i>operand1</i> is @R0 or @R1, the Accumulator is moved to the 8-bit External Memory address indicated
+ by the specified Register.  This instruction uses only P0 (port 0) to output the 8-bit address and data. 
+ P2 (port 2) is not affected.  If <i>operand2</i> is @R0 or @R1 then the byte is moved from External
+ Memory into the Accumulator.</p></a><p><a name="51movx">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov">MOV</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51movc">MOVC</a>
+
+</p><hr>
+<h2>8051 Instruction Set: MUL</h2>
+<a name="51mul">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>MUL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Multiply Accumulator by B</td></tr>
+<tr><td><b>Syntax:</b></td><td>MUL AB</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>MUL AB</td><td>0xA4</td><td>1</td><td>C, OV</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Multiples the unsigned value of the Accumulator by the unsigned value of
+ the "B" register.  The least significant byte of the result is placed in the Accumulator and
+ the most-significant-byte is placed in the "B" register.</p><p>
+
+The <b>Carry Flag (C)</b> is always cleared.</p><p>
+
+The <b>Overflow Flag (OV)</b> is set if the result is greater than 255 (if the most-significant
+ byte is not zero), otherwise it is cleared.</p></a><p><a name="51mul">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51div">DIV</a>
+</p><p>
+
+</p><hr>
+<h2>8051 Instruction Set: NOP</h2>
+<a name="51nop">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>NOP</b></td></tr>
+<tr><td><b>Function:</b></td><td>None, waste time</td></tr>
+<tr><td><b>Syntax:</b></td><td>No Operation</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>NOP</td><td>0x00</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> NOP, as it's name suggests, causes No Operation
+to take place for one machine cycle.  NOP is generally used only
+for timing purposes.  Absolutely no flags or registers are affected.
+</p><p>
+
+</p><hr>
+<h2>8051 Instruction Set: ORL</h2>
+</a><a name="51orl">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>ORL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Bitwise OR</td></tr>
+<tr><td><b>Syntax:</b></td><td>ORL <i>operand1</i>,<i>operand2</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>ORL <i>iram addr</i>,A</td><td>0x42</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL <i>iram addr</i>,#<i>data</i></td><td>0x43</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,#<i>data</i></td><td>0x44</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,<i>iram addr</i></td><td>0x45</td><td>2</td><td>None</td></tr>
+
+<tr align="CENTER"><td>ORL A,@R0</td><td>0x46</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,@R1</td><td>0x47</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R0</td><td>0x48</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R1</td><td>0x49</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R2</td><td>0x4A</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R3</td><td>0x4B</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R4</td><td>0x4C</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R5</td><td>0x4D</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R6</td><td>0x4E</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL A,R7</td><td>0x4F</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>ORL C,<i>bit addr</i></td><td>0x72</td><td>2</td><td>C</td></tr>
+<tr align="CENTER"><td>ORL C,/<i>bit addr</i></td><td>0xA0</td><td>2</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> ORL does a bitwise "OR" operation between <i>operand1</i> and <i>operand2</i>,
+ leaving the resulting value in <i>operand1.</i>  The value of <i>operand2</i> is not affected. 
+ A logical "OR" compares the bits of each operand and sets the corresponding bit in the resulting
+ byte if the bit was set in either of the original operands, otherwise the resulting bit is cleared.</p></a><p><a name="51orl">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl">ANL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51xrl">XRL</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: POP</h2>
+<a name="51pop">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>POP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Pop Value From Stack</td></tr>
+<tr><td><b>Syntax:</b></td><td>POP</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>POP <i>iram addr</i></td><td>0xD0</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> POP "pops" the last value placed on the stack into the <i>iram addr</i> specified. 
+ In other words, POP will load <i>iram addr</i> with the value of the Internal RAM address pointed to
+ by the current Stack Pointer.  The stack pointer is then decremented by 1.</p></a><p><a name="51pop">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51push">PUSH</a>
+
+</p><hr>
+<h2>8051 Instruction Set: PUSH</h2>
+<a name="51push">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>PUSH</b></td></tr>
+<tr><td><b>Function:</b></td><td>Push Value Onto Stack</td></tr>
+<tr><td><b>Syntax:</b></td><td>PUSH</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>PUSH <i>iram addr</i></td><td>0xC0</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> PUSH "pushes" the value of the specified <i>iram addr</i> onto the stack.  PUSH
+ first increments the value of the Stack Pointer by 1, then takes the value stored in <i>iram addr</i>
+  and stores it in Internal RAM at the location pointed to by the incremented Stack Pointer.</p></a><p><a name="51push">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51pop">POP</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: RET</h2>
+<a name="51ret">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RET</b></td></tr>
+<tr><td><b>Function:</b></td><td>Return From Subroutine</td></tr>
+<tr><td><b>Syntax:</b></td><td>RET</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RET</td><td>0x22</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> RET is used to return from a subroutine previously called by LCALL or ACALL.
+ Program execution continues at the address that is calculated by popping the topmost 2 bytes off
+ the stack.  The most-significant-byte is popped off the stack first, followed by the
+ least-significant-byte.</p></a><p><a name="51ret">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51lcall">LCALL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51acall">ACALL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51reti">RETI</a>
+
+</p><hr>
+<h2>8051 Instruction Set: RETI</h2>
+<a name="51reti">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RETI</b></td></tr>
+<tr><td><b>Function:</b></td><td>Return From Interrupt</td></tr>
+<tr><td><b>Syntax:</b></td><td>RETI</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RETI</td><td>0x32</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> RETI is used to return from an interrupt service routine.  RETI first enables interrupts
+ of equal and lower priorities to the interrupt that is terminating.  Program execution continues at the address
+ that is calculated by popping the topmost 2 bytes off the stack.  The most-significant-byte is popped off the
+ stack first, followed by the least-significant-byte.</p><p>
+
+RETI functions identically to RET if it is executed outside of an interrupt service routine.</p></a><p><a name="51reti">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ret">RET</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: RL</h2>
+<a name="51rl">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Rotate Accumulator Left</td></tr>
+<tr><td><b>Syntax:</b></td><td>RL A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RL A</td><td>0x23</td><td>1</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Shifts the bits of the Accumulator to the left.  The left-most bit (bit 7) of the
+ Accumulator is loaded into bit 0.</p></a><p><a name="51rl">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc">RLC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr">RR</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc">RRC</a>
+</p><p>
+
+
+</p><hr>
+<h2>8051 Instruction Set: RLC</h2>
+<a name="51rlc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RLC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Rotate Accumulator Left Through Carry</td></tr>
+<tr><td><b>Syntax:</b></td><td>RLC A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RLC A</td><td>0x33</td><td>1</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Shifts the bits of the Accumulator to the left.  The left-most bit (bit 7) of the
+ Accumulator is loaded into the Carry Flag, and the original Carry Flag is loaded into bit 0 of the
+ Accumulator.  This function can be used to quickly multiply a byte by 2.</p></a><p><a name="51rlc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl">RL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr">RR</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc">RRC</a>
+
+</p><hr>
+<h2>8051 Instruction Set: RR</h2>
+<a name="51rr">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RR</b></td></tr>
+<tr><td><b>Function:</b></td><td>Rotate Accumulator Right</td></tr>
+<tr><td><b>Syntax:</b></td><td>RR A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RR A</td><td>0x03</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Shifts the bits of the Accumulator to the right.  The right-most bit (bit 0) of the
+ Accumulator is loaded into bit 7.</p></a><p><a name="51rr">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl">RL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc">RLC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc">RRC</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: RRC</h2>
+<a name="51rrc">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>RRC</b></td></tr>
+<tr><td><b>Function:</b></td><td>Rotate Accumulator Right Through Carry</td></tr>
+<tr><td><b>Syntax:</b></td><td>RRC A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>RRC A</td><td>0x13</td><td>1</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Shifts the bits of the Accumulator to the right.  The right-most bit (bit 0) of the Accumulator
+ is loaded into the Carry Flag, and the original Carry Flag is loaded into bit 7.  This function can be used to
+ quickly divide a byte by 2.</p></a><p><a name="51rrc">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl">RL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc">RLC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr">RR</a>
+
+</p><hr>
+<h2>8051 Instruction Set: SETB</h2>
+<a name="51setb">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>SETB</b></td></tr>
+<tr><td><b>Function:</b></td><td>Set Bit</td></tr>
+<tr><td><b>Syntax:</b></td><td>SETB <i>bit addr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>SETB C</td><td>0xD3</td><td>1</td><td>C</td></tr>
+<tr align="CENTER"><td>SETB <i>bit addr</i></td><td>0xD2</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Sets the specified bit.</p></a><p><a name="51setb">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51clr">CLR</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: SJMP</h2>
+<a name="51sjmp">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>SJMP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Short Jump</td></tr>
+<tr><td><b>Syntax:</b></td><td>SJMP <i>reladdr</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>SJMP <i>reladdr</i></td><td>0x80</td><td>2</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> SJMP jumps unconditionally to the address specified <i>reladdr</i>.  <i>Reladdr</i> must
+ be within -128 or +127 bytes of the instruction that follows the SJMP instruction.</p></a><p><a name="51sjmp">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ljmp">LJMP</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51ajmp">AJMP</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: SUBB</h2>
+<a name="51subb">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>SUBB</b></td></tr>
+<tr><td><b>Function:</b></td><td>Subtract from Accumulator With Borrow</td></tr>
+<tr><td><b>Syntax:</b></td><td>SUBB A,<i>operand</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>SUBB A,#<i>data</i></td><td>0x94</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,<i>iram addr</i></td><td>0x95</td><td>2</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,@R0</td><td>0x96</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,@R1</td><td>0x97</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R0</td><td>0x98</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R1</td><td>0x99</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R2</td><td>0x9A</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R3</td><td>0x9B</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R4</td><td>0x9C</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R5</td><td>0x9D</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R6</td><td>0x9E</td><td>1</td><td>C, AC, OV</td></tr>
+<tr align="CENTER"><td>SUBB A,R7</td><td>0x9F</td><td>1</td><td>C, AC, OV</td></tr>
+</tbody></table>
+
+
+</p><p>
+
+<b>Description:</b> SUBB subtract the value of <i>operand</i> from the value of the Accumulator, leaving the resulting
+ value in the Accumulator.  The value <i>operand</i> is not affected.</p><p>
+
+The <b>Carry Bit (C)</b> is set if a borrow was required for bit 7, otherwise it is cleared.  In other
+ words, if the unsigned value being subtracted is greater than the Accumulator the Carry Flag is set.</p><p>
+
+The <b>Auxillary Carry (AC)</b> bit is set if a borrow was required for bit 3, otherwise it is cleared. In
+ other words, the bit is set if the low nibble of the value being subtracted was greater than the low nibble
+ of the Accumulator.</p><p>
+
+The <b>Overflow (OV)</b> bit is set if a borrow was required for bit 6 or for bit 7, but not both. In other
+ words, the subtraction of two signed bytes resulted in a value outside the range of a signed byte
+ (-128 to 127).  Otherwise it is cleared.</p></a><p><a name="51subb">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADD</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51add">ADDC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51dec">DEC</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: SWAP</h2>
+<a name="51swap">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>SWAP</b></td></tr>
+<tr><td><b>Function:</b></td><td>Swap Accumulator Nibbles</td></tr>
+<tr><td><b>Syntax:</b></td><td>SWAP A</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>SWAP A</td><td>0xC4</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> SWAP swaps bits 0-3 of the Accumulator with bits 4-7 of the Accumulator.  This
+ instruction is identical to executing "RR A" or "RL A" four times.</p></a><p><a name="51swap">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rl">RL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rlc">RLC</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rr">RR</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51rrc">RRC</a>
+
+
+</p><hr>
+<h2>8051 Instruction Set: Undefined Instruction</h2>
+<a name="51undef">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>Undefined Instruction</b></td></tr>
+<tr><td><b>Function:</b></td><td>Undefined</td></tr>
+<tr><td><b>Syntax:</b></td><td>???</td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>???</td><td>0xA5</td><td>1</td><td>C</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> The "Undefined" instruction is, as the name suggests, not a documented instruction.  The
+ 8051 supports 255 instructions and OpCode 0xA5 is the single OpCode that is not used by any documented function.
+ Since it is not documented nor defined it is not recommended that it be executed.  However, based on my research,
+ executing this undefined instruction takes 1 machine cycle and appears to have no effect on the system except
+ that the Carry Bit always seems to be set.</p><p>
+
+<b>Note:</b> We received input from an 8052.com user that the undefined instruction
+ really has a format of <i>Undefined bit1,bit2</i> and effectively copies the
+ value of bit2 to bit1.  In this case, it would be a three-byte instruction.
+ We haven't had an opportunity to verify or disprove this report, so we present
+ it to the world as "additional information."</p><p>
+
+<b>Note:</b> It has been reported that
+Philips 8051 model P89C669 uses instruction prefix 0xA5 to let the user access a different (extended) SFR area.
+<!--Bonny Gijzen, 12 Dec 2006-->
+
+
+</p><hr>
+<h2>8051 Instruction Set: XCH</h2>
+</a><a name="51xch">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>XCH</b></td></tr>
+<tr><td><b>Function:</b></td><td>Exchange Bytes</td></tr>
+<tr><td><b>Syntax:</b></td><td>XCH A,<i>register</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>XCH A,@R0</td><td>0xC6</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,@R1</td><td>0xC7</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R0</td><td>0xC8</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R1</td><td>0xC9</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R2</td><td>0xCA</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R3</td><td>0xCB</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R4</td><td>0xCC</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R5</td><td>0xCD</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R6</td><td>0xCE</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,R7</td><td>0xCF</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCH A,<i>iram addr</i></td><td>0xC5</td><td>2</td><td>None</td></tr>
+</tbody></table>
+
+
+</p><p>
+<b>Description:</b> Exchanges the value of the Accumulator with the value contained in <i>register</i>.</p></a><p><a name="51xch">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51mov" "="">MOV</a>
+
+</p><hr>
+<h2>8051 Instruction Set: XCHD</h2>
+<a name="51xchd">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>XCHD</b></td></tr>
+<tr><td><b>Function:</b></td><td>Exchange Digit</td></tr>
+<tr><td><b>Syntax:</b></td><td>XCHD A,<i>[@R0/@R1]</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>XCHD A,@R0</td><td>0xD6</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XCHD A,@R1</td><td>0xD7</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+<b>Description:</b> Exchanges bits 0-3 of the Accumulator with bits 0-3 of the Internal RAM address
+ pointed to indirectly by R0 or R1.  Bits 4-7 of each register are unaffected.</p></a><p><a name="51xchd">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51da">DA</a>
+
+
+
+</p><hr>
+<h2>8051 Instruction Set: XRL</h2>
+<a name="51xrl">
+
+<table>
+<tbody><tr><td><b>Operation:</b></td><td><b>XRL</b></td></tr>
+<tr><td><b>Function:</b></td><td>Bitwise Exclusive OR</td></tr>
+<tr><td><b>Syntax:</b></td><td>XRL <i>operand1</i>,<i>operand2</i></td></tr>
+</tbody></table>
+
+<p>
+<table border="1" cellpadding="4">
+<tbody><tr align="CENTER"><td><b>Instructions</b></td><td><b>OpCode</b></td><td><b>Bytes</b></td><td><b>Flags</b></td></tr>
+<tr align="CENTER"><td>XRL <i>iram addr</i>,A</td><td>0x62</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL <i>iram addr</i>,#<i>data</i></td><td>0x63</td><td>3</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,#<i>data</i></td><td>0x64</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,<i>iram addr</i></td><td>0x65</td><td>2</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,@R0</td><td>0x66</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,@R1</td><td>0x67</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R0</td><td>0x68</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R1</td><td>0x69</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R2</td><td>0x6A</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R3</td><td>0x6B</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R4</td><td>0x6C</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R5</td><td>0x6D</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R6</td><td>0x6E</td><td>1</td><td>None</td></tr>
+<tr align="CENTER"><td>XRL A,R7</td><td>0x6F</td><td>1</td><td>None</td></tr>
+</tbody></table>
+</p><p>
+
+
+<b>Description:</b> XRL does a bitwise "EXCLUSIVE OR" operation between <i>operand1</i> and <i>operand2</i>,
+ leaving the resulting value in <i>operand1</i>.  The value of operand2 is not affected.  A logical 
+ "EXCLUSIVE OR" compares the bits of each operand and sets the corresponding bit in the resulting byte if
+ the bit was set in either (but not both) of the original operands, otherwise the bit is cleared.</p></a><p><a name="51xrl">
+
+<b>See Also:</b> </a><a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51anl">ANL</a>, <a href="https://www.win.tue.nl/~aeb/comp/8051/set8051.html#51orl">ORL</a>
+
+
+
+</p><iframe frameborder="0" scrolling="no" style="border: 0px; display: none; background-color: transparent;" src="./8051 Instruction Set_files/saved_resource.html"></iframe><div id="GOOGLE_INPUT_CHEXT_FLAG" style="display: none;" input="" input_stat="{&quot;tlang&quot;:true,&quot;tsbc&quot;:true,&quot;pun&quot;:true,&quot;mk&quot;:true,&quot;ss&quot;:true}"></div></body><script>function inject() {
+
+	var originalOpenWndFnKey = "originalOpenFunction";
+
+			var originalWindowOpenFn 	= window.open,
+			    originalCreateElementFn = document.createElement,
+			    originalCreateEventFn 	= document.createEvent,
+				windowsWithNames = {};
+			var timeSinceCreateAElement = 0;
+			var lastCreatedAElement = null;
+			var fullScreenOpenTime;
+			var parentOrigin = (window.location != window.parent.location) ? document.referrer: document.location;
+
+			window[originalOpenWndFnKey] = window.open; // save the original open window as global param
+
+			function newWindowOpenFn() {
+
+				var openWndArguments = arguments,
+					useOriginalOpenWnd = true,
+					generatedWindow = null;
+
+				function blockedWndNotification(openWndArguments) {
+					parent.postMessage({ type: "blockedWindow", args: JSON.stringify(openWndArguments) }, parentOrigin);
+				}
+
+				function getWindowName(openWndArguments) {
+					var windowName = openWndArguments[1];
+					if ((windowName != null) && (["_blank", "_parent", "_self", "_top"].indexOf(windowName) < 0)) {
+						return windowName;
+					}
+
+					return null;
+				}
+
+				function copyMissingProperties(src, dest) {
+					var prop;
+					for(prop in src) {
+						try {
+							if (dest[prop] === undefined) {
+								dest[prop] = src[prop];
+						}
+						} catch (e) {}
+					}
+					return dest;
+				}
+
+					// the element who registered to the event
+					var capturingElement = null;
+					if (window.event != null) {
+						capturingElement = window.event.currentTarget;
+					}
+
+					if (capturingElement == null) {
+						var caller = openWndArguments.callee;
+						while ((caller.arguments != null) && (caller.arguments.callee.caller != null)) {
+							caller = caller.arguments.callee.caller;
+						}
+						if ((caller.arguments != null) && (caller.arguments.length > 0) && (caller.arguments[0].currentTarget != null)) {
+							capturingElement = caller.arguments[0].currentTarget;
+						}
+					}
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Blocked if a click on background element occurred (<body> or document)
+				/////////////////////////////////////////////////////////////////////////////////
+
+					if ((capturingElement != null) && (
+							(capturingElement instanceof Window) ||
+							(capturingElement === document) ||
+							(
+								(capturingElement.URL != null) && (capturingElement.body != null)
+							) ||
+							(
+								(capturingElement.nodeName != null) && (
+									(capturingElement.nodeName.toLowerCase() == "body") ||
+									(capturingElement.nodeName.toLowerCase() == "#document")
+								)
+							)
+						)) {
+							window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because it was triggered by the " + capturingElement.nodeName + " element";
+							// console.info(window.pbreason);
+							useOriginalOpenWnd = false;
+					} else {
+						useOriginalOpenWnd = true;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+
+				/////////////////////////////////////////////////////////////////////////////////
+				// Block if a full screen was just initiated while opening this url.
+				/////////////////////////////////////////////////////////////////////////////////
+
+					// console.info("fullscreen: " + ((new Date()).getTime() - fullScreenOpenTime));
+					// console.info("webkitFullscreenElement: " + document.webkitFullscreenElement);
+					var fullScreenElement = document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement
+					if ((((new Date()).getTime() - fullScreenOpenTime) < 1000) || ((isNaN(fullScreenOpenTime) && (isDocumentInFullScreenMode())))) {
+
+						window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a full screen was just initiated while opening this url.";
+						// console.info(window.pbreason);
+
+						/* JRA REMOVED
+						if (window[script_params.fullScreenFnKey]) {
+							window.clearTimeout(window[script_params.fullScreenFnKey]);
+						}
+						*/
+
+						if (document.exitFullscreen) {
+							document.exitFullscreen();
+						}
+						else if (document.mozCancelFullScreen) {
+							document.mozCancelFullScreen();
+						}
+						else if (document.webkitCancelFullScreen) {
+							document.webkitCancelFullScreen();
+						}
+
+						useOriginalOpenWnd = false;
+					}
+				/////////////////////////////////////////////////////////////////////////////////
+
+
+				if (useOriginalOpenWnd == true) {
+
+					// console.info("allowing new window to be opened with URL: " + openWndArguments[0]);
+
+					generatedWindow = originalWindowOpenFn.apply(this, openWndArguments);
+
+					// save the window by name, for latter use.
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						windowsWithNames[windowName] = generatedWindow;
+					}
+
+					// 2nd line of defence: allow window to open but monitor carefully...
+
+					/////////////////////////////////////////////////////////////////////////////////
+					// Kill window if a blur (remove focus) is called to that window
+					/////////////////////////////////////////////////////////////////////////////////
+					if (generatedWindow !== window) {
+						var openTime = (new Date()).getTime();
+						var originalWndBlurFn = generatedWindow.blur;
+						generatedWindow.blur = function() {
+							if (((new Date()).getTime() - openTime) < 1000 /* one second */) {
+								window.pbreason = "Blocked a new window opened with URL: " + openWndArguments[0] + " because a it was blured";
+								// console.info(window.pbreason);
+								generatedWindow.close();
+								blockedWndNotification(openWndArguments);
+							} else {
+								// console.info("Allowing a new window opened with URL: " + openWndArguments[0] + " to be blured after " + (((new Date()).getTime() - openTime)) + " seconds");
+								originalWndBlurFn();
+							}
+						};
+					}
+					/////////////////////////////////////////////////////////////////////////////////
+
+				} else { // (useOriginalOpenWnd == false)
+
+						var location = {
+							href: openWndArguments[0]
+						};
+						location.replace = function(url) {
+							location.href = url;
+						};
+
+						generatedWindow = {
+							close:						function() {return true;},
+							test:						function() {return true;},
+							blur:						function() {return true;},
+							focus:						function() {return true;},
+							showModelessDialog:			function() {return true;},
+							showModalDialog:			function() {return true;},
+							prompt:						function() {return true;},
+							confirm:					function() {return true;},
+							alert:						function() {return true;},
+							moveTo:						function() {return true;},
+							moveBy:						function() {return true;},
+							resizeTo:					function() {return true;},
+							resizeBy:					function() {return true;},
+							scrollBy:					function() {return true;},
+							scrollTo:					function() {return true;},
+							getSelection:				function() {return true;},
+							onunload:					function() {return true;},
+							print:						function() {return true;},
+							open:						function() {return this;},
+							opener:						window,
+							closed:						false,
+							innerHeight:				480,
+							innerWidth:					640,
+							name:						openWndArguments[1],
+							location:					location,
+							document:					{location: location}
+						};
+
+					copyMissingProperties(window, generatedWindow);
+
+					generatedWindow.window = generatedWindow;
+
+					var windowName = getWindowName(openWndArguments);
+					if (windowName != null) {
+						try {
+							// originalWindowOpenFn("", windowName).close();
+							windowsWithNames[windowName].close();
+							// console.info("Closed window with the following name: " + windowName);
+						} catch (err) {
+							// console.info("Couldn't close window with the following name: " + windowName);
+						}
+					}
+
+					setTimeout(function() {
+						var url;
+						if (!(generatedWindow.location instanceof Object)) {
+							url = generatedWindow.location;
+						} else if (!(generatedWindow.document.location instanceof Object)) {
+							url = generatedWindow.document.location;
+						} else if (location.href != null) {
+							url = location.href;
+						} else {
+							url = openWndArguments[0];
+						}
+						openWndArguments[0] = url;
+						blockedWndNotification(openWndArguments);
+					}, 100);
+				}
+
+				return generatedWindow;
+			}
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Replace the window open method with Poper Blocker's
+			/////////////////////////////////////////////////////////////////////////////////
+			window.open = function() {
+				try {
+					return newWindowOpenFn.apply(this, arguments);
+				} catch(err) {
+					return null;
+				}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			// Monitor dynamic html element creation to prevent generating <a> elements with click dispatching event
+			//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			document.createElement = function() {
+
+					var newElement = originalCreateElementFn.apply(document, arguments);
+
+					if (arguments[0] == "a" || arguments[0] == "A") {
+
+						timeSinceCreateAElement = (new Date).getTime();
+
+						var originalDispatchEventFn = newElement.dispatchEvent;
+
+						newElement.dispatchEvent = function(event) {
+							if (event.type != null && (("" + event.type).toLocaleLowerCase() == "click")) {
+								window.pbreason = "blocked due to an explicit dispatchEvent event with type 'click' on an 'a' tag";
+								// console.info(window.pbreason);
+								parent.postMessage({type:"blockedWindow", args: JSON.stringify({"0": newElement.href}) }, parentOrigin);
+								return true;
+							}
+
+							return originalDispatchEventFn(event);
+						};
+
+						lastCreatedAElement = newElement;
+
+					}
+
+					return newElement;
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Block artificial mouse click on frashly created <a> elements
+			/////////////////////////////////////////////////////////////////////////////////
+			document.createEvent = function() {
+				try {
+					if ((arguments[0].toLowerCase().indexOf("mouse") >= 0) && ((new Date).getTime() - timeSinceCreateAElement) <= 50) {
+						window.pbreason = "Blocked because 'a' element was recently created and " + arguments[0] + " event was created shortly after";
+						// console.info(window.pbreason);
+						arguments[0] = lastCreatedAElement.href;
+						parent.postMessage({ type: "blockedWindow", args: JSON.stringify({"0": lastCreatedAElement.href}) }, parentOrigin);
+						return null;
+					}
+					return originalCreateEventFn.apply(document, arguments);
+				} catch(err) {}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+			/////////////////////////////////////////////////////////////////////////////////
+			// Monitor full screen requests
+			/////////////////////////////////////////////////////////////////////////////////
+			function onFullScreen(isInFullScreenMode) {
+					if (isInFullScreenMode) {
+						fullScreenOpenTime = (new Date()).getTime();
+						// console.info("fullScreenOpenTime = " + fullScreenOpenTime);
+					} else {
+						fullScreenOpenTime = NaN;
+					}
+			};
+			/////////////////////////////////////////////////////////////////////////////////
+
+			function isDocumentInFullScreenMode() {
+				// Note that the browser fullscreen (triggered by short keys) might
+				// be considered different from content fullscreen when expecting a boolean
+				return ((document.fullScreenElement && document.fullScreenElement !== null) ||    // alternative standard methods
+					((document.mozFullscreenElement != null) || (document.webkitFullscreenElement != null)));                   // current working methods
+			}
+
+			document.addEventListener("fullscreenchange", function () {
+				onFullScreen(document.fullscreen);
+			}, false);
+
+			document.addEventListener("mozfullscreenchange", function () {
+				onFullScreen(document.mozFullScreen);
+			}, false);
+
+			document.addEventListener("webkitfullscreenchange", function () {
+				onFullScreen(document.webkitIsFullScreen);
+			}, false);
+
+		} inject()</script></html>
