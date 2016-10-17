@@ -1,0 +1,125 @@
+A51 MACRO ASSEMBLER  SIGNEDADDER16                                                        08/02/2016 21:02:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\signedadder16.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE signedadder16.asm SET(SMALL) DEBUG PRINT(.\Listings\signedadder16.lst) 
+                      OBJECT(.\Objects\signedadder16.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2     ljmp main
+                       3             
+0100                   4             org 100H
+                       5                     
+0100                   6                     main: 
+0100 7860              7                      MOV R0, #60H 
+0102 7970              8                      MOV R1, #70H
+                       9                      
+0104 7600             10                      MOV @R0, #000H
+0106 77FF             11                      MOV @R1, #0FFH
+                      12                      
+0108 08               13                      INC R0
+0109 09               14                      INC R1
+                      15                      
+010A 76FF             16                      MOV @R0, #0FFH
+010C 77FF             17                      MOV @R1, #0FFH
+                      18                      
+                      19                      ; The above values are used for initialization of the value which are to b
+                             e added
+                      20                      
+010E 120113           21                      lcall adder16 ; call the subroutine adder16 which implements 16 bit additi
+                             on
+                      22                      
+0111                  23                      stop:
+0111 80FE             24                             sjmp stop
+                      25                     
+0113                  26                     adder16:
+0113 C3               27                             CLR C
+0114 7860             28                             MOV R0, #60H ; Use R0 for addressing the memory of the first number
+0116 7970             29                             MOV R1, #70H ; Use R1 for addressing the memory of the second numbe
+                             r 
+0118 E6               30                             MOV A, @R0
+0119 67               31                             XRL A, @R1
+011A FC               32                             MOV R4, A
+011B 08               33                             INC R0
+011C 09               34                             INC R1
+011D E6               35                             MOV A, @R0
+011E 37               36                             ADDC A, @R1
+                      37                             ;CLR A ; Clear the accumulator
+011F 8803             38                             MOV 3, R0 ; Create a copy of the value in R0 in R3
+0121 08               39                                     INC R0
+0122 08               40                                     INC R0
+0123 08               41                                     INC R0
+                      42                             
+0124 F6               43                             MOV @R0, A
+                      44                             
+0125 8B00             45                             MOV 0, R3
+                      46                             
+                      47                             ;  Call the subroutine of add8 for the LSB
+                      48                             
+0127 18               49                             DEC R0 ; Decrement the pointer for first number
+0128 19               50                             DEC R1 ; Decrement the pointer for second number
+                      51                             ;  Call the subroutine add8 for the MSB
+                      52                             
+                      53                             
+0129 E6               54                             MOV A, @R0
+A51 MACRO ASSEMBLER  SIGNEDADDER16                                                        08/02/2016 21:02:00 PAGE     2
+
+012A 37               55                             ADDC A, @R1
+                      56                             
+012B 8803             57                             MOV 3, R0
+012D 08               58                             INC R0
+012E 08               59                             INC R0
+012F 08               60                             INC R0
+                      61                             ; Increment the content of R0 by 3 to store at the required memory 
+                             location
+                      62                             
+0130 F6               63                             MOV @R0, A ;  Move the result of MSB from accumulator to the requir
+                             ed location
+                      64                             ;MOV 0, R3
+                      65                             
+                      66                             
+0131 18               67                             DEC R0 ; Decrement R0 to access the third byte for the borrow bit
+0132 EC               68                             MOV A, R4
+0133 7D00             69                             MOV R5, #00H
+0135 5002             70                             jnc goto
+0137 7D80             71                                     MOV R5, #80H
+0139                  72                                     goto:
+0139 6D               73                             XRL A, R5
+013A 75F000           74                             MOV B, #00H ;  Clear the B register to store the default borrow of 
+                             zero
+013D 30E702           75                             jnb 0E7H, label1
+0140 05F0             76                                     INC B ;  If there is a borrow, increment the B register to 
+                             account for it
+                      77                                     
+0142                  78                                     label1:
+0142 A6F0             79                                             MOV @R0, B
+                      80                             
+0144 22               81                     ret
+                      82                                     
+                      83             END
+                                                             
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  SIGNEDADDER16                                                        08/02/2016 21:02:00 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADDER16. . . . . .  C ADDR   0113H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+GOTO . . . . . . .  C ADDR   0139H   A   
+LABEL1 . . . . . .  C ADDR   0142H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   0111H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,125 @@
+A51 MACRO ASSEMBLER  BIN2ASCII                                                            08/08/2016 14:43:40 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\bin2ascii.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE bin2ascii.asm SET(SMALL) DEBUG PRINT(.\Listings\bin2ascii.lst) OBJECT(.
+                      \Objects\bin2ascii.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5                     
+0100                   6                     main:
+                       7                     
+0100 755003            8                     MOV 50H,#03H
+0103 755155            9                     MOV 51H, #55H
+0106 755260           10                     MOV 52H, #60H
+0109 755523           11                     MOV 55H, #23H
+010C 755634           12                     MOV 56H, #34H
+010F 75574E           13                     MOV 57H, #4EH
+                      14                     
+0112 120117           15                     lcall bin2ascii
+                      16                     
+0115 80FE             17                     STOP: sjmp STOP
+                      18                     
+                      19                     
+0117                  20                     bin2ascii:
+                      21                             
+                      22                             USING 0
+0117 C0F0             23                             PUSH B
+0119 C000             24                             PUSH AR0
+011B C001             25                             PUSH AR1
+011D C002             26                             PUSH AR2
+011F C003             27                             PUSH AR3
+0121 C004             28                             PUSH AR4
+                      29                             
+0123 FC               30                             MOV R4,A
+                      31                             
+0124 8550F0           32                             MOV B, 50H
+0127 A851             33                             MOV R0, 51H
+0129 A952             34                             MOV R1, 52H
+                      35                             
+012B                  36                             LOOP:
+012B E6               37                                     MOV A, @R0
+012C 54F0             38                                     ANL A, #0F0H
+012E 03               39                                     RR A
+012F 03               40                                     RR A
+0130 03               41                                     RR A
+0131 03               42                                     RR A
+0132 FB               43                                     MOV R3,A
+0133 C3               44                                     CLR C
+0134 940A             45                                     SUBB A,#0AH
+0136 EB               46                                     MOV A, R3
+0137 4002             47                                     JC down
+0139 2407             48                                             ADD A,#07H
+013B                  49                                             down:
+013B 2430             50                                             ADD A, #30H
+013D F7               51                                             MOV @R1, A
+013E 09               52                                             INC R1
+                      53                                     
+013F E6               54                                     MOV A, @R0
+0140 540F             55                                     ANL A, #0FH
+0142 FB               56                                     MOV R3,A
+0143 C3               57                                     CLR C
+A51 MACRO ASSEMBLER  BIN2ASCII                                                            08/08/2016 14:43:40 PAGE     2
+
+0144 940A             58                                     SUBB A,#0AH
+0146 EB               59                                     MOV A, R3
+0147 4002             60                                     JC down1
+0149 2407             61                                             ADD A,#07H
+014B                  62                                             down1:
+014B 2430             63                                             ADD A, #30H
+014D F7               64                                             MOV @R1, A
+014E 09               65                                             INC R1
+                      66                                             
+014F 08               67                                     INC R0
+                      68                                     
+0150 D5F0D8           69                                     DJNZ B, LOOP
+                      70                                     
+0153 FC               71                             MOV R4, A
+                      72                             
+0154 D004             73                             POP AR4
+0156 D003             74                             POP AR3
+0158 D002             75                             POP AR2
+015A D001             76                             POP AR1
+015C D000             77                             POP AR0
+015E D0F0             78                             POP B
+                      79                             
+0160 22               80                             RET
+                      81                             
+                      82                     END
+                                                             
+                                                                             
+                                                             
+                                                             
+                                                     
+A51 MACRO ASSEMBLER  BIN2ASCII                                                            08/08/2016 14:43:40 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR0. . . . . . . .  D ADDR   0000H   A   
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+AR3. . . . . . . .  D ADDR   0003H   A   
+AR4. . . . . . . .  D ADDR   0004H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BIN2ASCII. . . . .  C ADDR   0117H   A   
+DOWN . . . . . . .  C ADDR   013BH   A   
+DOWN1. . . . . . .  C ADDR   014BH   A   
+LOOP . . . . . . .  C ADDR   012BH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   0115H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

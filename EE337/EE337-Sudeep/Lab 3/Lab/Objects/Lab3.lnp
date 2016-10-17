@@ -1,0 +1,3 @@
+".\Objects\excess3.obj" 
+TO ".\Objects\Lab3" 
+PRINT(".\Listings\Lab3.m51") RAMSIZE(256) 

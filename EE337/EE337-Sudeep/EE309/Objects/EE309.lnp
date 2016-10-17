@@ -1,0 +1,3 @@
+".\Objects\stackpointer.obj" 
+TO ".\Objects\EE309" 
+PRINT(".\Listings\EE309.m51") RAMSIZE(256) 

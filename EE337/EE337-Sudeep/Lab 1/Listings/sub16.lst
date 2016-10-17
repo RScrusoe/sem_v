@@ -1,0 +1,102 @@
+A51 MACRO ASSEMBLER  SUB16                                                                07/31/2016 12:27:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\sub16.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sub16.asm SET(SMALL) DEBUG PRINT(.\Listings\sub16.lst) OBJECT(.\Objects
+                      \sub16.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020200            2     ljmp main1
+                       3             
+0200                   4             org 200H
+                       5                     
+0200                   6                     main1: 
+0200 7860              7                      MOV R0, #60H 
+0202 7970              8                      MOV R1, #70H
+                       9                      
+0204 7601             10                      MOV @R0, #01H
+0206 7702             11                      MOV @R1, #02H
+                      12                      
+0208 08               13                      INC R0
+0209 09               14                      INC R1
+                      15                      
+020A 76FF             16                      MOV @R0, #0FFH
+020C 7703             17                      MOV @R1, #03H
+                      18                      
+                      19                      ;lcall sub16
+                      20                     
+020E                  21                     sub16:
+020E 7861             22                             MOV R0, #61H 
+0210 7971             23                             MOV R1, #71H
+                      24                             
+                      25                             
+                      26                             
+0212 E6               27                             MOV A, @R0
+0213 97               28                             SUBB A, @R1
+                      29                             
+0214 08               30                             INC R0
+0215 08               31                             INC R0
+0216 08               32                             INC R0
+                      33                             
+0217 F6               34                             MOV @R0, A
+0218 18               35                             DEC R0
+0219 18               36                             DEC R0
+021A 18               37                             DEC R0
+                      38                             
+021B 18               39                             DEC R0
+021C 19               40                             DEC R1
+                      41                             
+021D E6               42                             MOV A, @R0
+021E 97               43                             SUBB A, @R1
+                      44                             
+021F 08               45                             INC R0
+0220 08               46                             INC R0
+0221 08               47                             INC R0
+                      48                             
+0222 F6               49                             MOV @R0, A
+                      50                             
+                      51                             
+0223 18               52                             DEC R0
+0224 75F000           53                             MOV B, #00H
+0227 5003             54                             jnc label1
+0229 75F001           55                                     MOV B, #01H
+                      56                                     
+022C                  57                                     label1:
+A51 MACRO ASSEMBLER  SUB16                                                                07/31/2016 12:27:44 PAGE     2
+
+022C A6F0             58                                             MOV @R0, B
+                      59                             
+022E 22               60                     ret
+                      61                             
+                      62                             
+                      63                             
+                      64                             
+                      65                             
+                      66                             
+                      67                             
+                      68                                     
+                      69             END
+                                                             
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  SUB16                                                                07/31/2016 12:27:44 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LABEL1 . . . . . .  C ADDR   022CH   A   
+MAIN1. . . . . . .  C ADDR   0200H   A   
+SUB16. . . . . . .  C ADDR   020EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

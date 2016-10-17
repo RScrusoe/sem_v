@@ -1,0 +1,68 @@
+A51 MACRO ASSEMBLER  CONT_ADD                                                             08/01/2016 13:02:10 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\cont_add.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ..\cont_add.asm SET(SMALL) DEBUG PRINT(.\Listings\cont_add.lst) OBJECT(
+                      .\Objects\cont_add.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 021000            2             ljmp main1
+                       3             
+1000                   4             org 1000H
+                       5                     
+1000                   6                     main1:
+                       7                     
+1000 00                8                     nop
+                       9                     
+1001 7850             10                     MOV R0, #50H ;  R0 will store the memory locations of where the numbers hav
+                             e to be stored       
+1003 7601             11                     MOV @R0, #01H
+1005 86F0             12                     MOV B , @R0 
+1007 08               13                     INC R0
+1008 7601             14                     MOV @R0, #01H ;
+100A 7902             15                     MOV R1, #02H ; This will generate the list of natural numbers which have to
+                              be added
+100C 15F0             16                     DEC B
+100E E5F0             17                     MOV A, B
+                      18                     
+1010 600B             19                     jz down
+                      20     
+                      21                     
+                      22                     
+1012                  23                     label1:
+                      24                     
+1012 E6               25                             MOV A, @R0 ; Move the contents of location contained in R0 to the a
+                             ccumulator
+1013 29               26                             ADD A, R1 ;  Add the contents of R1 to accumulator
+1014 08               27                             INC R0
+1015 F6               28                             MOV @R0,A
+1016 09               29                             INC R1
+1017 15F0             30                             DEC B
+1019 E5F0             31                             MOV A,B
+101B 70F5             32                             jnz label1
+                      33                     
+101D                  34                     down:
+                      35                     END
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  CONT_ADD                                                             08/01/2016 13:02:10 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DOWN . . . . . . .  C ADDR   101DH   A   
+LABEL1 . . . . . .  C ADDR   1012H   A   
+MAIN1. . . . . . .  C ADDR   1000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

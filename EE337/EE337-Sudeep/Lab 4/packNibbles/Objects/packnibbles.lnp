@@ -1,0 +1,3 @@
+".\Objects\pack_nibbles.obj" 
+TO ".\Objects\packnibbles" 
+PRINT(".\Listings\packnibbles.m51") RAMSIZE(256) 

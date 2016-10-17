@@ -1,0 +1,71 @@
+A51 MACRO ASSEMBLER  PACK_NIBBLES                                                         08/22/2016 13:24:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\pack_nibbles.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE pack_nibbles.asm SET(SMALL) DEBUG PRINT(.\Listings\pack_nibbles.lst) OB
+                      JECT(.\Objects\pack_nibbles.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 020100            2             ljmp pack_nibbles
+                       3     
+0100                   4     org 100H
+                       5     
+0100                   6     pack_nibbles:
+0100 120112            7             LCALL readnibble
+0103 EF                8             MOV A, R7
+0104 FE                9             MOV R6, A
+0105 12011B           10             LCALL delay5sec
+0108 120112           11             LCALL readnibble
+010B EE               12             MOV A, R6
+010C C4               13             SWAP A
+010D 4F               14             ORL A, R7
+010E F54F             15             MOV 4FH, A
+                      16     
+0110 80FE             17             here : SJMP here
+                      18     
+                      19     
+0112                  20     readnibble:
+0112 75900F           21             MOV P1, #0FH
+0115 E590             22             MOV A, P1
+0117 540F             23             ANL A, #0FH
+0119 FF               24             MOV R7, A
+011A 22               25             RET
+                      26     
+011B                  27     delay5sec:
+011B 7A64             28             MOV R2, #100
+011D                  29             loop1:
+011D 7BC8             30                     MOV R3, #200
+011F                  31             loop2:
+011F 7CFF             32                     MOV R4, #0FFh
+0121                  33             loop3: 
+0121 DCFE             34                     DJNZ R4, loop3
+0123 DBFA             35                     DJNZ R3, loop2
+0125 DAF6             36                     DJNZ R2, loop1
+0127 22               37             RET
+                      38             
+                      39             END
+A51 MACRO ASSEMBLER  PACK_NIBBLES                                                         08/22/2016 13:24:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY5SEC. . . . .  C ADDR   011BH   A   
+HERE . . . . . . .  C ADDR   0110H   A   
+LOOP1. . . . . . .  C ADDR   011DH   A   
+LOOP2. . . . . . .  C ADDR   011FH   A   
+LOOP3. . . . . . .  C ADDR   0121H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PACK_NIBBLES . . .  C ADDR   0100H   A   
+READNIBBLE . . . .  C ADDR   0112H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

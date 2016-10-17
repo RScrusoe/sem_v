@@ -1,0 +1,128 @@
+A51 MACRO ASSEMBLER  HW                                                                   08/16/2016 13:03:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\hw.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE hw.asm SET(SMALL) DEBUG PRINT(.\Listings\hw.lst) OBJECT(.\Objects\hw.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 020100            2             ljmp main
+                       3     
+0100                   4     org 100h
+0100                   5     main:
+0100 8010              6             sjmp loop
+0102                   7     old_data:
+0102 E54E              8             MOV A, 4EH                      ;display data from 4eh
+0104 540F              9             ANL A, #0FH
+0106 C4               10             SWAP A
+0107 F590             11             MOV P1, A
+0109 12013A           12             lcall readnibble        ;read the input on P1.0-P1.3 (nibble)
+010C E9               13             MOV A, R1
+010D B40F02           14             CJNE A, #0FH, loop      ;if read value != 0Fh go to loop
+0110 80F0             15             sjmp old_data           ;else return to caller with previously read nibble in locat
+                             ion 4EH (lower 4 bits).
+                      16             
+0112                  17     loop:
+0112 7590FF           18             MOV P1, #0FFH           ;turn on all 4 leds (routine is ready to accept input)
+0115 120144           19             lcall delay5sec         ;wait for 5 sec during which user can give input 
+0118 75900F           20             MOV P1, #0FH            ;clear pins P1.4 to P1.7
+011B 12013A           21             lcall readnibble        ;read the input on P1.0-P1.3 (nibble)
+011E 120152           22             lcall delay1sec         ;wait for one sec
+0121 E9               23             MOV A, R1
+0122 F54E             24             MOV 4EH, A
+0124 540F             25             ANL A, #00FH
+0126 C4               26             SWAP A
+0127 F590             27             MOV P1, A                       ;show the read value on pins P1.4-P1.7
+0129 120144           28             lcall delay5sec         ;wait for 5 sec 
+012C 75900F           29             MOV P1, #0FH            ;clear leds
+012F E590             30             MOV A, P1                       ;read the input from switches
+0131 540F             31             ANL A, #0FH
+0133 B40FDC           32             CJNE A, #0FH, loop      ;if read value != 0Fh go to loop
+0136 80CA             33             sjmp old_data           ;else return to caller with previously read nibble in locat
+                             ion 4EH (lower 4 bits).
+                      34                                                     
+                      35                                                     
+0138                  36     stop:
+0138 80FE             37             sjmp stop
+                      38             
+013A                  39     readnibble:
+013A 75900F           40                             MOV P1, #0FH                    ; set pins 0-3 for configuring as i
+                             nput pins
+013D E590             41                             MOV A, P1                       ; read value on pins
+013F 540F             42                             ANL A, #0FH
+0141 F501             43                             MOV 1, A
+0143 22               44                             RET
+                      45                             
+0144                  46     delay5sec:
+                      47             USING 0
+0144 C0F0             48                     PUSH B
+0146 75F064           49                     MOV B, #64H
+0149                  50                     loop5:
+0149 120160           51                             lcall delay0
+014C D5F0FA           52                             DJNZ B, loop5
+014F D0F0             53                     POP B
+0151 22               54             RET
+A51 MACRO ASSEMBLER  HW                                                                   08/16/2016 13:03:45 PAGE     2
+
+                      55             
+0152                  56     delay1sec:
+                      57             USING 0
+0152 C0F0             58                     PUSH B
+0154 75F014           59                     MOV B, #14H
+0157                  60                     loop1:
+0157 120160           61                             lcall delay0
+015A D5F0FA           62                             DJNZ B, loop1
+015D D0F0             63                     POP B
+015F 22               64             RET
+                      65             
+0160                  66     delay0:
+                      67                     USING 0
+0160 C002             68                     PUSH AR2
+0162 C001             69                     PUSH AR1
+                      70                     
+0164 7AC8             71                     MOV R2, #200
+0166                  72                     BACK1:
+0166 79FF             73                             MOV R1, #0FFH
+0168                  74                             BACK:
+0168 D9FE             75                                     DJNZ R1, BACK
+016A DAFA             76                             DJNZ R2, BACK1
+                      77                             
+016C D001             78                     POP AR1
+016E D002             79                     POP AR2
+                      80                     
+0170 22               81                     RET
+                      82             
+                      83     END     
+A51 MACRO ASSEMBLER  HW                                                                   08/16/2016 13:03:45 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0168H   A   
+BACK1. . . . . . .  C ADDR   0166H   A   
+DELAY0 . . . . . .  C ADDR   0160H   A   
+DELAY1SEC. . . . .  C ADDR   0152H   A   
+DELAY5SEC. . . . .  C ADDR   0144H   A   
+LOOP . . . . . . .  C ADDR   0112H   A   
+LOOP1. . . . . . .  C ADDR   0157H   A   
+LOOP5. . . . . . .  C ADDR   0149H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+OLD_DATA . . . . .  C ADDR   0102H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+READNIBBLE . . . .  C ADDR   013AH   A   
+STOP . . . . . . .  C ADDR   0138H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

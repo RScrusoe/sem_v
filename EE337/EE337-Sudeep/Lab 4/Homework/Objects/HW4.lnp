@@ -1,0 +1,3 @@
+".\Objects\print_name.obj" 
+TO ".\Objects\HW4" 
+PRINT(".\Listings\HW4.m51") RAMSIZE(256) 

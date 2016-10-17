@@ -1,0 +1,111 @@
+A51 MACRO ASSEMBLER  PWM                                                                  09/20/2016 14:16:04 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\pwm.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE pwm.asm SET(SMALL) DEBUG PRINT(.\Listings\pwm.lst) OBJECT(.\Objects\pwm
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; Defining timer 2 registers
+  00C8                 2     T2CON DATA 0C8H
+  00C9                 3     T2MOD DATA 0C9H
+  00CA                 4     RCAP2L DATA 0CAH
+  00CB                 5     RCAP2H DATA 0CBH
+  00CC                 6     TL2 DATA 0CCH
+  00CD                 7     TH2 DATA 0CDH
+                       8     
+                       9     ; Defining the interrupt enable (IE) bit
+  00AD                10     ET2 BIT 0ADH
+                      11     
+                      12     ;Defining interrupt priority (IP) bit
+  00BD                13     PT2 BIT 0BDH
+                      14     
+                      15     ;Defining P1
+  0091                16     T2EX BIT 91H
+  0090                17     T2 BIT 90H
+                      18             
+                      19     ;Defining timer control (T2CON) register bits
+  00CF                20     TF2 BIT 0CFH
+  00CE                21     EXF2 BIT 0CEH
+  00CD                22     RCLK BIT 0CDH
+  00CC                23     TCLK BIT 0CCH
+  00CB                24     EXEN2 BIT 0CBH
+  00CA                25     TR2 BIT 0CAH
+  00C9                26     C_T2 BIT 0C9H
+  00C8                27     CP_RL2 BIT 0C8H
+                      28             
+0000                  29     org 0000H       
+0000 020119           30             ljmp main
+                      31             
+002B                  32     org 002BH         ; Timer 2 interrupt service routine
+002B B294             33             CPL P1.4
+002D C2CF             34             CLR TF2
+002F 32               35             RETI
+                      36     
+                      37     
+0100                  38     org 100H
+                      39     ; Timer 2 intialisation
+0100                  40     T2_init:
+0100 75C900           41             MOV     T2MOD, #00H ; Configure T2MOD
+0103 75C800           42             MOV T2CON ,#00H ; Configure T2CON
+                      43             
+0106 75CDFC           44             MOV TH2, #0FCH  ; Initialize TH2
+0109 75CC18           45             MOV TL2, #18H   ; Initialize TL2
+                      46             
+010C 75CBFC           47             MOV RCAP2H, #0FCH  ; Initialize the reload registers
+010F 75CA18           48             MOV RCAP2L, #18H
+0112 D2CA             49             SETB TR2     ; Begin counter
+                      50             
+0114 D2AF             51             SETB EA      ; Enable interrupts
+0116 D2AD             52             SETB ET2      ; Enable timer 2 interrupt
+                      53             
+0118 22               54             RET
+                      55             
+0119                  56     main:
+0119 D294             57             SETB P1.4
+A51 MACRO ASSEMBLER  PWM                                                                  09/20/2016 14:16:04 PAGE     2
+
+011B 120100           58             lcall T2_INIT
+                      59                     
+011E 80FE             60             here: sjmp here
+                      61                     
+                      62     END
+A51 MACRO ASSEMBLER  PWM                                                                  09/20/2016 14:16:04 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CP_RL2 . . . . . .  B ADDR   00C8H.0 A   
+C_T2 . . . . . . .  B ADDR   00C8H.1 A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET2. . . . . . . .  B ADDR   00A8H.5 A   
+EXEN2. . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . .  B ADDR   00C8H.6 A   
+HERE . . . . . . .  C ADDR   011EH   A   
+MAIN . . . . . . .  C ADDR   0119H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+PT2. . . . . . . .  B ADDR   00B8H.5 A   
+RCAP2H . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . .  B ADDR   00C8H.5 A   
+T2 . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . .  B ADDR   0090H.1 A   
+T2MOD. . . . . . .  D ADDR   00C9H   A   
+T2_INIT. . . . . .  C ADDR   0100H   A   
+TCLK . . . . . . .  B ADDR   00C8H.4 A   
+TF2. . . . . . . .  B ADDR   00C8H.7 A   
+TH2. . . . . . . .  D ADDR   00CDH   A   
+TL2. . . . . . . .  D ADDR   00CCH   A   
+TR2. . . . . . . .  B ADDR   00C8H.2 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,1 @@
+"cont_add.asm" SET (SMALL) DEBUG PRINT(.\Listings\cont_add.lst) OBJECT(.\Objects\cont_add.obj) EP

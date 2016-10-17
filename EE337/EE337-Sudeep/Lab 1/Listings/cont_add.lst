@@ -1,0 +1,62 @@
+A51 MACRO ASSEMBLER  CONT_ADD                                                             07/30/2016 22:29:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\cont_add.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE cont_add.asm SET(SMALL) DEBUG PRINT(.\Listings\cont_add.lst) OBJECT(.\O
+                      bjects\cont_add.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 021000            2             ljmp main1
+                       3             
+1000                   4             org 1000H
+                       5                     
+1000                   6                     main1:
+                       7                     
+1000 00                8                     nop
+                       9                     
+1001 7850             10                     MOV R0, #50H ; 
+                      11                     
+1003 7603             12                     MOV @R0, #3H
+1005 86F0             13                     MOV B , @R0 
+                      14                     ;INC R0
+1007 7600             15                     MOV @R0, #00H ;
+1009 7901             16                     MOV R1, #01H ;
+                      17                     
+                      18                     
+                      19                     
+                      20                     
+                      21                     
+100B                  22                     label1:
+                      23                     
+100B E6               24                             MOV A, @R0
+100C 29               25                             ADD A, R1
+100D 08               26                             INC R0
+100E F6               27                             MOV @R0,A
+100F 09               28                             INC R1
+1010 15F0             29                             DEC B
+1012 E5F0             30                             MOV A,B
+1014 70F5             31                             jnz label1
+                      32                             
+                      33                     END
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  CONT_ADD                                                             07/30/2016 22:29:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LABEL1 . . . . . .  C ADDR   100BH   A   
+MAIN1. . . . . . .  C ADDR   1000H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

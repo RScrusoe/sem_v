@@ -1,0 +1,3 @@
+".\Objects\cont_add.obj" 
+TO ".\Objects\PartialSums" 
+PRINT(".\Listings\PartialSums.m51") RAMSIZE(256) 

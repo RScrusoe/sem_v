@@ -1,0 +1,82 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/20/2016  14:16:05  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\pwm.obj TO .\Objects\timer2 PRINT (.\Listings\timer2.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\pwm.obj (PWM)
+
+
+LINK MAP OF MODULE:  .\Objects\timer2 (PWM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0120H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\timer2 (PWM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PWM
+  B:00C8H.0       SYMBOL        CP_RL2
+  B:00C8H.1       SYMBOL        C_T2
+  B:00A8H.7       SYMBOL        EA
+  B:00A8H.5       SYMBOL        ET2
+  B:00C8H.3       SYMBOL        EXEN2
+  B:00C8H.6       SYMBOL        EXF2
+  C:011EH         SYMBOL        HERE
+  C:0119H         SYMBOL        MAIN
+  D:0090H         SYMBOL        P1
+  B:00B8H.5       SYMBOL        PT2
+  D:00CBH         SYMBOL        RCAP2H
+  D:00CAH         SYMBOL        RCAP2L
+  B:00C8H.5       SYMBOL        RCLK
+  B:0090H.0       SYMBOL        T2
+  D:00C8H         SYMBOL        T2CON
+  B:0090H.1       SYMBOL        T2EX
+  D:00C9H         SYMBOL        T2MOD
+  C:0100H         SYMBOL        T2_INIT
+  B:00C8H.4       SYMBOL        TCLK
+  B:00C8H.7       SYMBOL        TF2
+  D:00CDH         SYMBOL        TH2
+  D:00CCH         SYMBOL        TL2
+  B:00C8H.2       SYMBOL        TR2
+  C:0000H         LINE#         30
+  C:002BH         LINE#         33
+  C:002DH         LINE#         34
+  C:002FH         LINE#         35
+  C:0100H         LINE#         41
+  C:0103H         LINE#         42
+  C:0106H         LINE#         44
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/20/2016  14:16:05  PAGE 2
+
+
+  C:0109H         LINE#         45
+  C:010CH         LINE#         47
+  C:010FH         LINE#         48
+  C:0112H         LINE#         49
+  C:0114H         LINE#         51
+  C:0116H         LINE#         52
+  C:0118H         LINE#         54
+  C:0119H         LINE#         57
+  C:011BH         LINE#         58
+  C:011EH         LINE#         60
+  -------         ENDMOD        PWM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0028H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=288
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

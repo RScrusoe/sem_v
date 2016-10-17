@@ -1,0 +1,132 @@
+A51 MACRO ASSEMBLER  SUB16SIGN                                                            08/03/2016 19:24:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\sub16sign.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sub16sign.asm SET(SMALL) DEBUG PRINT(.\Listings\sub16sign.lst) OBJECT(.
+                      \Objects\sub16sign.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2     ljmp main
+                       3             
+0100                   4             org 100H
+                       5                     
+0100                   6                     main: 
+0100 7860              7                      MOV R0, #60H 
+0102 7970              8                      MOV R1, #70H
+                       9                      
+0104 7600             10                      MOV @R0, #000H
+0106 77FF             11                      MOV @R1, #0FFH
+0108 E7               12                      MOV A, @R1
+0109 F4               13                      CPL A
+010A F7               14                      MOV @R1, A
+                      15                      
+010B 08               16                      INC R0
+010C 09               17                      INC R1
+                      18                      
+010D 7601             19                      MOV @R0, #001H
+010F 77FF             20                      MOV @R1, #0FFH
+0111 E7               21                      MOV A, @R1
+0112 F4               22                      CPL A
+0113 F7               23                      MOV @R1, A
+                      24                      
+0114 E4               25                      CLR A
+                      26                      
+                      27                      ; The above values are used for initialization of the value which are to b
+                             e added
+                      28                      
+0115 12011A           29                      lcall sub16 ; call the subroutine adder16 which implements 16 bit addition
+                      30                      
+0118                  31                      stop:
+0118 80FE             32                             sjmp stop
+                      33                     
+011A                  34                     sub16:
+011A D3               35                             SETB C
+011B 7860             36                             MOV R0, #60H ; Use R0 for addressing the memory of the first number
+011D 7970             37                             MOV R1, #70H ; Use R1 for addressing the memory of the second numbe
+                             r 
+011F E6               38                             MOV A, @R0
+0120 67               39                             XRL A, @R1
+0121 FC               40                             MOV R4, A
+0122 08               41                             INC R0
+0123 09               42                             INC R1
+0124 E6               43                             MOV A, @R0
+0125 37               44                             ADDC A, @R1
+                      45                             ;CLR A ; Clear the accumulator
+0126 8803             46                             MOV 3, R0 ; Create a copy of the value in R0 in R3
+0128 08               47                                     INC R0
+0129 08               48                                     INC R0
+012A 08               49                                     INC R0
+                      50                             
+012B F6               51                             MOV @R0, A
+                      52                             
+012C 8B00             53                             MOV 0, R3
+                      54                             
+                      55                             ;  Call the subroutine of add8 for the LSB
+A51 MACRO ASSEMBLER  SUB16SIGN                                                            08/03/2016 19:24:20 PAGE     2
+
+                      56                             
+012E 18               57                             DEC R0 ; Decrement the pointer for first number
+012F 19               58                             DEC R1 ; Decrement the pointer for second number
+                      59                             ;  Call the subroutine add8 for the MSB
+                      60                             
+                      61                             
+0130 E6               62                             MOV A, @R0
+0131 37               63                             ADDC A, @R1
+                      64                             
+0132 8803             65                             MOV 3, R0
+0134 08               66                             INC R0
+0135 08               67                             INC R0
+0136 08               68                             INC R0
+                      69                             ; Increment the content of R0 by 3 to store at the required memory 
+                             location
+                      70                             
+0137 F6               71                             MOV @R0, A ;  Move the result of MSB from accumulator to the requir
+                             ed location
+                      72                             ;MOV 0, R3
+                      73                             
+                      74                             
+0138 18               75                             DEC R0 ; Decrement R0 to access the third byte for the borrow bit
+0139 EC               76                             MOV A, R4
+013A 7D00             77                             MOV R5, #00H
+013C 5002             78                             jnc goto
+013E 7D80             79                                     MOV R5, #80H
+0140                  80                                     goto:
+0140 6D               81                             XRL A, R5
+0141 75F000           82                             MOV B, #00H ;  Clear the B register to store the default borrow of 
+                             zero
+0144 30E702           83                             jnb 0E7H, label1
+0147 05F0             84                                     INC B ;  If there is a borrow, increment the B register to 
+                             account for it
+                      85                                     
+0149                  86                                     label1:
+0149 A6F0             87                                             MOV @R0, B
+                      88                             
+014B 22               89                     ret
+                      90                                     
+                      91             END
+                                                             
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  SUB16SIGN                                                            08/03/2016 19:24:20 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+GOTO . . . . . . .  C ADDR   0140H   A   
+LABEL1 . . . . . .  C ADDR   0149H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   0118H   A   
+SUB16. . . . . . .  C ADDR   011AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

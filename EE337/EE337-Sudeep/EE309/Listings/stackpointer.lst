@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  STACKPOINTER                                                         09/06/2016 20:11:41 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\stackpointer.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE stackpointer.asm SET(SMALL) DEBUG PRINT(.\Listings\stackpointer.lst) OB
+                      JECT(.\Objects\stackpointer.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00H
+0000 020003            2             LJMP main
+                       3             
+0003                   4             main:
+0003 C081              5                     PUSH SP 
+0005 E508              6                     MOV A, 08H
+0007 8507F0            7                     MOV B, 07H
+                       8                     
+000A 80FE              9                     here: sjmp here
+                      10             END
+A51 MACRO ASSEMBLER  STACKPOINTER                                                         09/06/2016 20:11:41 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   000AH   A   
+MAIN . . . . . . .  C ADDR   0003H   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

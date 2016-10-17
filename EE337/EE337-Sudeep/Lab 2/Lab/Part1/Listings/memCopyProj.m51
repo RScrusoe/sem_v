@@ -1,0 +1,84 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/10/2016  20:13:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\memcopy.obj TO .\Objects\memCopyProj PRINT (.\Listings\memCopyProj.m51) RAMSIZE (2
+>> 56)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\memcopy.obj (MEMCOPY)
+
+
+LINK MAP OF MODULE:  .\Objects\memCopyProj (MEMCOPY)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     013CH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\memCopyProj (MEMCOPY)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MEMCOPY
+  D:00F0H         SYMBOL        B
+  C:0125H         SYMBOL        DOWN
+  C:013AH         SYMBOL        FURTHER
+  C:011EH         SYMBOL        LOOP1
+  C:0133H         SYMBOL        LOOP2
+  C:0100H         SYMBOL        MAIN
+  C:013AH         SYMBOL        STOP
+  C:0000H         LINE#         2
+  C:0100H         LINE#         9
+  C:0103H         LINE#         10
+  C:0106H         LINE#         11
+  C:0109H         LINE#         12
+  C:010CH         LINE#         13
+  C:010FH         LINE#         14
+  C:0112H         LINE#         15
+  C:0115H         LINE#         16
+  C:0117H         LINE#         17
+  C:0119H         LINE#         18
+  C:011AH         LINE#         19
+  C:011BH         LINE#         20
+  C:011CH         LINE#         21
+  C:011EH         LINE#         23
+  C:011FH         LINE#         24
+  C:0120H         LINE#         25
+  C:0121H         LINE#         26
+  C:0122H         LINE#         27
+  C:0125H         LINE#         29
+  C:0127H         LINE#         30
+  C:0129H         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/10/2016  20:13:02  PAGE 2
+
+
+  C:012AH         LINE#         32
+  C:012CH         LINE#         33
+  C:012DH         LINE#         34
+  C:012EH         LINE#         35
+  C:0130H         LINE#         36
+  C:0131H         LINE#         37
+  C:0133H         LINE#         39
+  C:0134H         LINE#         40
+  C:0135H         LINE#         41
+  C:0136H         LINE#         42
+  C:0137H         LINE#         43
+  C:013AH         LINE#         48
+  -------         ENDMOD        MEMCOPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003FH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=316
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

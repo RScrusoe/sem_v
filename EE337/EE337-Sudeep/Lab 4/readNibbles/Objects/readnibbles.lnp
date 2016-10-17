@@ -1,0 +1,3 @@
+".\Objects\read_values.obj" 
+TO ".\Objects\readnibbles" 
+PRINT(".\Listings\readnibbles.m51") RAMSIZE(256) 

@@ -1,0 +1,133 @@
+A51 MACRO ASSEMBLER  SUB16                                                                08/01/2016 15:58:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\sub16.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ..\sub16.asm SET(SMALL) DEBUG PRINT(.\Listings\sub16.lst) OBJECT(.\Obje
+                      cts\sub16.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020200            2     ljmp main1
+                       3             
+0200                   4             org 200H
+                       5                     
+0200                   6                     main1:
+0200 E4                7                             CLR A
+0201 C3                8                             CLR C
+0202 7860              9                      MOV R0, #60H 
+0204 7970             10                      MOV R1, #70H
+                      11                      
+0206 76FF             12                      MOV @R0, #0FFH
+0208 7700             13                      MOV @R1, #000H
+                      14                      
+020A 08               15                      INC R0
+020B 09               16                      INC R1
+                      17                      
+020C 76FF             18                      MOV @R0, #0FFH
+020E 7702             19                      MOV @R1, #002H
+                      20                      ; Initialise the values which have to be subtracted
+0210 120215           21                      lcall sub16 ; call the subroutine sub16 to perform the subtraction
+                      22                      
+0213                  23                      stop:
+0213 80FE             24                             sjmp stop  ; Infinite loop for the termination
+                      25                      
+                      26                      
+                      27                     
+0215                  28                     sub16:
+                      29                             ; This subroutine is used to asubtract the two 16 bit numbers store
+                             d in the memory locations
+                      30                             ; pointed at by the register R0 and R1 in the big endian format. Al
+                             so, it has the additional
+                      31                             ; property of storing the result in a memory location pointed whose
+                              address is given by 3 more
+                      32                             ; than the location of the equivalent byte of the first number ie, 
+                             the LSB of the result will 
+                      33                             ; be at a memory location 3 more than the memory LSB of the first n
+                             umber
+                      34                     
+0215 C3               35                             CLR C           ;  Clear the borrow bit 
+0216 7861             36                             MOV R0, #61H  ; Use R0 for addressing the memory of the first numbe
+                             r
+0218 7971             37                             MOV R1, #71H  ; Use R0 for addressing the memory of the second numb
+                             er                   
+021A E6               38                             MOV A, @R0 ;  Move the contents of the memory location pointed to b
+                             y R0 to the accumulator (LSB) 
+021B 97               39                             SUBB A, @R1 ;  Subtract with borrow the contents of the memory loca
+                             tion pointed by R1 
+                      40                                                     ; from the accumulator
+021C 8803             41                             MOV 3, R0  ; Create a copy of the contents of R0 in R3
+021E 08               42                             INC R0
+021F 08               43                             INC R0
+0220 08               44                             INC R0
+                      45                             ; Increment the content of R0 by 3 to store at the required memory 
+                             location
+0221 F6               46                             MOV @R0, A ;  Move the result of LSB from accumulator to the requir
+                             ed location
+A51 MACRO ASSEMBLER  SUB16                                                                08/01/2016 15:58:02 PAGE     2
+
+                      47                             
+0222 8B00             48                             MOV 0, R3 ;  Restore the contents of R0
+0224 18               49                             DEC R0  ;  Decrement the pointer for the first number
+0225 19               50                             DEC R1  ;  Decrement the pointer for the second number
+                      51                             
+0226 E6               52                             MOV A, @R0 ;  Move the contents of the memory location pointed to b
+                             y R0 too the accumulator (MSB) 
+0227 97               53                             SUBB A, @R1 ;  Subtract with borrow the contents of the memory loca
+                             tion pointed by R1 
+                      54                                                     ; from the accumulator
+                      55                             ;MOV 3, R0
+0228 08               56                             INC R0
+0229 08               57                             INC R0
+022A 08               58                             INC R0
+                      59                             ; Increment the content of R0 by 3 to store at the required memory 
+                             location
+                      60                             
+022B F6               61                             MOV @R0, A ;  Move the result of MSB from accumulator to the requir
+                             ed location
+                      62                             ;MOV 0, R3
+                      63                             
+022C 18               64                             DEC R0 ; Decrement R0 to access the third byte for the borrow bit
+022D 75F000           65                             MOV B, #00H ;  Clear the B register to store the default borrow of 
+                             zero
+0230 5002             66                             jnc label1
+0232 05F0             67                                     INC B ;  If there is a borrow, increment the B register to 
+                             account for it
+                      68                                     
+0234                  69                                     label1:
+0234 A6F0             70                                             MOV @R0, B  ; Move the contents of the register B t
+                             o the third byte for the borrow bit
+                      71                             
+0236 22               72                     ret
+                      73                             
+                      74                             
+                      75                             
+                      76                             
+                      77                             
+                      78                             
+                      79                             
+                      80                                     
+                      81             END
+                                                             
+                                                     
+                                                     
+A51 MACRO ASSEMBLER  SUB16                                                                08/01/2016 15:58:02 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LABEL1 . . . . . .  C ADDR   0234H   A   
+MAIN1. . . . . . .  C ADDR   0200H   A   
+STOP . . . . . . .  C ADDR   0213H   A   
+SUB16. . . . . . .  C ADDR   0215H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

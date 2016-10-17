@@ -1,0 +1,3 @@
+".\Objects\lab1_voltage.obj" 
+TO ".\Objects\lab1" 
+PRINT(".\Listings\lab1.m51") RAMSIZE(256) 

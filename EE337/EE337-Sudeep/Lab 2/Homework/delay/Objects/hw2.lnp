@@ -1,0 +1,3 @@
+".\Objects\delay.obj" 
+TO ".\Objects\hw2" 
+PRINT(".\Listings\hw2.m51") RAMSIZE(256) 

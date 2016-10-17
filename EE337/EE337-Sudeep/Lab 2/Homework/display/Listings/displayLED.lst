@@ -1,0 +1,111 @@
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           08/08/2016 14:39:23 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\displayLED.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE displayLED.asm SET(SMALL) DEBUG PRINT(.\Listings\displayLED.lst) OBJECT
+                      (.\Objects\displayLED.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0080                 1     LED EQU P0
+                       2     
+0000                   3     org 0000H
+0000 020100            4             ljmp main
+                       5             
+0100                   6             org 100H
+0100                   7                     main:
+                       8                     
+0100 755002            9                     MOV 50H, #02H
+0103 755152           10                     MOV 51H, #52H
+0106 755203           11                     MOV 52H, #03H
+0109 7553AF           12                     MOV 53H, #0AFH
+                      13                     
+010C 120111           14                     lcall display
+                      15                     
+010F                  16                     STOP:
+010F 80FE             17                             sjmp STOP
+                      18                     
+                      19                     
+                      20                     
+0111                  21                     display:
+                      22                             USING 0
+0111 C003             23                             PUSH AR3
+0113 C0F0             24                             PUSH B
+0115 C001             25                             PUSH AR1
+0117 C002             26                             PUSH AR2
+                      27                             
+0119 FB               28                             MOV R3,A
+011A 8550F0           29                             MOV B,50H
+011D A951             30                             MOV R1, 51H
+                      31                             
+                      32                                                     
+011F                  33                             LOOP:
+011F 7A14             34                                     MOV R2, #20
+0121 E7               35                                     MOV A, @R1
+0122 09               36                                     INC R1
+0123 540F             37                                     ANL A, #0FH
+0125 F580             38                                     MOV LED, A
+0127                  39                                     LoopDelay:
+0127 120139           40                                             lcall delay0
+012A DAFB             41                                             DJNZ R2, LoopDelay
+012C D5F0F0           42                                     DJNZ B, LOOP
+                      43                             
+012F EB               44                             MOV A, R3
+                      45                             
+0130 D002             46                             POP AR2
+0132 D001             47                             POP AR1
+0134 D0F0             48                             POP B
+0136 D003             49                             POP AR3
+                      50                             
+0138 22               51                             RET
+                      52     
+0139                  53                     delay0:
+                      54                             USING 0
+0139 C002             55                             PUSH AR2
+013B C001             56                             PUSH AR1
+                      57                     
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           08/08/2016 14:39:23 PAGE     2
+
+013D 7AC8             58                             MOV R2, #200
+013F                  59                             BACK1:
+013F 79FF             60                                     MOV R1, #0FFH
+0141                  61                                     BACK:
+0141 D9FE             62                                             DJNZ R1, BACK
+0143 DAFA             63                                     DJNZ R2, BACK1
+                      64                             
+0145 D001             65                             POP AR1
+0147 D002             66                             POP AR2
+                      67                     
+0149 22               68                             RET 
+                      69                             
+                      70                     END
+                                     
+A51 MACRO ASSEMBLER  DISPLAYLED                                                           08/08/2016 14:39:23 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AR1. . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . .  D ADDR   0002H   A   
+AR3. . . . . . . .  D ADDR   0003H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BACK . . . . . . .  C ADDR   0141H   A   
+BACK1. . . . . . .  C ADDR   013FH   A   
+DELAY0 . . . . . .  C ADDR   0139H   A   
+DISPLAY. . . . . .  C ADDR   0111H   A   
+LED. . . . . . . .  D ADDR   0080H   A   
+LOOP . . . . . . .  C ADDR   011FH   A   
+LOOPDELAY. . . . .  C ADDR   0127H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+STOP . . . . . . .  C ADDR   010FH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

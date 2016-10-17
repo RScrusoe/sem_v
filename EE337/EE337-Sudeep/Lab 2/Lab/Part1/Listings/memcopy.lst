@@ -1,0 +1,82 @@
+A51 MACRO ASSEMBLER  MEMCOPY                                                              08/10/2016 20:13:02 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\memcopy.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE memcopy.asm SET(SMALL) DEBUG PRINT(.\Listings\memcopy.lst) OBJECT(.\Obj
+                      ects\memcopy.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5                     
+                       6             
+0100                   7             main:
+                       8                     USING 0
+0100 755003            9                     MOV 50H, #03H
+0103 755161           10                     MOV 51H, #61H
+0106 755262           11                     MOV 52H, #62H
+0109 756101           12                     MOV 61H, #01H
+010C 756202           13                     MOV 62H, #02H
+010F 756303           14                     MOV 63H, #03H
+0112 8550F0           15                     MOV B, 50H
+0115 A851             16                     MOV R0, 51H
+0117 A952             17                     MOV R1, 52H
+0119 E8               18                     MOV A, R0
+011A C3               19                     CLR C
+011B 99               20                     SUBB A, R1
+011C 4007             21                     jc down
+011E                  22                     loop1:
+011E E6               23                             MOV A, @R0
+011F F7               24                             MOV @R1, A
+0120 08               25                             INC R0
+0121 09               26                             INC R1
+0122 D5F0F9           27                             DJNZ B, loop1
+0125                  28                             down: 
+0125 5013             29                             jnc further
+0127 15F0             30                             DEC B
+0129 E8               31                             MOV A, R0
+012A 25F0             32                             ADD A,B
+012C F8               33                             MOV R0, A
+012D E9               34                             MOV A, R1
+012E 25F0             35                             ADD A, B
+0130 F9               36                             MOV R1, A
+0131 05F0             37                             INC B
+0133                  38                             loop2:
+0133 E6               39                             MOV A, @R0
+0134 F7               40                             MOV @R1,A
+0135 18               41                             DEC R0
+0136 19               42                             DEC R1
+0137 D5F0F9           43                             DJNZ B, loop2
+                      44                             
+013A                  45                             further:
+                      46                     
+                      47                     
+013A 80FE             48                     STOP: sjmp STOP
+                      49     
+                      50                     END
+                                                     
+A51 MACRO ASSEMBLER  MEMCOPY                                                              08/10/2016 20:13:02 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DOWN . . . . . . .  C ADDR   0125H   A   
+FURTHER. . . . . .  C ADDR   013AH   A   
+LOOP1. . . . . . .  C ADDR   011EH   A   
+LOOP2. . . . . . .  C ADDR   0133H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+STOP . . . . . . .  C ADDR   013AH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

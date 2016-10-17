@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/02/2016  21:02:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\signedadder16.obj TO .\Objects\Signedadd PRINT (.\Listings\Signedadd.m51) RAMSIZE 
+>> (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\signedadder16.obj (SIGNEDADDER16)
+
+
+LINK MAP OF MODULE:  .\Objects\Signedadd (SIGNEDADDER16)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0145H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Signedadd (SIGNEDADDER16)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SIGNEDADDER16
+  C:0113H         SYMBOL        ADDER16
+  D:00F0H         SYMBOL        B
+  C:0139H         SYMBOL        GOTO
+  C:0142H         SYMBOL        LABEL1
+  C:0100H         SYMBOL        MAIN
+  C:0111H         SYMBOL        STOP
+  C:0000H         LINE#         2
+  C:0100H         LINE#         7
+  C:0102H         LINE#         8
+  C:0104H         LINE#         10
+  C:0106H         LINE#         11
+  C:0108H         LINE#         13
+  C:0109H         LINE#         14
+  C:010AH         LINE#         16
+  C:010CH         LINE#         17
+  C:010EH         LINE#         21
+  C:0111H         LINE#         24
+  C:0113H         LINE#         27
+  C:0114H         LINE#         28
+  C:0116H         LINE#         29
+  C:0118H         LINE#         30
+  C:0119H         LINE#         31
+  C:011AH         LINE#         32
+  C:011BH         LINE#         33
+  C:011CH         LINE#         34
+  C:011DH         LINE#         35
+  C:011EH         LINE#         36
+  C:011FH         LINE#         38
+  C:0121H         LINE#         39
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/02/2016  21:02:00  PAGE 2
+
+
+  C:0122H         LINE#         40
+  C:0123H         LINE#         41
+  C:0124H         LINE#         43
+  C:0125H         LINE#         45
+  C:0127H         LINE#         49
+  C:0128H         LINE#         50
+  C:0129H         LINE#         54
+  C:012AH         LINE#         55
+  C:012BH         LINE#         57
+  C:012DH         LINE#         58
+  C:012EH         LINE#         59
+  C:012FH         LINE#         60
+  C:0130H         LINE#         63
+  C:0131H         LINE#         67
+  C:0132H         LINE#         68
+  C:0133H         LINE#         69
+  C:0135H         LINE#         70
+  C:0137H         LINE#         71
+  C:0139H         LINE#         73
+  C:013AH         LINE#         74
+  C:013DH         LINE#         75
+  C:0140H         LINE#         76
+  C:0142H         LINE#         79
+  C:0144H         LINE#         81
+  -------         ENDMOD        SIGNEDADDER16
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0048H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=325
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,87 @@
+A51 MACRO ASSEMBLER  SORT                                                                 08/01/2016 14:09:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\sort.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE sort.asm SET(SMALL) DEBUG PRINT(.\Listings\sort.lst) OBJECT(.\Objects\s
+                      ort.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5             
+0100                   6             main:
+0100 75F005            7                     MOV B,#05H
+0103 7860              8                     MOV R0,#60H
+0105 7970              9                     MOV R1,#70H
+0107                  10                     loop1:
+0107 8602             11                             MOV 2,@R0
+0109 A702             12                             MOV @R1,2
+010B 08               13                             INC R0
+010C 09               14                             INC R1
+010D D5F0F7           15                             djnz B, loop1
+                      16                             
+0110 7A05             17                     MOV R2,#05H
+0112 7970             18                     MOV R1, #70H
+0114                  19                     loop4:
+0114 12011C           20                             lcall sort
+0117 09               21                             INC R1
+0118 DAFA             22                             djnz R2, loop4
+                      23                             
+011A 7600             24                     MOV @R0, #00H
+                      25             
+                      26             
+                      27             
+011C                  28             sort:
+011C 7870             29                     MOV R0, #70H
+011E E6               30                     MOV A,@R0
+011F 75F005           31                     MOV B,#05H
+                      32                                     
+0122                  33                     loop2: 
+0122 D3               34                             SETB C
+0123 B3               35                             CPL C
+0124 97               36                             SUBB A,@R1
+                      37                             
+0125 4008             38                             jc loop3
+0127 8603             39                                     MOV 3,@R0
+0129 8704             40                                     MOV 4,@R1
+012B A604             41                                     MOV @R0,4
+012D A703             42                                     MOV @R1,3
+                      43                                     
+                      44                                     
+012F                  45                                     loop3:
+012F 08               46                                             INC R0
+0130 E6               47                                             MOV A, @R0
+                      48                                     
+0131 D5F0EE           49                                     djnz B, loop2
+                      50                                     
+0134 22               51                     ret
+                      52             
+                      53             END
+                                                             
+                                             
+                                     
+A51 MACRO ASSEMBLER  SORT                                                                 08/01/2016 14:09:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+LOOP1. . . . . . .  C ADDR   0107H   A   
+LOOP2. . . . . . .  C ADDR   0122H   A   
+LOOP3. . . . . . .  C ADDR   012FH   A   
+LOOP4. . . . . . .  C ADDR   0114H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+SORT . . . . . . .  C ADDR   011CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

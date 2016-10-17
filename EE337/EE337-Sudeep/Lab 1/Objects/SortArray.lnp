@@ -1,0 +1,3 @@
+".\Objects\sort.obj" 
+TO ".\Objects\SortArray" 
+PRINT(".\Listings\SortArray.m51") RAMSIZE(256) 

@@ -1,0 +1,50 @@
+A51 MACRO ASSEMBLER  ADDER_SOURCE                                                         08/01/2016 00:52:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02c
+OBJECT MODULE PLACED IN .\Objects\adder_source.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE adder_source.asm SET(SMALL) DEBUG PRINT(.\Listings\adder_source.lst) OB
+                      JECT(.\Objects\adder_source.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000H
+0000 020100            2             ljmp main
+                       3             
+0100                   4             org 100H
+                       5             
+0100                   6             main:
+                       7              
+0100 00                8              nop
+                       9              
+0101 7850             10              MOV R0,#50H ; Store the memory locaation of the first number in the R0 register
+0103 7960             11              MOV R1,#60H ; Store the memory location of the second number in the R1 register
+                      12              
+                      13             ; MOV @R0, #10H
+                      14             ; MOV @R1 ,#20H
+                      15              
+0105 E6               16              MOV A, @R0 ; Move the data at the location pointed by the data in R0 to accumulato
+                             r
+0106 27               17              ADD A, @R1 ;  Add the contents of the accumulator to the data content pointed by t
+                             he register R1
+                      18              
+0107 7970             19              MOV R1,#70H ; Store the memory location of the second number in the R1 register
+0109 F7               20              MOV @R1, A ; 
+                      21              
+                      22              END
+                                              
+A51 MACRO ASSEMBLER  ADDER_SOURCE                                                         08/01/2016 00:52:36 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

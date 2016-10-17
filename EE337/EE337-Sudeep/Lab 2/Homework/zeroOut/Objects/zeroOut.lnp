@@ -1,0 +1,3 @@
+".\Objects\zeroall.obj" 
+TO ".\Objects\zeroOut" 
+PRINT(".\Listings\zeroOut.m51") RAMSIZE(256) 
