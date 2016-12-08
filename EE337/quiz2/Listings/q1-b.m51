@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        10/02/2016  12:09:04  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/03/2016  14:36:54  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -40,18 +40,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\q1-b (Q1B)
   D:0089H         SYMBOL        TMOD
   B:0088H.4       SYMBOL        TR0
   C:0000H         LINE#         2
-  C:0100H         LINE#         15
-  C:0103H         LINE#         16
-  C:0105H         LINE#         18
-  C:0107H         LINE#         19
-  C:010AH         LINE#         20
-  C:010DH         LINE#         22
-  C:010FH         LINE#         23
-  C:0111H         LINE#         28
-  C:0113H         LINE#         29
-  C:0116H         LINE#         30
-  C:0118H         LINE#         31
-  C:011AH         LINE#         32
+  C:0100H         LINE#         19
+  C:0103H         LINE#         20
+  C:0105H         LINE#         22
+  C:0107H         LINE#         23
+  C:010AH         LINE#         24
+  C:010DH         LINE#         26
+  C:010FH         LINE#         27
+  C:0111H         LINE#         32
+  C:0113H         LINE#         33
+  C:0116H         LINE#         34
+  C:0118H         LINE#         35
+  C:011AH         LINE#         36
   -------         ENDMOD        Q1B
 
 ******************************************************************************
@@ -59,7 +59,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\q1-b (Q1B)
 ******************************************************************************
 
 Program Size: data=8.0 xdata=0 code=283
-BL51 BANKED LINKER/LOCATER V6.22                                                      10/02/2016  12:09:04  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/03/2016  14:36:54  PAGE 2
 
 
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
